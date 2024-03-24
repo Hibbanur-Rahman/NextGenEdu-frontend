@@ -8,9 +8,12 @@ const Home = () => {
               <span style={{ color: "#F48C06" }}>Studying</span> Online is now
               much easier
             </h1>
-            <p className="m-0 p-0">
+            <p className="m-0 p-0 text-light fs-4 mt-5">
                 NextGenEdu is an interesting platform that will teach you in more interactive way
             </p>
+            <div className="row m-0 p-0">
+                <button className=" join btn rounded-pill">Join for free</button>
+            </div>
           </div>
 
           <div className="col-6">
