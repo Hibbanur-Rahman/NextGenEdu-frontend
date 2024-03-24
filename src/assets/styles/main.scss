@@ -1,0 +1,48 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.Navbar{
+    background-color: #49BBBD !important;
+    .login{
+        transition: all 0.3s ease-in-out;
+        &:hover{
+            color: #fff;
+            background: rgba(255, 255, 255,0.3) !important;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+    .signup{
+            background: rgba(255, 255, 255,0.3);
+            transition: all 0.3s ease-in-out;
+            &:hover{
+                color: #000 !important;
+                background: #fff !important;
+                transition: all 0.3s ease-in-out;
+            }
+    }
+}
+.home{
+    
+    .hero-section{
+      
+       background-color: #49BBBD !important;
+        // background-image: url('../images/header-bg.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-bottom-left-radius: 100px !important;
+        border-bottom-right-radius: 100px !important;
+        h1{
+            font-size: 50px !important;
+        }
+    }
+}
