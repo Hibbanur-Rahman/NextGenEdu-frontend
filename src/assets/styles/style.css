@@ -43,6 +43,21 @@
 }
 .home .hero-section .join {
   background: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+.home .hero-section .join:hover {
+  color: #000 !important;
+  background: #fff !important;
+  transition: all 0.3s ease-in-out;
+}
+.home .hero-section i {
+  font-size: 50px !important;
+  transition: all 0.3s ease-in-out;
+}
+.home .hero-section i:hover {
+  color: #000 !important;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */
