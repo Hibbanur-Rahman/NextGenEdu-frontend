@@ -29,11 +29,14 @@
                 transition: all 0.3s ease-in-out;
             }
     }
+    .offcanvas{
+        background-color: #49BBBD !important;
+    }
 }
 .home{
     
     .hero-section{
-      
+     
        background-color: #49BBBD !important;
         // background-image: url('../images/header-bg.png');
         background-size: cover;
