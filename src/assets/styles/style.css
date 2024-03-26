@@ -42,6 +42,11 @@
   background-color: #49BBBD !important;
 }
 
+.navbar-light {
+  background-color: #fff !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .home .hero-section {
   background-color: #49BBBD !important;
   background-size: cover;

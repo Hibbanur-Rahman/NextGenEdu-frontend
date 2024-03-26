@@ -15,10 +15,10 @@
     top: 0;
     left: 0;
     width: 100%;
-    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.4s ease-in-out;
     z-index: 2 !important;
 }
+
 .Navbar{
     background-color: #49BBBD !important;
     .login{
@@ -41,6 +41,10 @@
     .offcanvas{
         background-color: #49BBBD !important;
     }
+}
+.navbar-light{
+    background-color: #fff !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .home{
     
