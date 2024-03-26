@@ -1,9 +1,25 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import logo from "../assets/images/logo.png";
 const Navbar = () => {
+  const [isFixed, setIsFixed] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const offset = 100;
+
+      setIsFixed(scrollPosition > offset);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
   return (
-    <div className="Navbar row m-0 p-0 justify-content-between align-items-center pt-3 pb-3 p-md-5 pt-md-3 pb-md-3 ">
+    <div className={`Navbar row m-0 p-0 justify-content-between align-items-center pt-3 pb-3 p-md-5 pt-md-3 pb-md-3  fixed `}>
       <div className="col-4 col-lg-2 overflow-hidden ">
         <img src={logo} alt="logo" className="w-lg-75 w-100" />
       </div>
