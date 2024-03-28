@@ -77,4 +77,15 @@
   cursor: pointer;
 }
 
+.course-item .card {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.course-item .card .instructorImg {
+  height: 35px !important;
+  width: 35px !important;
+}
+.course-item .card button {
+  background-color: #49BBBD !important;
+}
+
 /*# sourceMappingURL=style.css.map */
