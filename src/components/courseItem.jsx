@@ -3,7 +3,7 @@ import courseImg from "../assets/images/courseImg.png";
 import InstructorImg from '../assets/images/instructor-image-course.png'
 const CourseItems = (props) => {
   return (
-    <div className="course-item col-lg-3 col-md-6">
+    <div className="course-item col-lg-3 col-md-6 mt-4 mt-lg-0">
       <div className="card p-3 rounded-4 border-0 ">
         <img src={courseImg} alt="course-Image" className="w-100 rounded-4 " />
         <div className="row m-0 p-0  mt-2 justify-content-between ">

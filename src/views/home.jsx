@@ -47,7 +47,7 @@ const Home = () => {
       </div>
       <div className="courses-section py-5 d-flex flex-column align-items-center  ">
         <h1 className="m-0 p-0 text-center">Featured Courses</h1>
-        <p className="m-0 p-0 text-center text-secondary w-50 fs-5 mt-3">
+        <p className="m-0 p-0 text-center text-secondary w-lg-50 fs-5 mt-3">
           Learning often happens in classrooms but it doesn’t have to. Use
           Eduflow to facilitate learning experiences no matter the context.
         </p>
