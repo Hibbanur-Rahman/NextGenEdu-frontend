@@ -4,6 +4,7 @@ import CourseCategoryItem from "../components/courseCategoryItem";
 import CourseItems from "../components/courseItem";
 
 import heroimage from "../assets/images/hero-image.png";
+import classroomImg from '../assets/images/classroom.png'
 const courses = [
   {
     id: 1,
@@ -255,8 +256,8 @@ const Home = () => {
             </span>
           </h2>
           <p className="m-0 p-0 mt-3 text-secondary text-center col-8">
-            NextGenEdu is a platform that allows educators to create online classes
-            whereby they can store the course materials online; manage
+            NextGenEdu is a platform that allows educators to create online
+            classes whereby they can store the course materials online; manage
             assignments, quizzes and exams; monitor due dates; grade results and
             provide students with feedback all in one place.{" "}
           </p>
@@ -264,16 +265,43 @@ const Home = () => {
           <div className="what-nextGenEdu row m-0 p-0 mt-5 w-100 justify-content-center">
             <div className="col-lg-5 p-4">
               <div className="card border-0 rounded-4 overflow-hidden justify-content-center align-items-center">
-                    <h4 className="m-0 p-0 text-white z-2 ">FOR INSTRUCTORS</h4>
-                    <button className="btn btn-transparent border border-2 rounded-pill w-auto z-2 text-light mt-3">Start a class today</button>
+                <h4 className="m-0 p-0 text-white z-2 ">FOR INSTRUCTORS</h4>
+                <button className="btn btn-transparent border border-2 rounded-pill w-auto z-2 text-light mt-3">
+                  Start a class today
+                </button>
               </div>
             </div>
             <div className="col-lg-5 p-4">
               <div className="card border-0 rounded-4 overflow-hidden justify-content-center align-items-center">
-                    <h4 className="m-0 p-0 text-white z-2 ">FOR STUDENTS</h4>
-                    <button className="btn btn-transparent border border-2 rounded-pill w-auto z-2 text-light mt-3">Enter access code</button>
+                <h4 className="m-0 p-0 text-white z-2 ">FOR STUDENTS</h4>
+                <button className="btn btn-transparent border border-2 rounded-pill w-auto z-2 text-light mt-3">
+                  Enter access code
+                </button>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* what is nextgenEdu*/}
+      <div className="m-0 p-0 justify-content-center ">
+        <div className="container d-flex">
+          <div className="col-lg-6 p-lg-4">
+            <h3 className="m-0 p-0 col-lg-11" style={{ color: "#2F327D" }}>
+              Everything you can do in a physical classroom,{" "}
+              <span className="" style={{ color: "#00CBB8" }}>
+                you can do with NextGenEdu
+              </span>
+            </h3>
+            <p className="m-0 p-0 text-secondary mt-3 mb-5">
+              NextGenEdu’s school management software helps traditional and online
+              schools manage scheduling, attendance, payments and virtual
+              classrooms all in one secure cloud-based system.
+            </p>
+            <Link className="">Learn more</Link>
+          </div>
+          <div className="col-lg-6 p-lg-5 pt-0">
+            <img src={classroomImg} alt="classroom image" className="w-100 rounded-5 h-75 border border-1 " />
           </div>
         </div>
       </div>
