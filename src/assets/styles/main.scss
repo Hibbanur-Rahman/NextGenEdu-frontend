@@ -10,6 +10,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 .fixed {
     position: fixed;
     top: 0;
@@ -19,81 +20,97 @@
     z-index: 2 !important;
 }
 
-.Navbar{
+.Navbar {
     background-color: #49BBBD !important;
-    .login{
+
+    .login {
         transition: all 0.3s ease-in-out;
-        &:hover{
+
+        &:hover {
             color: #fff;
-            background: rgba(255, 255, 255,0.3) !important;
+            background: rgba(255, 255, 255, 0.3) !important;
             transition: all 0.3s ease-in-out;
         }
     }
-    .signup{
-            background: rgba(255, 255, 255,0.3);
+
+    .signup {
+        background: rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            color: #000 !important;
+            background: #fff !important;
             transition: all 0.3s ease-in-out;
-            &:hover{
-                color: #000 !important;
-                background: #fff !important;
-                transition: all 0.3s ease-in-out;
-            }
+        }
     }
-    .offcanvas{
+
+    .offcanvas {
         background-color: #49BBBD !important;
     }
-    .login-scroll{
+
+    .login-scroll {
         box-sizing: border-box !important;
         background-color: #49BBBD !important;
         color: #fff !important;
-        &:hover{
+
+        &:hover {
             color: #000 !important;
             background: #fff !important;
-            border: 2px solid  #49BBBD !important;
+            border: 2px solid #49BBBD !important;
             transition: all 0.3s ease-in-out;
         }
     }
-    .signup-scroll{
-        border: 2px solid  #49BBBD !important;
+
+    .signup-scroll {
+        border: 2px solid #49BBBD !important;
         color: #000 !important;
-        &:hover{
+
+        &:hover {
             color: #fff !important;
-            background:  #49BBBD !important;
+            background: #49BBBD !important;
             transition: all 0.3s ease-in-out;
         }
     }
 }
-.navbar-light{
+
+.navbar-light {
     background-color: #fff !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.home{
-    
-    .hero-section{
-     
-       background-color: #49BBBD !important;
+
+.home {
+
+    .hero-section {
+
+        background-color: #49BBBD !important;
         // background-image: url('../images/header-bg.png');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
         border-bottom-left-radius: 100px !important;
         border-bottom-right-radius: 100px !important;
-        h1{
+
+        h1 {
             font-size: 50px !important;
         }
-        .join{
-            background: rgba(255, 255, 255,0.3);
+
+        .join {
+            background: rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease-in-out;
-            &:hover{
+
+            &:hover {
                 color: #000 !important;
                 background: #fff !important;
                 transition: all 0.3s ease-in-out;
             }
 
         }
-        i{
+
+        i {
             font-size: 50px !important;
             transition: all 0.3s ease-in-out;
-            &:hover{
+
+            &:hover {
                 color: #000 !important;
                 transition: all 0.3s ease-in-out;
                 cursor: pointer;
@@ -101,24 +118,35 @@
         }
     }
 }
+
 .course-item {
-    .card{
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;  
-        .instructorImg{
+    .card {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+        .instructorImg {
             height: 35px !important;
             width: 35px !important;
         }
-        button{
+
+        button {
             background-color: #49BBBD !important;
         }
     }
 }
-.courseCategoryItem{
-    .card{
+
+.courseCategoryItem {
+    .card {
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-        .icon{
+
+        .icon {
             width: 60px !important;
             height: 60px !important;
         }
+    }
+}
+.footer{
+    background-color: #252641 !important;
+    img{
+        height: 60px !important;
     }
 }

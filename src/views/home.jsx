@@ -97,7 +97,6 @@ const Home = () => {
         </div>
       </div>
 
-
       {/**course category list */}
       <div className="courseCategoryList">
         <div className="container  mt-5 mb-5">
@@ -126,7 +125,7 @@ const Home = () => {
               iconColor="#00CBB8"
               iconBgColor="rgba(0,203,184,0.3)"
             />
-             <CourseCategoryItem
+            <CourseCategoryItem
               name="Marketing"
               iconName="shop-window"
               iconColor="#F48C06"
@@ -150,8 +149,35 @@ const Home = () => {
               iconColor="#00CBB8"
               iconBgColor="rgba(0,203,184,0.3)"
             />
-           
           </div>
+        </div>
+      </div>
+
+      {/**something about nextgenedu */}
+      <div className="m-0 p-0">
+        <div className="container">
+          <h2 className="m-0 p-0 text-center" style={{ color: "#2F327D" }}>
+            All-In-One{" "}
+            <span className="" style={{ color: "#00CBB8" }}>
+              Cloud Software
+            </span>
+          </h2>
+          <p className="m-0 p-0 mt-3 text-secondary text-center">
+            NextGenEdu is one powerful online software suite that combines all
+            the tools <br /> needed to run a successful school or office
+          </p>
+          <div className="courseCategoryItem col-lg-3 p-4">
+            <div className="card  p-3 border-0 justify-content-center align-items-center rounded-4">
+                <div className="icon d-flex justify-content-center align-items-center w-auto rounded-2" style={{backgroundColor:'##00CBB8'}}>
+                    <i className={`bi bi-arrow w-auto fs-4 `} style={{color:'##00CBB8'}}></i>
+                </div>
+                <h5 className="m-0 p-0 mt-3">Online</h5>
+                <p className="m-0 p-0 mt-4 mb-2 text-center">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam earum autem doloremque ducimus 
+                </p>
+            </div>
+        </div>
+          
         </div>
       </div>
     </div>
