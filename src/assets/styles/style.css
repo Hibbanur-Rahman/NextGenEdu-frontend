@@ -15,7 +15,7 @@
   left: 0;
   width: 100%;
   transition: all 0.4s ease-in-out;
-  z-index: 2 !important;
+  z-index: 4 !important;
 }
 
 .Navbar {
@@ -96,6 +96,41 @@
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
+.home .what-nextGenEdu .card {
+  position: relative;
+  height: 40vh !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.home .what-nextGenEdu .card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(3, 7, 30, 0.5);
+  opacity: 0.5;
+  z-index: 1;
+}
+.home .what-nextGenEdu .col-lg-5:nth-child(1) .card {
+  background-image: url("../images/instructor-img.png");
+}
+.home .what-nextGenEdu .col-lg-5:nth-child(1) .card button:hover {
+  background-color: rgba(35, 189, 238, 0.9) !important;
+  border: 2px solid rgba(35, 189, 238, 0.9) !important;
+}
+.home .what-nextGenEdu .col-lg-5:nth-child(2) .card {
+  background-image: url("../images/for-student.png");
+}
+.home .what-nextGenEdu .col-lg-5:nth-child(2) .card button {
+  background-color: rgba(35, 189, 238, 0.9) !important;
+  border: 0px !important;
+}
+.home .what-nextGenEdu .col-lg-5:nth-child(2) .card button:hover {
+  border: 2px solid #fff !important;
+  background-color: transparent !important;
+}
 
 .course-item .card {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -114,6 +149,11 @@
 .courseCategoryItem .card .icon {
   width: 60px !important;
   height: 60px !important;
+}
+.courseCategoryItem .card .upper-icon {
+  width: 60px !important;
+  height: 60px !important;
+  top: -30px !important;
 }
 
 .footer {
