@@ -20,44 +20,45 @@ const Navbar = () => {
   });
   return (
     <div className={`Navbar row m-0 p-0 justify-content-between align-items-center pt-3 pb-3 p-md-5 pt-md-3 pb-md-3  fixed ${isFixed?'navbar-light':' '}`}>
-      <div className="col-4 col-lg-2 overflow-hidden ">
+      <div className="col-3 col-lg-2 overflow-hidden ">
         <img src={logo} alt="logo" className="w-lg-75 w-100" />
       </div>
-      <div className="col-8 d-lg-flex d-none">
-        <div className="row m-0 p-0 align-items-center">
+      <div className="col-9 d-lg-flex d-none">
+        <div className="row m-0 p-0 w-100 align-items-center justify-content-between">
           <Link
             to="/"
-            className={`text-light w-auto m-0 p-0 text-decoration-none ms-5 me-5  ${isFixed?'text-dark':' '}`}
+            className={`text-light col-1 m-0 p-0 text-decoration-none   ${isFixed?'text-dark':' '}`}
           >
             <p className="m-0 p-0 w-auto">Home</p>
           </Link>
           <Link
             to="/courses"
-            className={`text-light w-auto m-0 p-0 text-decoration-none ms-5 me-5 ${isFixed?'text-dark':' '}`}
+            className={`text-light col-1 m-0 p-0 text-decoration-none  ${isFixed?'text-dark':' '}`}
           >
             <p className="m-0 p-0 w-auto">Courses</p>
           </Link>
           <Link
             to="/careers"
-            className={`text-light w-auto m-0 p-0 text-decoration-none ms-5 me-5 ${isFixed?'text-dark':' '}`}
+            className={`text-light col-1 m-0 p-0 text-decoration-none  ${isFixed?'text-dark':' '}`}
           >
             <p className="m-0 p-0 w-auto">Careers</p>
           </Link>
           <Link
             to="/blog"
-            className={`text-light w-auto m-0 p-0 text-decoration-none ms-5 me-5 ${isFixed?'text-dark':' '}`}
+            className={`text-light col-1 m-0 p-0 text-decoration-none  ${isFixed?'text-dark':' '}`}
           >
             <p className="m-0 p-0 w-auto">Blog</p>
           </Link>
           <Link
             to="/aboutUs"
-            className={`text-light w-auto m-0 p-0 text-decoration-none ms-4 me-5 ${isFixed?'text-dark':' '}`}
+            className={`text-light col-1 m-0 p-0 text-decoration-none ${isFixed?'text-dark':' '}`}
           >
             <p className="m-0 p-0 w-auto">About Us</p>
           </Link>
-          <Link
+         <div className="col-4 d-flex justify-content-end">
+         <Link
             to="/login"
-            className={`text-light w-auto m-0 p-0 text-decoration-none ms-4 me-2 ${isFixed?'text-light':' '}`}
+            className={`text-light w-auto m-0 p-0 text-decoration-none  ${isFixed?'text-light':' '}`}
           >
             <button className={`login btn bg-light rounded-pill ps-4 pe-4 ${isFixed?'login-scroll':' '}`}>
               Login
@@ -71,6 +72,7 @@ const Navbar = () => {
               Sign Up
             </button>
           </Link>
+         </div>
         </div>
       </div>
 
