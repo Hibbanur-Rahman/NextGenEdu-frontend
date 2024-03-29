@@ -108,4 +108,12 @@
   background-color: #49BBBD !important;
 }
 
+.courseCategoryItem .card {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.courseCategoryItem .card .icon {
+  width: 60px !important;
+  height: 60px !important;
+}
+
 /*# sourceMappingURL=style.css.map */
