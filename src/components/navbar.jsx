@@ -57,17 +57,17 @@ const Navbar = () => {
           </Link>
           <Link
             to="/login"
-            className={`text-light w-auto m-0 p-0 text-decoration-none ms-4 me-2 ${isFixed?'text-dark':' '}`}
+            className={`text-light w-auto m-0 p-0 text-decoration-none ms-4 me-2 ${isFixed?'text-light':' '}`}
           >
-            <button className="login btn bg-light rounded-pill ps-4 pe-4">
+            <button className={`login btn bg-light rounded-pill ps-4 pe-4 ${isFixed?'login-scroll':' '}`}>
               Login
             </button>
           </Link>
           <Link
             to="/SignUp"
-            className="text-light w-auto m-0 p-0 text-decoration-none ms-2"
+            className={`text-light w-auto m-0 p-0 text-decoration-none ms-1 ${isFixed?'text-dark':' '}`}
           >
-            <button className="signup btn rounded-pill ps-3 pe-3 text-light">
+            <button className={`signup btn rounded-pill ps-3 pe-3 text-light ${isFixed?'signup-scroll':''}`}>
               Sign Up
             </button>
           </Link>

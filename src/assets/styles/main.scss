@@ -41,6 +41,26 @@
     .offcanvas{
         background-color: #49BBBD !important;
     }
+    .login-scroll{
+        box-sizing: border-box !important;
+        background-color: #49BBBD !important;
+        color: #fff !important;
+        &:hover{
+            color: #000 !important;
+            background: #fff !important;
+            border: 2px solid  #49BBBD !important;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+    .signup-scroll{
+        border: 2px solid  #49BBBD !important;
+        color: #000 !important;
+        &:hover{
+            color: #fff !important;
+            background:  #49BBBD !important;
+            transition: all 0.3s ease-in-out;
+        }
+    }
 }
 .navbar-light{
     background-color: #fff !important;
