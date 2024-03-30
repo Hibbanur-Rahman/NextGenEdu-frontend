@@ -10,7 +10,7 @@ import ourFeaturesImg from "../assets/images/our-features.png";
 import featureListIcon1 from "../assets/images/features-list-icon-1.png";
 import featureListIcon2 from "../assets/images/features-list-icon-2.png";
 import featureListIcon3 from "../assets/images/features-list-icon-3.png";
-
+import assesmentImg from '../assets/images/assesment-img.png';
 const courses = [
   {
     id: 1,
@@ -334,33 +334,70 @@ const Home = () => {
           efficient
         </p>
         <div className="container   d-flex flex-column flex-lg-row justify-content-between  align-items-center ">
-          <div className="col-lg-7 col-12">
+          <div className="col-lg-7 col-12 mt-lg-0 mt-5">
             <img
               src={ourFeaturesImg}
               alt="our features img "
               className="our-features-img w-100"
             />
           </div>
-          <div className="col-lg-5 col-12 pe-lg-5">
-            <h3 className="m-0 p-0 text-center" style={{ color: "#2F327D" }}>
+          <div className="col-lg-5 col-12 pe-lg-5 mt-lg-0 mt-5 pt-lg-0 pt-3">
+            <h3 className="m-0 p-0 " style={{ color: "#2F327D" }}>
               A{" "}
               <span className="ps-2" style={{ color: "#00CBB8" }}>
                 user interfaces
               </span>{" "}
               designed for the classroom
             </h3>
-            <div className="row m-0 p-0 justify-content-between">
-              <div className="icon-item bg-light w-auto rounded-circle d-flex align-items-center justify-content-center ">
-                <img
-                  src={featureListIcon1}
-                  alt="features-icon-list"
-                  className="w-100"
-                />
+            <div className="row m-0 p-0 justify-content-between mt-5">
+              
+                <div className="icon-item bg-light w-auto rounded-circle d-flex align-items-center justify-content-center ">
+                  <img
+                    src={featureListIcon1}
+                    alt="features-icon-list"
+                    className="w-100"
+                  />
+                </div>
+             
+              <div className="col-lg-11 col-10 ps-3">
+                <p className="m-0 p-0 text-secondary w-auto">
+                  Teachers don’t get lost in the grid view and have a dedicated
+                  Podium space.
+                </p>
               </div>
-              <p className="m-0 p-0 text-secondary w-auto">
-                Teachers don’t get lost in the grid view and have a dedicated
-                Podium space.
-              </p>
+            </div>
+            <div className="row m-0 p-0 justify-content-between mt-4">
+              
+                <div className="icon-item bg-light w-auto rounded-circle d-flex align-items-center justify-content-center ">
+                  <img
+                    src={featureListIcon2}
+                    alt="features-icon-list"
+                    className="w-100"
+                  />
+                </div>
+             
+              <div className="col-lg-11 col-10 ps-3">
+                <p className="m-0 p-0 text-secondary w-auto">
+                TA’s and presenters can be moved to the front of the class.
+
+                </p>
+              </div>
+            </div>
+            <div className="row m-0 p-0 justify-content-between  mt-4">
+              
+                <div className="icon-item bg-light w-auto rounded-circle d-flex align-items-center justify-content-center ">
+                  <img
+                    src={featureListIcon3}
+                    alt="features-icon-list"
+                    className="w-100"
+                  />
+                </div>
+             
+              <div className="col-lg-11 col-10 ps-3">
+                <p className="m-0 p-0 text-secondary w-auto">
+                Teachers can easily see all students and class data at one time.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -391,6 +428,38 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/** assesments quizes */}
+      <div className="m-0 p-0 mt-5 mt-lg-0 justify-content-center ">
+       
+        <div className="container   d-flex flex-column flex-lg-row justify-content-between  align-items-center ">
+          <div className="col-lg-7 col-12 mt-lg-0 mt-5">
+            <img
+              src={assesmentImg}
+              alt="our features img "
+              className="assessmentImg w-100"
+            />
+          </div>
+          <div className="col-lg-5 col-12 pe-lg-5 mt-lg-0 mt-5 pt-lg-0 pt-3">
+            <h3 className="m-0 p-0 " style={{ color: "#2F327D" }}>
+              Assessments,
+              <span className="ps-2" style={{ color: "#00CBB8" }}>
+                Quizzes
+              </span>{" "}
+              ,Tests
+            </h3>
+            <p className="m-0 p-0 mt-3">
+              Our platform allows you to create custom assessments that are
+              accessible by your entire class or just specific learners. You
+              can add questions on various types including multiple choice,
+              true/false, fill in the blank, short answer, essay, and more.
+              Once created, these assessments can be distributed via email or
+              shared directly through our platform. 
+            </p>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 };
