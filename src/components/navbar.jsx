@@ -65,7 +65,7 @@ const Navbar = () => {
             </button>
           </Link>
           <Link
-            to="/SignUp"
+            to="/register"
             className={`text-light w-auto m-0 p-0 text-decoration-none ms-1 ${isFixed?'text-dark':' '}`}
           >
             <button className={`signup btn rounded-pill ps-3 pe-3 text-light ${isFixed?'signup-scroll':''}`}>
@@ -142,7 +142,7 @@ const Navbar = () => {
               </button>
             </Link>
             <Link
-              to="/SignUp"
+              to="/register"
               className="text-light w-auto m-0 p-0 text-decoration-none ms-2"
             >
               <button className="signup btn rounded-pill ps-3 pe-3 text-light fs-4">

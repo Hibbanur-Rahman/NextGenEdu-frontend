@@ -269,6 +269,24 @@
     }
 }
 
+.login{
+    .login-Image{
+        // height: 100vh !important;
+        scale: 0.9 !important;
+    }
+    .login-tab{
+        background-color: rgba(73,187,189,0.6) !important;
+
+    }
+    .login-btn{
+        background-color: #49BBBD !important;
+    }
+    .form-input{
+        height: 40px !important;
+        border: 2px solid rgba(73,187,189,0.6);
+    }
+}
+
 .footer {
     background-color: #252641 !important;
 
