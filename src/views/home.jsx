@@ -4,7 +4,13 @@ import CourseCategoryItem from "../components/courseCategoryItem";
 import CourseItems from "../components/courseItem";
 
 import heroimage from "../assets/images/hero-image.png";
-import classroomImg from '../assets/images/classroom.png'
+import classroomImg from "../assets/images/classroom.png";
+import toolsFOrTeacherImg from "../assets/images/tools-for-teacher.png";
+import ourFeaturesImg from "../assets/images/our-features.png";
+import featureListIcon1 from "../assets/images/features-list-icon-1.png";
+import featureListIcon2 from "../assets/images/features-list-icon-2.png";
+import featureListIcon3 from "../assets/images/features-list-icon-3.png";
+
 const courses = [
   {
     id: 1,
@@ -284,9 +290,10 @@ const Home = () => {
       </div>
 
       {/* what is nextgenEdu*/}
-      <div className="m-0 p-0 justify-content-center ">
-        <div className="container d-flex">
-          <div className="col-lg-6 p-lg-4">
+      <div className="m-0 mt-5 p-0 justify-content-center ">
+        <div className="container d-flex flex-column flex-lg-row">
+          <div className="col-12 col-lg-6 p-lg-4 position-relative ">
+            <div className="green-circle position-absolute rounded-circle"></div>
             <h3 className="m-0 p-0 col-lg-11" style={{ color: "#2F327D" }}>
               Everything you can do in a physical classroom,{" "}
               <span className="" style={{ color: "#00CBB8" }}>
@@ -294,14 +301,93 @@ const Home = () => {
               </span>
             </h3>
             <p className="m-0 p-0 text-secondary mt-3 mb-5">
-              NextGenEdu’s school management software helps traditional and online
-              schools manage scheduling, attendance, payments and virtual
+              NextGenEdu’s school management software helps traditional and
+              online schools manage scheduling, attendance, payments and virtual
               classrooms all in one secure cloud-based system.
             </p>
+            <div className="green-small-circle position-absolute rounded-circle"></div>
             <Link className="">Learn more</Link>
           </div>
-          <div className="col-lg-6 p-lg-5 pt-0">
-            <img src={classroomImg} alt="classroom image" className="w-100 rounded-5 h-75 border border-1 " />
+          <div className="col-12 col-lg-6 p-lg-5 pt-0  position-relative">
+            <div className="blue-box position-absolute rounded-4"></div>
+            <img
+              src={classroomImg}
+              alt="classroom image"
+              className="w-100 rounded-4 h-75 border border-1"
+            />
+            <i className="play bi bi-play-circle-fill text-light  fs-1 position-absolute "></i>
+            <div className="green-box position-absolute rounded-4"></div>
+          </div>
+        </div>
+      </div>
+
+      {/** our features */}
+      <div className="m-0 p-0 mt-5 mt-lg-0 justify-content-center ">
+        <h2 className="m-0 p-0 text-center" style={{ color: "#2F327D" }}>
+          Our
+          <span className="ps-2" style={{ color: "#00CBB8" }}>
+            Features
+          </span>
+        </h2>
+        <p className="text-center text-secondary mt-3">
+          This is very extraordinary feature,can make learning activities more
+          efficient
+        </p>
+        <div className="container   d-flex flex-column flex-lg-row justify-content-between  align-items-center ">
+          <div className="col-lg-7 col-12">
+            <img
+              src={ourFeaturesImg}
+              alt="our features img "
+              className="our-features-img w-100"
+            />
+          </div>
+          <div className="col-lg-5 col-12 pe-lg-5">
+            <h3 className="m-0 p-0 text-center" style={{ color: "#2F327D" }}>
+              A{" "}
+              <span className="ps-2" style={{ color: "#00CBB8" }}>
+                user interfaces
+              </span>{" "}
+              designed for the classroom
+            </h3>
+            <div className="row m-0 p-0 justify-content-between">
+              <div className="icon-item bg-light w-auto rounded-circle d-flex align-items-center justify-content-center ">
+                <img
+                  src={featureListIcon1}
+                  alt="features-icon-list"
+                  className="w-100"
+                />
+              </div>
+              <p className="m-0 p-0 text-secondary w-auto">
+                Teachers don’t get lost in the grid view and have a dedicated
+                Podium space.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/** tools for teacher */}
+      <div className="m-0 p-0 mt-5 mt-lg-0 justify-content-center ">
+        <div className="container   d-flex flex-column flex-lg-row justify-content-between  align-items-center ">
+          <div className="col-lg-5 col-12 pe-lg-5">
+            <h2 className="m-0 p-0 col-lg-11" style={{ color: "#2F327D" }}>
+              <span className="pe-2" style={{ color: "#00CBB8" }}>
+                Tools
+              </span>
+              For Teachers <br /> And Learners
+            </h2>
+            <p className="m-0 p-0 mt-3 text-secondary">
+              Class has a dynamic set of teaching tools built to be deployed and
+              used during class. Teachers can handout assignments in real-time
+              for students to complete and submit.
+            </p>
+          </div>
+          <div className="col-lg-6 col-12">
+            <img
+              src={toolsFOrTeacherImg}
+              alt="tools for teacher img "
+              className="tools-for-teacher-img w-100"
+            />
           </div>
         </div>
       </div>

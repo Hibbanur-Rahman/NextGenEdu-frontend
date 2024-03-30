@@ -131,6 +131,56 @@
   border: 2px solid #fff !important;
   background-color: transparent !important;
 }
+.home .green-circle {
+  height: 50px !important;
+  width: 50px !important;
+  z-index: -1;
+  background-color: #33EFA0 !important;
+  left: 5px;
+  top: 13px;
+}
+.home .green-small-circle {
+  height: 20px !important;
+  width: 20px !important;
+  z-index: -1;
+  background-color: #33EFA0 !important;
+  top: 26%;
+  right: 50px;
+}
+.home .blue-box {
+  height: 100px !important;
+  width: 100px !important;
+  background-color: #23BDEE !important;
+  z-index: -1;
+  top: 30px !important;
+  left: 25px !important;
+}
+.home .green-box {
+  height: 100px !important;
+  width: 100px !important;
+  background-color: #33EFA0 !important;
+  z-index: -1;
+  right: 20px !important;
+  bottom: 120px !important;
+}
+.home .play {
+  top: 31%;
+  z-index: 2;
+  left: 45%;
+  font-size: 70px !important;
+  transition: all 0.3s ease-in-out;
+}
+.home .play:hover {
+  transition: all 0.3s ease-in-out;
+  color: #49BBBD !important;
+  cursor: pointer;
+}
+.home .icon-item {
+  width: 40px !important;
+  height: 40px !important;
+  background-color: #FBFBFB !important;
+  box-shadow: 0px 10px 44px rgba(13, 15, 28, 0.12);
+}
 
 .course-item .card {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
