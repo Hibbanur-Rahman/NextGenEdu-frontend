@@ -15,9 +15,9 @@ import "swiper/css/pagination";
 import {Autoplay, Pagination } from "swiper/modules";
 
 const Courses = () => {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
   return (
-    <div className="courses row m-0 p-0 pt-5 mt-5">
+    <div className="courses row m-0 p-0 pt-lg-4 mt-5">
       {/**progress course items */}
       <div className="progressCourseRow m-0 p-0 justify-content-center ">
         <div className="container pt-5 pb-5">
@@ -48,13 +48,16 @@ const Courses = () => {
               modules={[Autoplay,Pagination]}
               breakpoints={{
                 // When window width is <= 640px, show only 1 slide
-                640: {
+                0: {
                   slidesPerView: 1,
                 },
                 // When window width is <= 768px, show 2 slides
                 768: {
                   slidesPerView: 2,
                 },
+                1000: {
+                    slidesPerView: 3,
+                  },
               }}
               className="mySwiper"
             >

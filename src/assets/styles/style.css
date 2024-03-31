@@ -246,6 +246,16 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
+.blog .blog-hero {
+  background-color: rgba(157, 204, 255, 0.2) !important;
+}
+.blog .blog-hero h2 {
+  color: #2F327D !important;
+}
+.blog .blog-hero button {
+  background-color: #49BBBD !important;
+}
+
 .footer {
   background-color: #252641 !important;
 }

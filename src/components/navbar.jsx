@@ -38,10 +38,10 @@ const Navbar = () => {
             <p className="m-0 p-0 w-auto">Courses</p>
           </Link>
           <Link
-            to="/careers"
-            className={`text-light col-1 m-0 p-0 text-decoration-none  ${isFixed?'text-dark':' '}`}
+            to="/forum"
+            className={`text-light col-2 m-0 p-0 text-decoration-none  ${isFixed?'text-dark':' '}`}
           >
-            <p className="m-0 p-0 w-auto">Careers</p>
+            <p className="m-0 p-0 w-auto">Community-Forum</p>
           </Link>
           <Link
             to="/blog"
@@ -116,10 +116,10 @@ const Navbar = () => {
               <p className="m-0 p-0 w-auto fs-4 ">Courses</p>
             </Link>
             <Link
-              to="/careers"
+              to="/forum"
               className="text-light  m-0 p-0 text-decoration-none mt-3 mb-3"
             >
-              <p className="m-0 p-0 w-auto fs-4 ">Careers</p>
+              <p className="m-0 p-0 w-auto fs-4 ">Community-forum</p>
             </Link>
             <Link
               to="/blog"
