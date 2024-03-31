@@ -235,6 +235,12 @@
 .courses .swiper-pagination-horizontal {
   margin-top: 80px !important;
 }
+.courses .learningnow .card {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.courses .learningnow button {
+  background-color: #49BBBD !important;
+}
 
 .progressCourseItem .card {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;

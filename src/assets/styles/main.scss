@@ -226,13 +226,15 @@
         width: 40px !important;
         height: 40px !important;
         background-color: #FBFBFB !important;
-        box-shadow: 0px 15px 44px rgba(13,15,28,0.12);
+        box-shadow: 0px 15px 44px rgba(13, 15, 28, 0.12);
     }
-    .assessmentImg{
+
+    .assessmentImg {
         //height: 90vh !important;
         scale: 0.8;
     }
-    .tools-for-teacher-img{
+
+    .tools-for-teacher-img {
         scale: 0.8;
     }
 }
@@ -269,42 +271,61 @@
     }
 }
 
-.login{
-    .login-Image{
+.login {
+    .login-Image {
         // height: 100vh !important;
         scale: 0.9 !important;
     }
-    .login-tab{
-        background-color: rgba(73,187,189,0.6) !important;
+
+    .login-tab {
+        background-color: rgba(73, 187, 189, 0.6) !important;
 
     }
-    .login-btn{
+
+    .login-btn {
         background-color: #49BBBD !important;
     }
-    .form-input{
+
+    .form-input {
         height: 40px !important;
-        border: 2px solid rgba(73,187,189,0.6);
+        border: 2px solid rgba(73, 187, 189, 0.6);
     }
 }
 
-.courses{
-    .progressCourseRow{
-        background-color: rgba(157,204,255,0.2) !important;
-        
+.courses {
+    .progressCourseRow {
+        background-color: rgba(157, 204, 255, 0.2) !important;
+
     }
-    .swiper-wrapper{
+
+    .swiper-wrapper {
         padding-bottom: 40px !important;
     }
-    .swiper-pagination-horizontal{
+
+    .swiper-pagination-horizontal {
         margin-top: 80px !important;
     }
+
+    .learningnow {
+        .card{
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        }
+        button{
+            background-color: #49BBBD !important;
+
+        }
+
+    }
+
 }
-.progressCourseItem{
-    .card{
+
+.progressCourseItem {
+    .card {
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     }
-    
+
 }
+
 .footer {
     background-color: #252641 !important;
 
