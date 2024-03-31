@@ -226,6 +226,20 @@
   border: 2px solid rgba(73, 187, 189, 0.6);
 }
 
+.courses .progressCourseRow {
+  background-color: rgba(157, 204, 255, 0.2) !important;
+}
+.courses .swiper-wrapper {
+  padding-bottom: 40px !important;
+}
+.courses .swiper-pagination-horizontal {
+  margin-top: 80px !important;
+}
+
+.progressCourseItem .card {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
 .footer {
   background-color: #252641 !important;
 }
