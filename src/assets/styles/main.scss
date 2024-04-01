@@ -307,10 +307,11 @@
     }
 
     .learningnow {
-        .card{
+        .card {
             box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
         }
-        button{
+
+        button {
             background-color: #49BBBD !important;
 
         }
@@ -326,16 +327,72 @@
 
 }
 
-.blog{
-    .blog-hero{
+.blog {
+    .blog-hero {
         background-color: rgba(157, 204, 255, 0.2) !important;
-        h2{
+
+        h2 {
             color: #2F327D !important;
         }
-        button{
+
+        button {
             background-color: #49BBBD !important;
 
         }
+    }
+
+    .blog-list {
+        .blog-list-item {
+
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+            height: 30vh !important;
+            position: relative;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(3, 7, 30, 0.5);
+                opacity: 0.5;
+                z-index: 1;
+            }
+
+            .blog-list-item-title {
+                background-color: rgba(255, 255, 255, 0.7) !important;
+                z-index: 2 !important;
+                bottom: 20px !important;
+            }
+        }
+
+
+
+    }
+
+    .realtedBlogRow {
+        background-color: rgba(157, 204, 255, 0.2) !important;
+        .swiper-wrapper {
+            padding-bottom: 40px !important;
+        }
+    
+        .swiper-pagination-horizontal {
+            margin-top: 80px !important;
+        }
+    
+    }
+
+
+
+}
+
+.relatedBlogItem {
+    .card {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     }
 }
 
