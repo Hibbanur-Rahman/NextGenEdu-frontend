@@ -7,7 +7,7 @@ import Home from "./views/home"
 import Courses from "./views/courses"
 import Login from "./views/login"
 import Blog from "./views/blog"
-
+import AboutUs from "./views/aboutUs"
 function App() {
 
   return (
@@ -17,6 +17,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/courses' element={<Courses/>}/>
         <Route path='/blog' element={<Blog/>}/>
+        <Route path='/aboutUs' element={<AboutUs/>}/>
         <Route path='/login' element={<Login status='true' layout='login'/>}/>
         <Route path='/register' element={<Login status='false' layout='register'/>}/>
       </Routes>
