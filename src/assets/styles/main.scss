@@ -395,7 +395,32 @@
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     }
 }
-
+.forum{
+    .form-input {
+        height: 40px !important;
+        border: 2px solid rgba(73, 187, 189, 0.6);
+        &:focus{
+            outline:  none;
+            border: 2px solid rgba(0, 0, 0, 0.1) !important;
+        }
+        
+    }
+    .search{
+        color: #23BDEE !important;
+        border: 2px solid rgba(73, 187, 189, 0.6);
+    }
+    .ask-question{
+        background-color: #49BBBD !important;
+    }
+}
+.forumQuestion{
+    .badge-items{
+        background-color: #d5e5e9d5 !important;
+    }
+    .vote{
+        font-size: 12px !important;
+    }
+}
 .footer {
     background-color: #252641 !important;
 

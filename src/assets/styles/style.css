@@ -292,6 +292,29 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
+.forum .form-input {
+  height: 40px !important;
+  border: 2px solid rgba(73, 187, 189, 0.6);
+}
+.forum .form-input:focus {
+  outline: none;
+  border: 2px solid rgba(0, 0, 0, 0.1) !important;
+}
+.forum .search {
+  color: #23BDEE !important;
+  border: 2px solid rgba(73, 187, 189, 0.6);
+}
+.forum .ask-question {
+  background-color: #49BBBD !important;
+}
+
+.forumQuestion .badge-items {
+  background-color: rgba(213, 229, 233, 0.8352941176) !important;
+}
+.forumQuestion .vote {
+  font-size: 12px !important;
+}
+
 .footer {
   background-color: #252641 !important;
 }
