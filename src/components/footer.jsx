@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/logo-white.png";
 const Footer = () => {
   return (
     <div className="footer m-0  pt-5 pb-5 p-lg-5 d-flex justify-content-center align-items-center">

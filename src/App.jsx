@@ -9,6 +9,9 @@ import Login from "./views/login"
 import Blog from "./views/blog"
 import AboutUs from "./views/aboutUs"
 import Forum from "./views/forum"
+
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
 
   return (
@@ -24,6 +27,7 @@ function App() {
         <Route path='/register' element={<Login status='false' layout='register'/>}/>
       </Routes>
       <Footer/>
+      <ToastContainer/>
     </div>
   )
 }
