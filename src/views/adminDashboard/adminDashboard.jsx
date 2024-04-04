@@ -8,7 +8,7 @@ const AdminDashboard = () => {
         <Route path="/" element={<Dashboard />} />
       </Routes>
     </div>
-  );
+  )
 };
 
 export default AdminDashboard;
