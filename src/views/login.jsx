@@ -40,12 +40,12 @@ const Login = (props) => {
             email: "",
           });
           setTimeout(() => {
-            if (response.data.data.role === "user") {
-              window.location.href = "/NextGenEdu/#/user/";
+            if (response.data.data.role === "student") {
+              window.location.href = "/NextGenEdu-frontend/#/student/";
             } else if (response.data.data.role === "admin") {
-              window.location.href = "/NextGenEdu/#/admin/";
+              window.location.href = "/NextGenEdu-frontend/#/admin/";
             } else if (response.data.data.role === "teacher") {
-              window.location.href = "/NextGenEdu/#/teacher/";
+              window.location.href = "/NextGenEdu-frontend/#/teacher/";
             }
           }, 1000);
         } else {
@@ -91,7 +91,6 @@ const Login = (props) => {
   const handleRegisterInputChange = (e) => {
     const { name, value } = e.target;
     setRegisterDetails({...userRegisterDetails,[name]:value});
-    console.log(userRegisterDetails);
   };
 
   if (props.layout === "login") {

@@ -9,9 +9,13 @@ import Login from "./views/login"
 import Blog from "./views/blog"
 import AboutUs from "./views/aboutUs"
 import Forum from "./views/forum"
+import AdminDashboard from "./views/adminDashboard/adminDashboard"
+import TeacherDashboard from "./views/teacherDashboard/teacherDashboard"
+import StudentDashboard from "./views/studentDashboard/studentDashboard"
 
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
 
   return (
@@ -23,6 +27,9 @@ function App() {
         <Route path='/blog' element={<Blog/>}/>
         <Route path='/aboutUs' element={<AboutUs/>}/>
         <Route path='/forum' element={<Forum/>}/>
+        <Route path='/admin/*' element={<AdminDashboard/>}/>
+        <Route path='/teacher/*' element={<TeacherDashboard/>}/>
+        <Route path='/student/*' element={<StudentDashboard/>}/>
         <Route path='/login' element={<Login status='true' layout='login'/>}/>
         <Route path='/register' element={<Login status='false' layout='register'/>}/>
       </Routes>
