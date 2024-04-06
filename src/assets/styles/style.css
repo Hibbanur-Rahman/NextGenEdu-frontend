@@ -321,6 +321,11 @@
   background-size: cover;
   height: 45vh !important;
 }
+.aboutUs .icon {
+  width: 70px !important;
+  height: 70px !important;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
 
 .footer {
   background-color: #252641 !important;
