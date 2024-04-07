@@ -33,7 +33,7 @@ const courses = [
 const Home = () => {
   return (
     <div className="home row m-0 p-0 pt-5">
-      <div className="hero-section row m-0 p-lg-5 pb-lg-0  pt-5 pt-lg-0pb-0 align-items-center ">
+      <div className="hero-section row m-0 p-lg-5 pb-lg-0  pt-5 pt-lg-0 pb-0 align-items-center ">
         <div className="col-lg-6">
           <h1 className="m-0 p-0 text-light">
             <span style={{ color: "#F48C06" }}>Studying</span> Online is now
