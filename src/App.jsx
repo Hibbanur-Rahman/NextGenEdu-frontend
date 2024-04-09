@@ -1,5 +1,5 @@
 import Navbar from "./components/navbar"
-
+import { useState } from "react"
 import './assets/styles/style.css'
 import Footer from "./components/footer"
 import { Route, Routes } from "react-router-dom"
@@ -17,7 +17,6 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-
   return (
     <div className='row m-0 p-0'>
       <Navbar/>
@@ -30,8 +29,8 @@ function App() {
         <Route path='/admin/*' element={<AdminDashboard/>}/>
         <Route path='/teacher/*' element={<TeacherDashboard/>}/>
         <Route path='/student/*' element={<StudentDashboard/>}/>
-        <Route path='/login' element={<Login status='true' layout='login'/>}/>
-        <Route path='/register' element={<Login status='false' layout='register'/>}/>
+        <Route path='/login' element={<Login  layout='login' />}/>
+        <Route path='/register' element={<Login  layout='register' />}/>
       </Routes>
       <Footer/>
       <ToastContainer/>

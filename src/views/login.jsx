@@ -35,10 +35,12 @@ const Login = (props) => {
           localStorage.setItem("token", token);
           console.log("Login Successful and the user:", response.data);
           toast.success("Login successful!!");
+
           setUserData({
             password: "",
             email: "",
           });
+         
           setTimeout(() => {
             if (response.data.data.role === "student") {
               window.location.href = "/NextGenEdu-frontend/#/student/";
@@ -75,7 +77,6 @@ const Login = (props) => {
           password: "",
           role: "",
         });
-        
       }
     } catch (error) {
       toast.error("registration failed!!");
@@ -90,7 +91,7 @@ const Login = (props) => {
 
   const handleRegisterInputChange = (e) => {
     const { name, value } = e.target;
-    setRegisterDetails({...userRegisterDetails,[name]:value});
+    setRegisterDetails({ ...userRegisterDetails, [name]: value });
   };
 
   if (props.layout === "login") {
@@ -215,7 +216,12 @@ const Login = (props) => {
             education.
           </p>
           <div className="row m-0 p-0 w-100">
-            <form action="" method="post" className="m-0 p-0" onSubmit={handleRegisterSubmit}>
+            <form
+              action=""
+              method="post"
+              className="m-0 p-0"
+              onSubmit={handleRegisterSubmit}
+            >
               <div className="form-group row m-0 p-0 mb-4">
                 <label htmlFor="email">Email</label>
                 <input
@@ -306,7 +312,7 @@ const Login = (props) => {
               </div>
               <div className="row m-0 p-0 justify-content-end mt-4">
                 <button
-                onClick={handleRegisterSubmit}
+                  onClick={handleRegisterSubmit}
                   type="submit"
                   className="login-btn btn text-light rounded-pill ps-5 pe-5 w-auto"
                 >
@@ -441,7 +447,12 @@ const Login = (props) => {
             education.
           </p>
           <div className="row m-0 p-0 w-100">
-            <form action="" method="post" className="m-0 p-0" onSubmit={handleRegisterSubmit}>
+            <form
+              action=""
+              method="post"
+              className="m-0 p-0"
+              onSubmit={handleRegisterSubmit}
+            >
               <div className="form-group row m-0 p-0 mb-4">
                 <label htmlFor="email">Email</label>
                 <input
@@ -532,7 +543,7 @@ const Login = (props) => {
               </div>
               <div className="row m-0 p-0 justify-content-end mt-4">
                 <button
-                onClick={handleRegisterSubmit}
+                  onClick={handleRegisterSubmit}
                   type="submit"
                   className="login-btn btn text-light rounded-pill ps-5 pe-5 w-auto"
                 >
