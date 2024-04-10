@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "./dashboard";
+import CoursesList from "./coursesList";
+import AccountDetails from "./accountDetails";
 
 const TeacherDashboard = () => {
   return (
@@ -7,6 +9,8 @@ const TeacherDashboard = () => {
       <h1>teacher</h1>
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/coursesList" element={<CoursesList/>} />
+        <Route path="/accountDetails" element={<AccountDetails />} />
       </Routes>
     </div>
   );
