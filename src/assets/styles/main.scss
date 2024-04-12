@@ -435,6 +435,25 @@
 
     }
 }
+.sidebar{
+    .list-item{
+        background-color: rgba(157,204,255,0.3);
+        box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+        transition: all 0.3s ease-in-out;
+        &:hover{
+            transition: all 0.3s ease-in-out;
+            background-color: #49BBBD;
+            color: #fff !important;
+            cursor: pointer;
+        }
+    }
+}
+.active{
+    transition: all 0.3s ease-in-out;
+    background-color: #49BBBD !important;
+    color: #fff !important;
+    cursor: pointer;
+}
 .footer {
     background-color: #252641 !important;
 

@@ -18,7 +18,8 @@ import TeacherDashboard from "./views/teacherDashboard/teacherDashboard";
 import StudentDashboard from "./views/studentDashboard/studentDashboard";
 import Login from "./views/login";
 
-import "./assets/styles/style.css";
+// import "./assets/styles/style.css";
+import './assets/styles/main.scss';
 
 function App() {
   return (
