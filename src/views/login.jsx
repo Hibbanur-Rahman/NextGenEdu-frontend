@@ -1,3 +1,5 @@
+import {useDispatch} from 'react-redux';
+import {loginUser} from '../redux/actions/authActions';
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
@@ -7,6 +9,7 @@ import loginImg from "../assets/images/login-img.png";
 import VARIABLES from "../../environmentVariables";
 
 const Login = (props) => {
+  const dispatch=useDispatch();
   const [userData, setUserData] = useState({
     password: "",
     email: "",
@@ -40,7 +43,8 @@ const Login = (props) => {
             password: "",
             email: "",
           });
-         
+         //Dispatch action to Redux store
+         dispatch(loginUser(response.data.data));
           setTimeout(() => {
             if (response.data.data.role === "student") {
               window.location.href = "/NextGenEdu-frontend/#/student/";
