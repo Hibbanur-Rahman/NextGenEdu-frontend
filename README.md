@@ -1,4 +1,4 @@
-# NextGenEd: Revolutionizing Online Learning with a Node.js and React.js E-Learning Platform
+# NextGenEdu: Revolutionizing Online Learning with a Node.js and React.js E-Learning Platform
 
 ## Problem Statement
 Existing e-learning platforms often lack the seamless integration of interactive frontend features with robust backend functionalities. This disconnect hampers user engagement and impedes the effectiveness of online education. Hence, there is a pressing need for an advanced web-based e-learning platform that leverages cutting-edge technologies to offer a cohesive, immersive learning experience.
