@@ -21,7 +21,7 @@ const StudentDashboardSidebar = () => {
             location.pathname === "/student/" ? "active" : ""
           }`}
         >
-          <i className="bi bi-book-fill w-auto fs-5"></i>
+          <i className="bi bi-house-door-fill w-auto fs-5"></i>
           <p className="m-0 p-0 w-auto fs-6 ">Dashboard</p>
         </div>
       </Link>

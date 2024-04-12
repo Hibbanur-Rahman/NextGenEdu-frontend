@@ -454,6 +454,32 @@
     color: #fff !important;
     cursor: pointer;
 }
+.accountdetails{
+    h4{
+        color: rgb(0, 203, 184) !important;
+    }
+    label{
+        top: -12px;
+        left: 20px;
+        background-color: #fff !important;
+        font-size: 13px !important;
+    }
+    input{
+        &:focus{
+            outline: none;
+            border-color: #23BDEE !important;
+        }
+    }
+    .profile-image{
+        height: 35vh !important;
+        box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+
+    }
+    .upload-image{
+        border-color:#23BDEE !important ;
+        color: #2F327D;
+    }
+}
 .footer {
     background-color: #252641 !important;
 
