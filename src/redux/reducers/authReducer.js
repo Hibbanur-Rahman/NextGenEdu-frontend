@@ -1,6 +1,15 @@
+
 const initialState={
     isAuthenticated:false,
 }
+const token=localStorage.getItem('token');
+if(token){
+    initialState.isAuthenticated=true;
+}
+
+
+
+
 
 const authReducer=(state=initialState,action)=>{
     switch(action.type){

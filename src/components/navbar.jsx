@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { decode } from "jwt-js-decode";
+import { useSelector } from "react-redux";
 
 import InstructorImg from "../assets/images/instructor-image-course.png";
 import logo from "../assets/images/logo.png";
+
 const Navbar = () => {
   const [isUser, setIsUser] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const [profileLink, setProfileLink] = useState(null);
   const [userDetails, setUserDetails] = useState();
+  const currentUser=useSelector((state)=>state.auth.isAuthenticated);
+  console.log(currentUser);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,7 +28,9 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   });
+
   useEffect(() => {
+
     const token = localStorage.getItem("token");
     if (token) {
       setIsUser(true);
@@ -34,7 +40,7 @@ const Navbar = () => {
     } else {
       setIsUser(false);
     }
-  }, []);
+  }, [currentUser]);
 
   return (
     <div
@@ -87,7 +93,7 @@ const Navbar = () => {
           >
             <p className="m-0 p-0 w-auto">About Us</p>
           </Link>
-          {isUser ? (
+          {userDetails? (
             <div className="col-4 d-flex justify-content-end">
               <Link to={profileLink} className="text-decoration-none">
                 <div className="row m-0 p-0 align-items-center w-auto">
@@ -147,31 +153,31 @@ const Navbar = () => {
       </div>
 
       <i
-        class="bi bi-list fs-1 w-auto d-flex d-lg-none"
+        className="bi bi-list fs-1 w-auto d-flex d-lg-none"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasRight"
         aria-controls="offcanvasRight"
       ></i>
 
       <div
-        class="offcanvas offcanvas-end"
-        tabindex="-1"
+        className="offcanvas offcanvas-end"
+       
         id="offcanvasRight"
         aria-labelledby="offcanvasRightLabel"
       >
-        <div class="offcanvas-header">
+        <div className="offcanvas-header">
           <div className="col-6">
             <img src={logo} alt="logo" className="w-100" />
           </div>
 
           <button
             type="button"
-            class="btn-close text-reset"
+            className="btn-close text-reset"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
           ></button>
         </div>
-        <div class="offcanvas-body">
+        <div className="offcanvas-body">
           <div className="row m-0 p-0 align-items-center">
             <Link
               to="/"
@@ -203,7 +209,7 @@ const Navbar = () => {
             >
               <p className="m-0 p-0 w-auto fs-4 ">About Us</p>
             </Link>
-            {isUser ? (
+            {userDetails ? (
               <div className="row m-0 p-0">
                 <Link to={profileLink} className="text-decoration-none m-0 p-0">
                   <div className="row m-0 p-0 align-items-center w-auto">

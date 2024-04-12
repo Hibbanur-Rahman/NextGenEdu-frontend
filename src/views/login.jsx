@@ -43,8 +43,9 @@ const Login = (props) => {
             password: "",
             email: "",
           });
-         //Dispatch action to Redux store
-         dispatch(loginUser(response.data.data));
+          
+          //Dispatch action to Redux store
+          dispatch(loginUser(response.data.data));
           setTimeout(() => {
             if (response.data.data.role === "student") {
               window.location.href = "/NextGenEdu-frontend/#/student/";
@@ -289,7 +290,7 @@ const Login = (props) => {
               <div className="form-group row m-0 p-0 mb-4">
                 <label htmlFor="role">Role</label>
                 <select
-                  class="form-input rounded-pill m-0 mt-2 p-2"
+                  className="form-input rounded-pill m-0 mt-2 p-2"
                   aria-label="select the role"
                   id="role"
                   name="role"
@@ -520,7 +521,7 @@ const Login = (props) => {
               <div className="form-group row m-0 p-0 mb-4">
                 <label htmlFor="role">Role</label>
                 <select
-                  class="form-input rounded-pill m-0 mt-2 p-2"
+                  className="form-input rounded-pill m-0 mt-2 p-2"
                   aria-label="select the role"
                   id="role"
                   name="role"

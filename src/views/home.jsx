@@ -47,7 +47,7 @@ const Home = () => {
             <button className=" join btn rounded-pill text-light fw-medium fs-4 w-auto p-5 pt-2 pb-2">
               Join for free
             </button>
-            <i class="bi bi-play-circle-fill w-auto text-light ms-lg-4"></i>
+            <i className="bi bi-play-circle-fill w-auto text-light ms-lg-4"></i>
             <p className="w-auto m-0 p-0 ms-2 fs-5">watch how it works</p>
           </div>
         </div>

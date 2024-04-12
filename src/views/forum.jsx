@@ -27,7 +27,7 @@ const Forum = () => {
             </div>
             <div className="row m-0 p-0 mt-5 justify-content-between ">
               <div className="col-4 p-0">
-                <select class="form-select" aria-label="Default select example">
+                <select className="form-select" aria-label="Default select example">
                   <option selected>choose the category</option>
                   <option value="1">Trending</option>
                   <option value="2">Two</option>

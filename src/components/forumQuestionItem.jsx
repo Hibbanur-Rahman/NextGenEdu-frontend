@@ -21,9 +21,9 @@ const ForumQuestionItem = () => {
         </div>
         <div className="row m-0 p-0 align-items-center  justify-content-between ">
           <div className="row col-8 m-0 p-0 align-items-center mt-2">
-            <i class="bi bi-hand-thumbs-up-fill p-0 m-0 text-secondary w-auto"></i>
+            <i className="bi bi-hand-thumbs-up-fill p-0 m-0 text-secondary w-auto"></i>
             <p className="vote w-auto m-0 p-0 ps-1">1338 Votes </p>
-            <i class="bi bi-chat-left-text-fill text-secondary w-auto"></i>
+            <i className="bi bi-chat-left-text-fill text-secondary w-auto"></i>
             <p className="vote w-auto m-0 p-0">1144 Answers </p>
           </div>
           <div className="w-auto m-0 p-0 d-flex mt-4 mt-lg-0">
