@@ -9,7 +9,7 @@ const StudentDashboard = () => {
       <div className="container">
         <div className="row m-0 p-0">
           <StudentDashboardSidebar />
-          <div className="col-9">
+          <div className="col-lg-9">
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/dashboard" element={<Dashboard />} />

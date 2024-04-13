@@ -479,6 +479,13 @@
         border-color:#23BDEE !important ;
         color: #2F327D;
     }
+    textarea{
+        height: 20vh !important;
+        &:focus{
+            outline: none;
+            border-color: #23BDEE !important;
+        }
+    }
 }
 .footer {
     background-color: #252641 !important;
