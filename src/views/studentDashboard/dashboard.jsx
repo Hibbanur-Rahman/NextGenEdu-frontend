@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import courseProgressItem from "../../assets/images/course-progress-item-img-1.png";
+import ProgressCourseItem from "../../components/progressCourseItem";
 const Dashboard = () => {
   return (
     <div className="dashboard row card m-0 p-3 mt-3 mb-3">
@@ -96,7 +99,19 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      <div className="row m-0 p-0 mt-4">
+        <h5 className="m-0 p-0" style={{ color: "rgb(0, 203, 184)" }}>
+          In Progress Courses
+        </h5>
+        <div className="col-lg-6 m-0 p-0  mt-3 mb-3">
+          <ProgressCourseItem />
+        </div>
+        <div className="col-lg-6 p-0  mt-3 mb-3">
+          <ProgressCourseItem />
+        </div>
+      </div>
 
+      
     </div>
   );
 };
