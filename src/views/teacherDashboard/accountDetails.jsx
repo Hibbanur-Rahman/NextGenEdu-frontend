@@ -392,6 +392,11 @@ const AccountDetails = () => {
               />
             </div>
           </div>
+          <div className="row m-0 p-0 justify-content-end ">
+            <button className="saveChanges btn text-light w-auto">
+              Save Changes
+            </button>
+          </div>
         </form>
       </div>
     </div>

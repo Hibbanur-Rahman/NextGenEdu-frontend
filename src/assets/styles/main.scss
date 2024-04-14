@@ -376,14 +376,15 @@
 
     .realtedBlogRow {
         background-color: rgba(157, 204, 255, 0.2) !important;
+
         .swiper-wrapper {
             padding-bottom: 40px !important;
         }
-    
+
         .swiper-pagination-horizontal {
             margin-top: 80px !important;
         }
-    
+
     }
 
 
@@ -395,39 +396,47 @@
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     }
 }
-.forum{
+
+.forum {
     .form-input {
         height: 40px !important;
         border: 2px solid rgba(73, 187, 189, 0.6);
-        &:focus{
-            outline:  none;
+
+        &:focus {
+            outline: none;
             border: 2px solid rgba(0, 0, 0, 0.1) !important;
         }
-        
+
     }
-    .search{
+
+    .search {
         color: #23BDEE !important;
         border: 2px solid rgba(73, 187, 189, 0.6);
     }
-    .ask-question{
+
+    .ask-question {
         background-color: #49BBBD !important;
     }
 }
-.forumQuestion{
-    .badge-items{
+
+.forumQuestion {
+    .badge-items {
         background-color: #d5e5e9d5 !important;
     }
-    .vote{
+
+    .vote {
         font-size: 12px !important;
     }
 }
-.aboutUs{
-    .hero{
+
+.aboutUs {
+    .hero {
         background-image: url(../images/about-us-hero.png);
         background-repeat: no-repeat;
         background-size: cover;
         height: 45vh !important;
     }
+
     .icon {
         width: 70px !important;
         height: 70px !important;
@@ -435,12 +444,14 @@
 
     }
 }
-.sidebar{
-    .list-item{
-        background-color: rgba(157,204,255,0.3);
+
+.sidebar {
+    .list-item {
+        background-color: rgba(157, 204, 255, 0.3);
         box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
         transition: all 0.3s ease-in-out;
-        &:hover{
+
+        &:hover {
             transition: all 0.3s ease-in-out;
             background-color: #49BBBD;
             color: #fff !important;
@@ -448,48 +459,82 @@
         }
     }
 }
-.active{
+
+.active {
     transition: all 0.3s ease-in-out;
     background-color: #49BBBD !important;
     color: #fff !important;
     cursor: pointer;
 }
-.accountdetails{
-    h4{
+
+.accountdetails {
+    h4 {
         color: rgb(0, 203, 184) !important;
     }
-    label{
+
+    label {
         top: -12px;
         left: 20px;
         background-color: #fff !important;
         font-size: 13px !important;
     }
-    input{
-        &:focus{
+
+    input {
+        &:focus {
             outline: none;
             border-color: #23BDEE !important;
         }
     }
-    .profile-image{
+
+    .profile-image {
         height: 35vh !important;
         box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
 
     }
-    .upload-image{
-        border-color:#23BDEE !important ;
+
+    .upload-image {
+        border-color: #23BDEE !important;
         color: #2F327D;
     }
-    textarea{
+
+    textarea {
         height: 20vh !important;
-        &:focus{
+
+        &:focus {
             outline: none;
             border-color: #23BDEE !important;
         }
     }
+
+    .saveChanges {
+        background-color: #49BBBD !important;
+    }
 }
-.dashboard{
-    
+
+.dashboard {}
+
+.enrolled-courses {
+    .navtab {
+        p {
+            border-color: #58c672 !important;
+        }
+
+        button {
+
+            background-color: rgba(0,0,0,0.1) !important;
+            color: rgba(0,0,0,0.4) !important;
+            &:hover {
+                background-color: #49BBBD !important;
+                color: #fff !important;
+            }
+        }
+        .btn-active{
+            background-color: #49BBBD !important;
+            color: #fff !important;
+        }
+    }
 }
+
 .footer {
     background-color: #252641 !important;
 

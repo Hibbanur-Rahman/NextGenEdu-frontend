@@ -311,7 +311,7 @@ const AccountDetails = () => {
             </div>
           </div>
 
-           {/**Online Presence*/}
+          {/**Online Presence*/}
           <div className="row m-0 p-0 mt-5 mt-lg-4">
             <h4 className="m-0 p-0 border border-1 border-top-0 border-start-0 border-end-0 pb-3 mb-4">
               Online Presence
@@ -391,6 +391,11 @@ const AccountDetails = () => {
                 value="India"
               />
             </div>
+          </div>
+          <div className="row m-0 p-0 justify-content-end ">
+            <button className="saveChanges btn text-light w-auto">
+              Save Changes
+            </button>
           </div>
         </form>
       </div>

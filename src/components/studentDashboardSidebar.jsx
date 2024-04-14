@@ -32,7 +32,7 @@ const StudentDashboardSidebar = () => {
           }`}
         >
           <i className="bi bi-book-fill w-auto fs-5"></i>
-          <p className="m-0 p-0 w-auto fs-6">My Courses</p>
+          <p className="m-0 p-0 w-auto fs-6">Enrolled Courses</p>
         </div>
       </Link>
       <Link className="text-decoration-none " to="/student/accountDetails">
