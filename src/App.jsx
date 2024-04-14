@@ -20,6 +20,7 @@ import Login from "./views/login";
 
 // import "./assets/styles/style.css";
 import './assets/styles/main.scss';
+import CourseDetails from "./views/courseDetails";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<Courses />} />
+            <Route path="/course-details" element={<CourseDetails />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/forum" element={<Forum />} />

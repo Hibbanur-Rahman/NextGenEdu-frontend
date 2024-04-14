@@ -12,7 +12,7 @@ const Navbar = () => {
   const [profileLink, setProfileLink] = useState(null);
   const [userDetails, setUserDetails] = useState();
   const currentUser=useSelector((state)=>state.auth.isAuthenticated);
-  console.log(currentUser);
+
 
   useEffect(() => {
     const handleScroll = () => {

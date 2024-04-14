@@ -534,6 +534,41 @@
         }
     }
 }
+.courseDetails{
+    .navtab {
+
+
+        button {
+
+            background-color: rgba(0,0,0,0.1) !important;
+            color: rgba(0,0,0,0.4) !important;
+            &:hover {
+                background-color: #49BBBD !important;
+                color: #fff !important;
+            }
+        }
+        .btn-active{
+            background-color: #49BBBD !important;
+            color: #fff !important;
+        }
+    }
+    iframe{
+        box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    }
+    .btn-active{
+        background-color: #49BBBD !important;
+        color: #fff !important;
+    }
+    .instructorImg {
+        height: 50px !important ;
+        width: 50px !important;
+        box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    }
+    .dot{
+        width: 8px !important;
+        height: 8px !important;
+    }
+}
 
 .footer {
     background-color: #252641 !important;
