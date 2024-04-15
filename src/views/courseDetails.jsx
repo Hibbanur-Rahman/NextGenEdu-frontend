@@ -212,7 +212,7 @@ const CourseDetails = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 {/**course content */}
                 <div className="row m-0 p-0">
                   <h3 className="m-0 p-0 mt-5 mb-3">Course Content</h3>
@@ -535,9 +535,7 @@ const CourseDetails = () => {
                     aria-expanded="false"
                     aria-controls="contentItem5"
                   >
-                    <h5 className="m-0 p-0">
-                      Micronuterients
-                    </h5>
+                    <h5 className="m-0 p-0">Micronuterients</h5>
                   </div>
 
                   <div class="collapse m-0 p-0" id="contentItem5">
@@ -619,9 +617,7 @@ const CourseDetails = () => {
                     aria-expanded="false"
                     aria-controls="contentItem6"
                   >
-                    <h5 className="m-0 p-0">
-                      More Dieting Tips & Strategies
-                    </h5>
+                    <h5 className="m-0 p-0">More Dieting Tips & Strategies</h5>
                   </div>
 
                   <div class="collapse m-0 p-0" id="contentItem6">
@@ -697,8 +693,161 @@ const CourseDetails = () => {
                 </div>
               </div>
             ) : (
+             
               <div className="row m-0 p-0" id="courseInfoDetails">
-                <h5 className="m-0 p-0">Reviews</h5>
+
+                 {/**Reiviews and Rating */}
+
+                <h3 className="m-0 p-0 mt-4">Student Rating & Reviews</h3>
+                <div className="card m-0 p-0 p-4 mt-4">
+                  <div className="row m-0 p-0 align-items-center">
+                    <div className="col-lg-4">
+                      <div className="card p-4">
+                        <h5 className="m-0 p-0 text-secondary text-center">
+                          4 Out of 5
+                        </h5>
+                        <div className="row m-0 p-0 justify-content-center mt-2">
+                          <i className="bi bi-star-fill text-warning w-auto m-0 p-0 ps-1 pe-1"></i>
+                          <i className="bi bi-star-fill text-warning w-auto m-0 p-0 ps-1 pe-1"></i>
+                          <i className="bi bi-star-fill text-warning w-auto m-0 p-0 ps-1 pe-1"></i>
+                          <i className="bi bi-star-fill text-warning w-auto m-0 p-0 ps-1 pe-1"></i>
+                          <i className="bi bi-star text-warning w-auto m-0 p-0 ps-1 pe-1"></i>
+                        </div>
+                        <p className="m-0 p-0 text-secondary text-center mt-2">
+                          Top Rating
+                        </p>
+                      </div>
+                    </div>
+                    <div className="col-lg-8">
+                      <div className="row m-0 p-0 align-items-center mt-2">
+                        <div className="col-3 col-lg-2 m-0 p-0">
+                        <p className="m-0 p-0 text-secondary w-auto">5 Stars</p>
+
+                        </div>
+                        <div className="col-9 col-lg-10 m-0 p-0">
+                          <div
+                            className="progress m-0 p-0"
+                            role="progressbar"
+                            aria-label="Basic example"
+                            aria-valuenow="25"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            style={{ height: "10px " }}
+                          >
+                            <div
+                              className="progress-bar rounded-2 "
+                              style={{
+                                width: "65%",
+                                backgroundColor: "#49BBBD",
+                              }}
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row m-0 p-0 align-items-center mt-2">
+                        <div className="col-3 col-lg-2 m-0 p-0">
+                        <p className="m-0 p-0 text-secondary w-auto">4 Stars</p>
+
+                        </div>
+                        <div className="col-9 col-lg-10 m-0 p-0">
+                          <div
+                            className="progress m-0 p-0"
+                            role="progressbar"
+                            aria-label="Basic example"
+                            aria-valuenow="25"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            style={{ height: "10px " }}
+                          >
+                            <div
+                              className="progress-bar rounded-2 "
+                              style={{
+                                width: "65%",
+                                backgroundColor: "#49BBBD",
+                              }}
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row m-0 p-0 align-items-center mt-2">
+                        <div className="col-3 col-lg-2 m-0 p-0">
+                        <p className="m-0 p-0 text-secondary w-auto">3 Stars</p>
+
+                        </div>
+                        <div className="col-9 col-lg-10 m-0 p-0">
+                          <div
+                            className="progress m-0 p-0"
+                            role="progressbar"
+                            aria-label="Basic example"
+                            aria-valuenow="25"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            style={{ height: "10px " }}
+                          >
+                            <div
+                              className="progress-bar rounded-2 "
+                              style={{
+                                width: "65%",
+                                backgroundColor: "#49BBBD",
+                              }}
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row m-0 p-0 align-items-center mt-2">
+                        <div className="col-3 col-lg-2 m-0 p-0">
+                        <p className="m-0 p-0 text-secondary w-auto">2 Stars</p>
+
+                        </div>
+                        <div className="col-9 col-lg-10 m-0 p-0">
+                          <div
+                            className="progress m-0 p-0"
+                            role="progressbar"
+                            aria-label="Basic example"
+                            aria-valuenow="25"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            style={{ height: "10px " }}
+                          >
+                            <div
+                              className="progress-bar rounded-2 "
+                              style={{
+                                width: "65%",
+                                backgroundColor: "#49BBBD",
+                              }}
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row m-0 p-0 align-items-center mt-2">
+                        <div className="col-3 col-lg-2 m-0 p-0">
+                        <p className="m-0 p-0 text-secondary w-auto">1 Stars</p>
+
+                        </div>
+                        <div className="col-9 col-lg-10 m-0 p-0">
+                          <div
+                            className="progress m-0 p-0"
+                            role="progressbar"
+                            aria-label="Basic example"
+                            aria-valuenow="25"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            style={{ height: "10px " }}
+                          >
+                            <div
+                              className="progress-bar rounded-2 "
+                              style={{
+                                width: "65%",
+                                backgroundColor: "#49BBBD",
+                              }}
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                     
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
           </div>
