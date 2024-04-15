@@ -32,7 +32,7 @@ const CourseDetails = () => {
         {/* <h3 className="m-0 p-0 mt-3">
           Perfect Diet & Meal Plan-Complete Course
         </h3> */}
-        <h3 class="m-0 p-0  mt-3 " style={{ color: "rgb(47, 50, 125)" }}>
+        <h3 className="m-0 p-0  mt-3 " style={{ color: "rgb(47, 50, 125)" }}>
           Perfect Diet &{" "}
           <span className="" style={{ color: "rgb(0, 203, 184)" }}>
             Meal Plan-Complete Course
@@ -89,37 +89,612 @@ const CourseDetails = () => {
                 <h3 className="m-0 p-0">About Course</h3>
                 {/**about courses details paragraph */}
                 <p className="m-0 p-0 mt-3">
-                 <b>Are you new to PHP or need a refresher? </b> Then this course will
-                  help you get all the fundamentals of Procedural PHP, Object
-                  Oriented PHP, MYSQLi and ending the course by building a CMS
-                  system similar to WordPress, Joomla or Drupal.<br/> <b>Knowing PHP has
-                  allowed me to make enough money to stay home and make courses
-                  like this one for students all over the world.</b> Being a PHP
-                  developer can allow anyone to make really good money online
-                  and offline, developing dynamic applications.<br/> Knowing <strong>PHP</strong> will
-                  allow you to build web applications, websites or Content
-                  Management systems, like WordPress, Facebook, Twitter or even
-                  Google. <br/><strong>There is no limit to what you can do with this
-                  knowledge.</strong> PHP is one of the most important web programming
-                  languages to learn, and knowing it, will give you <strong> SUPER POWERS </strong>
-                  in the web development world and job market place.<br/><strong>Why?</strong><br/> 
+                  <b>Are you new to PHP or need a refresher? </b> Then this
+                  course will help you get all the fundamentals of Procedural
+                  PHP, Object Oriented PHP, MYSQLi and ending the course by
+                  building a CMS system similar to WordPress, Joomla or Drupal.
+                  <br />{" "}
+                  <b>
+                    Knowing PHP has allowed me to make enough money to stay home
+                    and make courses like this one for students all over the
+                    world.
+                  </b>{" "}
+                  Being a PHP developer can allow anyone to make really good
+                  money online and offline, developing dynamic applications.
+                  <br /> Knowing <strong>PHP</strong> will allow you to build
+                  web applications, websites or Content Management systems, like
+                  WordPress, Facebook, Twitter or even Google. <br />
+                  <strong>
+                    There is no limit to what you can do with this knowledge.
+                  </strong>{" "}
+                  PHP is one of the most important web programming languages to
+                  learn, and knowing it, will give you{" "}
+                  <strong> SUPER POWERS </strong>
+                  in the web development world and job market place.
+                  <br />
+                  <strong>Why?</strong>
+                  <br />
                   Because Millions of websites and applications (the majority)
                   use PHP. You can find a job anywhere or even work on your own,
                   online and in places like freelancer or Odesk. You can
-                  definitely make a substantial income once you learn it. <br/><strong>I will
-                  not bore you 🙂</strong> <br/> I take my courses very seriously but at the
-                  same time I try to make it fun since I know how difficult
-                  learning from an instructor with a monotone voice or boring
-                  attitude is. This course is fun, and when you need some energy
-                  to keep going, you will get it from me. <br/> <strong>My Approach</strong> <br /> Practice,
-                  practice and more practice. Every section inside this course
-                  has a practice lecture at the end, reinforcing everything with
-                  went over in the lectures. I also created a small application
-                  the you will be able to download to help you practice PHP. To
-                  top it off, we will build and awesome CMS like WordPress,
-                  Joomla or Drupal.
+                  definitely make a substantial income once you learn it. <br />
+                  <strong>I will not bore you 🙂</strong> <br /> I take my
+                  courses very seriously but at the same time I try to make it
+                  fun since I know how difficult learning from an instructor
+                  with a monotone voice or boring attitude is. This course is
+                  fun, and when you need some energy to keep going, you will get
+                  it from me. <br /> <strong>My Approach</strong> <br />{" "}
+                  Practice, practice and more practice. Every section inside
+                  this course has a practice lecture at the end, reinforcing
+                  everything with went over in the lectures. I also created a
+                  small application the you will be able to download to help you
+                  practice PHP. To top it off, we will build and awesome CMS
+                  like WordPress, Joomla or Drupal.
                 </p>
+                {/**what will you learn */}
+                <h3 className="m-0 p-0 mt-5 mb-3">What will you learn</h3>
+                <div className="row m-0 p-0">
+                  <div className="col-lg-6">
+                    <div className="row m-0 p-0 align-items-center mt-2 justify-content-between">
+                      <div className="col-1 m-0 p-0">
+                        <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
+                      </div>
+                      <div className="col-11 m-0 p-0">
+                        <p className="m-0 p-0 ">
+                          Understanding the fundamentals of healthy
+                          deiting(calories,protein,carbs,fat,vitamins &
+                          minerals)
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-6">
+                    <div className="row m-0 p-0 align-items-center mt-2 justify-content-between">
+                      <div className="col-1 m-0 p-0">
+                        <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
+                      </div>
+                      <div className="col-11 m-0 p-0">
+                        <p className="m-0 p-0 ">
+                          Create a deit that is perfect for you needs and
+                          lifestyle
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-6">
+                    <div className="row m-0 p-0 align-items-center mt-2 justify-content-between">
+                      <div className="col-1 m-0 p-0">
+                        <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
+                      </div>
+                      <div className="col-11 m-0 p-0">
+                        <p className="m-0 p-0 ">
+                          Learn when, what and how much you should eat for
+                          optimal body composition
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-6">
+                    <div className="row m-0 p-0 align-items-center mt-2 justify-content-between">
+                      <div className="col-1 m-0 p-0">
+                        <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
+                      </div>
+                      <div className="col-11 m-0 p-0">
+                        <p className="m-0 p-0 ">
+                          Build more muscle by optimizing your meal plan{" "}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-6">
+                    <div className="row m-0 p-0 align-items-center mt-2 justify-content-between">
+                      <div className="col-1 m-0 p-0">
+                        <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
+                      </div>
+                      <div className="col-11 m-0 p-0">
+                        <p className="m-0 p-0 ">
+                          Lose fat faster by optimizing your meal plan{" "}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-6">
+                    <div className="row m-0 p-0 align-items-center mt-2 justify-content-between">
+                      <div className="col-1 m-0 p-0">
+                        <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
+                      </div>
+                      <div className="col-11 m-0 p-0">
+                        <p className="m-0 p-0 ">
+                          Improve immunity and energy levels with the right
+                          vitamins and minerals{" "}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/**course content */}
+                <div className="row m-0 p-0">
+                  <h3 className="m-0 p-0 mt-5 mb-3">Course Content</h3>
 
+                  <div className="card content-item p-0 m-0 mt-3 overflow-hidden ">
+                    <div
+                      className="row m-0 p-0 p-3 border border-1 border-top-0 border-start-0 border-end-0"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#contentItem1"
+                      aria-expanded="false"
+                      aria-controls="contentItem1"
+                    >
+                      <h5 className="m-0 p-0">Meal Planning Basics</h5>
+                    </div>
+
+                    <div class="collapse m-0 p-0" id="contentItem1">
+                      <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                          <p className="m-0 p-0 w-auto">
+                            Meal Planning Explained
+                          </p>
+                        </div>
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <p className="m-0 p-0 text-secondary w-auto">17:24</p>
+                          <i className="bi bi-lock w-auto text-secondary"></i>
+                        </div>
+                      </div>
+                      <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                          <p className="m-0 p-0 w-auto">
+                            Macronutrients Explained
+                          </p>
+                        </div>
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <p className="m-0 p-0 text-secondary w-auto">05:12</p>
+                          <i className="bi bi-lock w-auto text-secondary"></i>
+                        </div>
+                      </div>
+                      <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                          <p className="m-0 p-0 w-auto">
+                            How Much Protein Should You Consume Per day?
+                          </p>
+                        </div>
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <p className="m-0 p-0 text-secondary w-auto">13:00</p>
+                          <i className="bi bi-lock w-auto text-secondary"></i>
+                        </div>
+                      </div>
+                      <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                          <p className="m-0 p-0 w-auto">
+                            How Much Fat Should You Consume Per Day?
+                          </p>
+                        </div>
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <p className="m-0 p-0 text-secondary w-auto">17:24</p>
+                          <i className="bi bi-lock w-auto text-secondary"></i>
+                        </div>
+                      </div>
+                      <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-clipboard-data-fill w-auto text-secondary m-0 p-0 pe-2"></i>
+                          <p className="m-0 p-0 w-auto">
+                            Meal Timing Introduction
+                          </p>
+                        </div>
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-lock w-auto text-secondary"></i>
+                        </div>
+                      </div>
+                      <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-question-circle w-auto text-secondary m-0 p-0 pe-2"></i>
+                          <p className="m-0 p-0 w-auto">This is Demo Quiz</p>
+                        </div>
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-lock w-auto text-secondary"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="card content-item p-0 m-0 mt-3 overflow-hidden ">
+                    <div
+                      className="row m-0 p-0 p-3 border border-1 border-top-0 border-start-0 border-end-0"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#contentItem2"
+                      aria-expanded="false"
+                      aria-controls="contentItem2"
+                    >
+                      <h5 className="m-0 p-0">Supplements</h5>
+                    </div>
+
+                    <div class="collapse m-0 p-0" id="contentItem2">
+                      <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                          <p className="m-0 p-0 w-auto">
+                            Supplements Explained
+                          </p>
+                        </div>
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <p className="m-0 p-0 text-secondary w-auto">17:24</p>
+                          <i className="bi bi-lock w-auto text-secondary"></i>
+                        </div>
+                      </div>
+                      <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                          <p className="m-0 p-0 w-auto">
+                            The Top 3 Beginner Supplements For Fitness
+                          </p>
+                        </div>
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <p className="m-0 p-0 text-secondary w-auto">05:12</p>
+                          <i className="bi bi-lock w-auto text-secondary"></i>
+                        </div>
+                      </div>
+
+                      <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-clipboard-data-fill w-auto text-secondary m-0 p-0 pe-2"></i>
+                          <p className="m-0 p-0 w-auto">
+                            How To Use Protein Powder
+                          </p>
+                        </div>
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-lock w-auto text-secondary"></i>
+                        </div>
+                      </div>
+                      <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-clipboard-data-fill w-auto text-secondary m-0 p-0 pe-2"></i>
+                          <p className="m-0 p-0 w-auto">
+                            Other Supplements To Consider
+                          </p>
+                        </div>
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-lock w-auto text-secondary"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="card content-item p-0 m-0 mt-3 overflow-hidden ">
+                    <div
+                      className="row m-0 p-0 p-3 border border-1 border-top-0 border-start-0 border-end-0"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#contentItem3"
+                      aria-expanded="false"
+                      aria-controls="contentItem3"
+                    >
+                      <h5 className="m-0 p-0">Setting Up Your Diet</h5>
+                    </div>
+
+                    <div class="collapse m-0 p-0" id="contentItem3">
+                      <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                          <p className="m-0 p-0 w-auto">
+                            Meal Planning Explained
+                          </p>
+                        </div>
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <p className="m-0 p-0 text-secondary w-auto">17:24</p>
+                          <i className="bi bi-lock w-auto text-secondary"></i>
+                        </div>
+                      </div>
+                      <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                          <p className="m-0 p-0 w-auto">
+                            Macronutrients Explained
+                          </p>
+                        </div>
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <p className="m-0 p-0 text-secondary w-auto">05:12</p>
+                          <i className="bi bi-lock w-auto text-secondary"></i>
+                        </div>
+                      </div>
+                      <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                          <p className="m-0 p-0 w-auto">
+                            How Much Protein Should You Consume Per day?
+                          </p>
+                        </div>
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <p className="m-0 p-0 text-secondary w-auto">13:00</p>
+                          <i className="bi bi-lock w-auto text-secondary"></i>
+                        </div>
+                      </div>
+                      <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                          <p className="m-0 p-0 w-auto">
+                            How Much Fat Should You Consume Per Day?
+                          </p>
+                        </div>
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <p className="m-0 p-0 text-secondary w-auto">17:24</p>
+                          <i className="bi bi-lock w-auto text-secondary"></i>
+                        </div>
+                      </div>
+                      <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-clipboard-data-fill w-auto text-secondary m-0 p-0 pe-2"></i>
+                          <p className="m-0 p-0 w-auto">
+                            Meal Timing Introduction
+                          </p>
+                        </div>
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-lock w-auto text-secondary"></i>
+                        </div>
+                      </div>
+                      <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-question-circle w-auto text-secondary m-0 p-0 pe-2"></i>
+                          <p className="m-0 p-0 w-auto">This is Demo Quiz</p>
+                        </div>
+                        <div className="row m-0 p-0 w-auto align-items-center">
+                          <i className="bi bi-lock w-auto text-secondary"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="card content-item p-0 m-0 mt-3 overflow-hidden ">
+                  <div
+                    className="row m-0 p-0 p-3 border border-1 border-top-0 border-start-0 border-end-0"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#contentItem4"
+                    aria-expanded="false"
+                    aria-controls="contentItem4"
+                  >
+                    <h5 className="m-0 p-0">
+                      Adjusting Your Diet For Weight Loss & Muscle Gains
+                    </h5>
+                  </div>
+
+                  <div class="collapse m-0 p-0" id="contentItem4">
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">
+                          Meal Planning Explained
+                        </p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <p className="m-0 p-0 text-secondary w-auto">17:24</p>
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">
+                          Macronutrients Explained
+                        </p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <p className="m-0 p-0 text-secondary w-auto">05:12</p>
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">
+                          How Much Protein Should You Consume Per day?
+                        </p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <p className="m-0 p-0 text-secondary w-auto">13:00</p>
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">
+                          How Much Fat Should You Consume Per Day?
+                        </p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <p className="m-0 p-0 text-secondary w-auto">17:24</p>
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-clipboard-data-fill w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">
+                          Meal Timing Introduction
+                        </p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-question-circle w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">This is Demo Quiz</p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="card content-item p-0 m-0 mt-3 overflow-hidden ">
+                  <div
+                    className="row m-0 p-0 p-3 border border-1 border-top-0 border-start-0 border-end-0"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#contentItem5"
+                    aria-expanded="false"
+                    aria-controls="contentItem5"
+                  >
+                    <h5 className="m-0 p-0">
+                      Micronuterients
+                    </h5>
+                  </div>
+
+                  <div class="collapse m-0 p-0" id="contentItem5">
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">
+                          Meal Planning Explained
+                        </p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <p className="m-0 p-0 text-secondary w-auto">17:24</p>
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">
+                          Macronutrients Explained
+                        </p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <p className="m-0 p-0 text-secondary w-auto">05:12</p>
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">
+                          How Much Protein Should You Consume Per day?
+                        </p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <p className="m-0 p-0 text-secondary w-auto">13:00</p>
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">
+                          How Much Fat Should You Consume Per Day?
+                        </p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <p className="m-0 p-0 text-secondary w-auto">17:24</p>
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-clipboard-data-fill w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">
+                          Meal Timing Introduction
+                        </p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-question-circle w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">This is Demo Quiz</p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="card content-item p-0 m-0 mt-3 overflow-hidden ">
+                  <div
+                    className="row m-0 p-0 p-3 border border-1 border-top-0 border-start-0 border-end-0"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#contentItem6"
+                    aria-expanded="false"
+                    aria-controls="contentItem6"
+                  >
+                    <h5 className="m-0 p-0">
+                      More Dieting Tips & Strategies
+                    </h5>
+                  </div>
+
+                  <div class="collapse m-0 p-0" id="contentItem6">
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">
+                          Meal Planning Explained
+                        </p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <p className="m-0 p-0 text-secondary w-auto">17:24</p>
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">
+                          Macronutrients Explained
+                        </p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <p className="m-0 p-0 text-secondary w-auto">05:12</p>
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">
+                          How Much Protein Should You Consume Per day?
+                        </p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <p className="m-0 p-0 text-secondary w-auto">13:00</p>
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">
+                          How Much Fat Should You Consume Per Day?
+                        </p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <p className="m-0 p-0 text-secondary w-auto">17:24</p>
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-clipboard-data-fill w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">
+                          Meal Timing Introduction
+                        </p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                    <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-question-circle w-auto text-secondary m-0 p-0 pe-2"></i>
+                        <p className="m-0 p-0 w-auto">This is Demo Quiz</p>
+                      </div>
+                      <div className="row m-0 p-0 w-auto align-items-center">
+                        <i className="bi bi-lock w-auto text-secondary"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             ) : (
               <div className="row m-0 p-0" id="courseInfoDetails">
