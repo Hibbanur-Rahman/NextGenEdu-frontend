@@ -3,6 +3,7 @@ import Dashboard from "./dashboard";
 import CoursesList from "./coursesList";
 import AccountDetails from "./accountDetails";
 import TeacherDashboardSidebar from "../../components/teacherDashboardSidebar";
+import AddCourse from "./addCourse";
 
 const TeacherDashboard = () => {
   return (
@@ -16,6 +17,7 @@ const TeacherDashboard = () => {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/coursesList" element={<CoursesList />} />
               <Route path="/accountDetails" element={<AccountDetails />} />
+              <Route path="/add-course" element={<AddCourse />} />
             </Routes>
           </div>
         </div>

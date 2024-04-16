@@ -27,6 +27,8 @@ const TeacherDashboardSidebar = () => {
         <div
           className={`list-item text-black row m-3 ms-0 me-0 p-2 rounded-3 align-items-center ${
             location.pathname === "/teacher/coursesList" ? "active" : ""
+          } ${
+            location.pathname === "/teacher/add-course" ? "active" : ""
           }`}
         >
           <i className="bi bi-book-fill w-auto fs-5"></i>
