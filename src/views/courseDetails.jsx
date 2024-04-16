@@ -732,7 +732,7 @@ const CourseDetails = () => {
                             aria-valuenow="25"
                             aria-valuemin="0"
                             aria-valuemax="100"
-                            style={{ height: "10px ",backgroundColor:'#D9D9D9',backgroundColor:'#D9D9D9'}}
+                            style={{ height: "10px ",backgroundColor:'#D9D9D9'}}
                           >
                             <div
                               className="progress-bar rounded-2 "
