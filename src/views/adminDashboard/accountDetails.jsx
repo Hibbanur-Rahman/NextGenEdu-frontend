@@ -1,9 +1,93 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import profilePhoto from "../../assets/images/hibban-photo.jpg";
+import VARIABLES from "../../../environmentVariables";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const AccountDetails = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const fileInputRef = useRef(null);
+
+  const [userDetails, setUserDetails] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    expertise: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+    profileImage: "",
+    pincode: "",
+    address: "",
+    city: "",
+    country: "",
+    aboutInfo: "",
+    personalWebsite: "",
+    githubProfile: "",
+  });
+
+  const handleViewUserDetails = async () => {
+    try {
+      const response = await axios.post(
+        `${VARIABLES.API_URL_REMOTE}/view-teacher-details`,
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      );
+      console.log(response);
+      if (response.status === 200) {
+        setUserDetails({
+          firstname: response.data.data.firstname,
+          lastname: response.data.data.lastname,
+          email: response.data.data.email,
+          phone: response.data.data.phone,
+          expertise: response.data.data.expertise,
+          username: response.data.data.username,
+          password: response.data.data.password,
+          confirmPassword:  '',
+          profileImage:response.data.data.profileImage,
+          pincode:response.data.data.pincode,
+          address: response.data.data.address,
+          city: response.data.data.city,
+          country:  response.data.data.country,
+          aboutInfo:  response.data.data.aboutInfo,
+          personalWebsite:  response.data.data.personalWebsite,
+          githubProfile:  response.data.data.githubProfile,
+        });
+        
+      }
+    } catch (error) {
+      toast.error("Something went wrong in view");
+      console.log(error);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `${VARIABLES.API_URL_REMOTE}/update-teacher-details`,
+        {
+          userDetails,
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      );
+      console.log(response);
+      if (response.status === 200) {
+        toast.success("Update successful!");
+      } else {
+        toast.error("Update failed. Please try again later.");
+      }
+    } catch (error) {
+      toast.error("Update failed. Please try again later.");
+      console.error("Update failed:", error);
+    }
+  };
 
   // Function to handle file input change event
   const handleImageChange = (event) => {
@@ -23,9 +107,17 @@ const AccountDetails = () => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleInputChange = (e) => {
+    setUserDetails({
+      ...userDetails,
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
   };
+
+  useEffect(() => {
+    handleViewUserDetails();
+  }, []);
+
   return (
     <div className="accountdetails row card m-0 p-3 mt-3 mb-3">
       <div className="row m-0 p-0">
@@ -55,7 +147,8 @@ const AccountDetails = () => {
                     className="border border-1 rounded-2 p-2 ps-3 m-0"
                     id="firstname"
                     name="firstname"
-                    value="Hibbanur"
+                    onChange={handleInputChange}
+                    value={userDetails.firstname}
                   />
                 </div>
                 <div className="input-feild col-lg-6 row m-0 p-0 pe-lg-3 mb-3 mt-3 position-relative ">
@@ -70,7 +163,8 @@ const AccountDetails = () => {
                     className="border border-1 rounded-2 p-2 ps-3 m-0"
                     id="lastname"
                     name="lastname"
-                    value="Rahman"
+                    onChange={handleInputChange}
+                    value={userDetails.lastname}
                   />
                 </div>
                 <div className="input-feild col-lg-6 row m-0 p-0 pe-lg-3 mb-3 mt-3 position-relative ">
@@ -85,7 +179,8 @@ const AccountDetails = () => {
                     className="border border-1 rounded-2 p-2 ps-3 m-0"
                     id="email"
                     name="email"
-                    value="hibbanrahmanhyt@gmail.com"
+                    onChange={handleInputChange}
+                    value={userDetails.email}
                   />
                 </div>
                 <div className="input-feild col-lg-6 row m-0 p-0 pe-lg-3 mb-3 mt-3 position-relative ">
@@ -100,7 +195,8 @@ const AccountDetails = () => {
                     className="border border-1 rounded-2 p-2 ps-3 m-0"
                     id="phone"
                     name="phone"
-                    value="+91-9973152523"
+                    onChange={handleInputChange}
+                    value={userDetails.phone}
                   />
                 </div>
                 <div className="input-feild col-lg-6 row m-0 p-0 pe-lg-3 mb-3 mt-3 position-relative ">
@@ -115,7 +211,8 @@ const AccountDetails = () => {
                     className="border border-1 rounded-2 p-2 ps-3 m-0"
                     id="expertise"
                     name="expertise"
-                    value="Creative coder & designer"
+                    onChange={handleInputChange}
+                    value={userDetails.expertise}
                   />
                 </div>
                 <div className="input-feild col-lg-6 row m-0 p-0 pe-lg-3 mb-3 mt-3 position-relative ">
@@ -130,7 +227,8 @@ const AccountDetails = () => {
                     className="border border-1 rounded-2 p-2 ps-3 m-0"
                     id="username"
                     name="username"
-                    value="Hibbanur Rahman"
+                    onChange={handleInputChange}
+                    value={userDetails.username}
                   />
                 </div>
                 <div className="input-feild col-lg-6 row m-0 p-0 pe-lg-3 mb-3 mt-3 position-relative ">
@@ -145,7 +243,8 @@ const AccountDetails = () => {
                     className="border border-1 rounded-2 p-2 ps-3 m-0"
                     id="password"
                     name="password"
-                    value="Rahman@1234"
+                    onChange={handleInputChange}
+                    value={userDetails.password}
                   />
                 </div>
                 <div className="input-feild col-lg-6 row m-0 p-0 pe-lg-3 mb-3 mt-3 position-relative ">
@@ -160,7 +259,8 @@ const AccountDetails = () => {
                     className="border border-1 rounded-2 p-2 ps-3 m-0"
                     id="confirmPassword"
                     name="confirmPassword"
-                    value="Rahman@1234"
+                    onChange={handleInputChange}
+                    value={userDetails.confirmPassword}
                   />
                 </div>
               </div>
@@ -179,6 +279,7 @@ const AccountDetails = () => {
                   className="rounded-2 w-100 h-100"
                 />
               </div>
+
               {/* Hidden file input */}
               <input
                 ref={fileInputRef}
@@ -187,6 +288,7 @@ const AccountDetails = () => {
                 onChange={handleImageChange}
                 style={{ display: "none" }}
                 id="imageInput"
+                name="profileImage"
               />
               {/* Custom button to trigger file input */}
               <button
@@ -216,7 +318,8 @@ const AccountDetails = () => {
                 className="border border-1 rounded-2 p-2 ps-3 m-0"
                 id="phone"
                 name="phone"
-                value="+91-9973152523"
+                onChange={handleInputChange}
+                value={userDetails.phone}
               />
             </div>
             <div className="input-feild col-lg-4 row m-0 p-0 pe-lg-3 mb-3 mt-3 position-relative ">
@@ -231,7 +334,8 @@ const AccountDetails = () => {
                 className="border border-1 rounded-2 p-2 ps-3 m-0"
                 id="email"
                 name="email"
-                value="hibbanrahmanhyt@gmail.com"
+                onChange={handleInputChange}
+                value={userDetails.email}
               />
             </div>
             <div className="input-feild col-lg-4 row m-0 p-0 pe-lg-0 mb-3 mt-3 position-relative ">
@@ -246,7 +350,8 @@ const AccountDetails = () => {
                 className="border border-1 rounded-2 p-2 ps-3 m-0"
                 id="pincode"
                 name="pincode"
-                value="847301"
+                onChange={handleInputChange}
+                value={userDetails.pincode}
               />
             </div>
             <div className="input-feild col-lg-4 row m-0 p-0 pe-lg-3 mb-3 mt-3 position-relative ">
@@ -261,7 +366,8 @@ const AccountDetails = () => {
                 className="border border-1 rounded-2 p-2 ps-3 m-0"
                 id="address"
                 name="address"
-                value="Gacchibowli,Hyderabad"
+                onChange={handleInputChange}
+                value={userDetails.address}
               />
             </div>
             <div className="input-feild col-lg-4 row m-0 p-0 pe-lg-3 mb-3 mt-3 position-relative ">
@@ -276,7 +382,8 @@ const AccountDetails = () => {
                 className="border border-1 rounded-2 p-2 ps-3 m-0"
                 id="city"
                 name="city"
-                value="Hyderabad"
+                onChange={handleInputChange}
+                value={userDetails.city}
               />
             </div>
             <div className="input-feild col-lg-4 row m-0 p-0 pe-lg-0 mb-3 mt-3 position-relative ">
@@ -291,7 +398,8 @@ const AccountDetails = () => {
                 className="border border-1 rounded-2 p-2 ps-3 m-0"
                 id="country"
                 name="country"
-                value="India"
+                onChange={handleInputChange}
+                value={userDetails.country}
               />
             </div>
             <div className="input-feild col-lg-12 row m-0 p-0 pe-lg-0 mb-3 mt-3 position-relative ">
@@ -306,7 +414,8 @@ const AccountDetails = () => {
                 className="border border-1 rounded-2 p-2 ps-3 m-0 h-auto"
                 id="aboutInfo"
                 name="aboutInfo"
-                value="Hello ,I'm Hibbanur Rahman, I'm a coding designer based in Manuu, Hyderabad. I love sharing with my knowledge and experience this is why I'm working on the Awesomes- an initiative,which encouragees people to start learning coding and designing awwesome website"
+                value={userDetails.aboutInfo}
+                onChange={handleInputChange}
               />
             </div>
           </div>
@@ -328,7 +437,8 @@ const AccountDetails = () => {
                 className="border border-1 rounded-2 p-2 ps-3 m-0"
                 id="personalWebsite"
                 name="personalWebsite"
-                value="http://hibbanur-rahman.me/fifth-portfolio/"
+                onChange={handleInputChange}
+                value={userDetails.personalWebsite}
               />
             </div>
             <div className="input-feild col-lg-6 row m-0 p-0 pe-lg-0 mb-3 mt-3 position-relative ">
@@ -343,7 +453,8 @@ const AccountDetails = () => {
                 className="border border-1 rounded-2 p-2 ps-3 m-0"
                 id="githubProfile"
                 name="githubProfile"
-                value="https://github.com/Hibbanur-Rahman"
+                onChange={handleInputChange}
+                value={userDetails.githubProfile}
               />
             </div>
             <div className="input-feild col-lg-4 row m-0 p-0 pe-lg-3 mb-3 mt-3 position-relative ">
@@ -358,7 +469,8 @@ const AccountDetails = () => {
                 className="border border-1 rounded-2 p-2 ps-3 m-0"
                 id="address"
                 name="address"
-                value="Gacchibowli,Hyderabad"
+                onChange={handleInputChange}
+                value={userDetails.address}
               />
             </div>
             <div className="input-feild col-lg-4 row m-0 p-0 pe-lg-3 mb-3 mt-3 position-relative ">
@@ -373,7 +485,8 @@ const AccountDetails = () => {
                 className="border border-1 rounded-2 p-2 ps-3 m-0"
                 id="city"
                 name="city"
-                value="Hyderabad"
+                onChange={handleInputChange}
+                value={userDetails.city}
               />
             </div>
             <div className="input-feild col-lg-4 row m-0 p-0 pe-lg-0 mb-3 mt-3 position-relative ">
@@ -388,7 +501,8 @@ const AccountDetails = () => {
                 className="border border-1 rounded-2 p-2 ps-3 m-0"
                 id="country"
                 name="country"
-                value="India"
+                onChange={handleInputChange}
+                value={userDetails.country}
               />
             </div>
           </div>
