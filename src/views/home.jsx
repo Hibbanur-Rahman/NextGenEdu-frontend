@@ -75,10 +75,30 @@ const Home = () => {
             </Link>
           </div>
           <div className="row">
-            <CourseItems />
-            <CourseItems />
-            <CourseItems />
-            <CourseItems />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
           </div>
         </div>
       </div>
@@ -98,10 +118,30 @@ const Home = () => {
             </Link>
           </div>
           <div className="row">
-            <CourseItems />
-            <CourseItems />
-            <CourseItems />
-            <CourseItems />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
           </div>
         </div>
       </div>

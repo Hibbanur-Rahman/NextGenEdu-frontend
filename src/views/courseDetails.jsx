@@ -4,6 +4,9 @@ import profileImage from "../assets/images/instructor-image-course.png";
 const CourseDetails = () => {
   const [courseInfoTabBtn, setCourseInfoTabBtn] = useState(true);
   const [reviewTabBtn, setReviewTabBtn] = useState(false);
+  
+
+
   const handleTab = (e) => {
     console.log(e.currentTarget.id);
     if (e.currentTarget.id === "reviews") {

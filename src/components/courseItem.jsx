@@ -5,7 +5,7 @@ import InstructorImg from "../assets/images/instructor-image-course.png";
 const CourseItems = (props) => {
   return (
     <div className="course-item col-lg-3 col-md-6 mt-4 mt-lg-0">
-      <Link to="/course-details" className='text-decoration-none'>
+      <Link to={`/course-details/${props.id}`} className='text-decoration-none'>
         <div className="card p-3 rounded-4 border-0 ">
           <img
             src={courseImg}
@@ -15,14 +15,14 @@ const CourseItems = (props) => {
           <div className="row m-0 p-0  mt-2 justify-content-between ">
             <div className="row m-0 p-0 w-auto">
               <i className="bi bi-grid w-auto text-secondary m-0 p-0"></i>
-              <p className="m-0 p-0 ps-2 w-auto text-secondary">Design</p>
+              <p className="m-0 p-0 ps-2 w-auto text-secondary">{props.category}</p>
             </div>
             <div className="row m-0 p-0 w-auto">
               <i className="bi bi-stopwatch w-auto text-secondary m-0 p-0"></i>
               <p className="m-0 p-0 ps-2  w-auto text-secondary">3 Month</p>
             </div>
           </div>
-          <h5 className="m-0 p-0 mt-4"> AWS Certified Solutions Architect</h5>
+          <h5 className="m-0 p-0 mt-4"> {props.title}</h5>
           <p className="m-0 p-0 mt-3 text-secondary ">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam
             fuga ut placeat odit autem.
@@ -39,7 +39,7 @@ const CourseItems = (props) => {
                   className="instructorImg  rounded-circle"
                 />
               </div>
-              <p className="m-0 p-0 ps-2 w-auto fw-medium">Lina</p>
+              <p className="m-0 p-0 ps-2 w-auto fw-medium">{props.instructor}</p>
             </div>
             <button className="btn text-light w-auto">Enroll Now</button>
           </div>

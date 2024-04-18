@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import axios from "axios";
+import { toast } from "react-toastify";
+import VARIABLES from "../../../environmentVariables";
 
 const AddCourse = () => {
   const [courseTitle, setCourseTitle] = useState("");
@@ -13,10 +16,23 @@ const AddCourse = () => {
   const [tagItems, setTagItems] = useState([""]); // Initialize with an empty string
   const [audienceItems, setAudienceItems] = useState([""]); // Initialize with an empty string
 
+  const [courseDetails, setCourseDetails] = useState({
+    courseTitle,
+    courseCategory,
+    videoLink,
+    aboutCourse,
+    learnItems: [""],
+    materialIncludesItems: [""],
+    requirementItems: [""],
+    tagItems: [""],
+    audienceItems: [""],
+  });
+
   const handleLearnItemChange = (index, value) => {
     const updatedItems = [...learnItems];
     updatedItems[index] = value;
     setLearnItems(updatedItems);
+    setCourseDetails({ ...courseDetails, learnItems });
   };
   const handleAddLearnItem = () => {
     setLearnItems([...learnItems, ""]); // Add an empty string when clicking the "Add" button
@@ -26,6 +42,7 @@ const AddCourse = () => {
     const updatedItems = [...materialIncludesItems];
     updatedItems[index] = value;
     setMaterialIncludesItems(updatedItems);
+    setCourseDetails({ ...courseDetails, materialIncludesItems });
   };
   const handleAddMaterialIncludeItem = () => {
     setMaterialIncludesItems([...materialIncludesItems, ""]);
@@ -35,6 +52,7 @@ const AddCourse = () => {
     const updatedItems = [...requirementItems];
     updatedItems[index] = value;
     setRequirementItems(updatedItems);
+    setCourseDetails({ ...courseDetails, requirementItems });
   };
   const handleAddRequirementItem = () => {
     setRequirementItems([...requirementItems, ""]);
@@ -44,6 +62,7 @@ const AddCourse = () => {
     const updatedItems = [...tagItems];
     updatedItems[index] = value;
     setTagItems(updatedItems);
+    setCourseDetails({ ...courseDetails, tagItems });
   };
   const handleAddTagItem = () => {
     setTagItems([...tagItems, ""]);
@@ -53,22 +72,55 @@ const AddCourse = () => {
     const updatedItems = [...audienceItems];
     updatedItems[index] = value;
     setAudienceItems(updatedItems);
+    setCourseDetails({ ...courseDetails, audienceItems });
   };
   const handleAddAudienceItem = () => {
     setAudienceItems([...audienceItems, ""]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission with all the form data
-    console.log("Form submitted:", {
-      courseTitle,
-      courseCategory,
-      videoLink,
-      aboutCourse,
-      learnItems,
-    });
+    try {
+      const response = await axios.post(
+        `${VARIABLES.API_URL_REMOTE}/add-course`,
+        {
+          courseDetails,
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      );
+
+      if(response.status===201){
+        toast.success("course added successfully!!");
+        setCourseDetails({
+          courseTitle,
+          courseCategory,
+          videoLink,
+          aboutCourse,
+          learnItems: [""],
+          materialIncludesItems: [""],
+          requirementItems: [""],
+          tagItems: [""],
+          audienceItems: [""],
+        })
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to add course");
+    }
   };
+  useEffect(() => {
+    setCourseDetails({ ...courseDetails, aboutCourse });
+    setCourseDetails({ ...courseDetails, learnItems });
+    setCourseDetails({ ...courseDetails, materialIncludesItems });
+    setCourseDetails({ ...courseDetails, requirementItems });
+    setCourseDetails({ ...courseDetails, audienceItems });
+    setCourseDetails({ ...courseDetails, tagItems });
+    setCourseDetails({...courseDetails,videoLink});
+    setCourseDetails({...courseDetails,courseTitle});
+    setCourseDetails({...courseDetails,courseCategory});
+  }, [aboutCourse,learnItems,materialIncludesItems,requirementItems,tagItems,courseCategory,courseTitle,videoLink,audienceItems]);
 
   return (
     <div className="add-course accountdetails row card m-0 p-3 mt-3 mb-3">

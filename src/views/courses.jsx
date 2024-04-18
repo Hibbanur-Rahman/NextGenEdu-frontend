@@ -1,21 +1,44 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import VARIABLES from "../../environmentVariables";
 
 import CourseCategoryItem from "../components/courseCategoryItem";
 import CourseItems from "../components/courseItem";
 import ProgressCourseItem from "../components/progressCourseItem";
 // Import Swiper React components
-import {   Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 
 // import required modules
-import {Autoplay, Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 
 const Courses = () => {
+  const [courseList, setCourseList] = useState();
+  const [loading, setLoading] = useState(true);
 
+  const handleViewCourseList = async () => {
+    try {
+      const response = await axios.get(
+        `${VARIABLES.API_URL_REMOTE}/view-courses`
+      );
+      console.log(response);
+      if (response.status === 200) {
+        setCourseList(response.data.data);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    handleViewCourseList();
+  }, []);
   return (
     <div className="courses row m-0 p-0 pt-lg-4 mt-5">
       {/**progress course items */}
@@ -45,7 +68,7 @@ const Courses = () => {
                 clickable: true,
                 className: "swiper-pagination-top-spacing",
               }}
-              modules={[Autoplay,Pagination]}
+              modules={[Autoplay, Pagination]}
               breakpoints={{
                 // When window width is <= 640px, show only 1 slide
                 0: {
@@ -56,8 +79,8 @@ const Courses = () => {
                   slidesPerView: 2,
                 },
                 1000: {
-                    slidesPerView: 3,
-                  },
+                  slidesPerView: 3,
+                },
               }}
               className="mySwiper"
             >
@@ -173,16 +196,24 @@ const Courses = () => {
               see all
             </Link>
           </div>
-          <div className="row">
-            <CourseItems />
-            <CourseItems />
-            <CourseItems />
-            <CourseItems />
+          <div className="row m-0 p-0">
+            {loading ? (
+              <p>Loading...</p>
+            ) : (
+              courseList.map((course) => (
+                <CourseItems
+                  key={course._id}
+                  id={course._id}
+                  title={course.courseTitle}
+                  category={course.courseCategory}
+                  instructor={course.teacherId.firstname}
+                />
+              ))
+            )}
           </div>
         </div>
       </div>
       <div className="courses-section py-5 d-flex flex-column align-items-center  ">
-       
         <div className="container mt-5">
           <div className="row m-0 p-0 justify-content-between mt-4 mb-4">
             <h5 className="m-0 p-0 w-auto">Get choice of your course</h5>
@@ -195,10 +226,30 @@ const Courses = () => {
             </Link>
           </div>
           <div className="row">
-            <CourseItems />
-            <CourseItems />
-            <CourseItems />
-            <CourseItems />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
           </div>
         </div>
       </div>
@@ -206,41 +257,68 @@ const Courses = () => {
       {/**online coaching remote */}
       <div className=" m-0 mt-5 p-0 d-flex justify-content-center ">
         <div className="learningnow container">
-            <div className="card p-5 rounded-4 d-flex align-items-center  justify-content-center " style={{backgroundColor:'#252641'}}>
-                <h4 className="m-0 p-0 w-auto text-light">Online coaching lessons for remote learning.</h4>
-                <p className="m-0 p-0 mt-3 text-white text-center ">
-                    Join our online classroom and learn from experts in the field. Our courses are designed to be completed at your own pace, allowing
-                    Join our online classroom and get access to a library of video tutorials, quizzes, and assessments. Our experienced train
-                    Join our online classes and get access to a library of video tutorials, live sessions, and resources. Our experienced trainers will guide
-                </p>
-                <button className=" btn text-light mt-4">
-                    start learning now
-                </button>
-            </div>
+          <div
+            className="card p-5 rounded-4 d-flex align-items-center  justify-content-center "
+            style={{ backgroundColor: "#252641" }}
+          >
+            <h4 className="m-0 p-0 w-auto text-light">
+              Online coaching lessons for remote learning.
+            </h4>
+            <p className="m-0 p-0 mt-3 text-white text-center ">
+              Join our online classroom and learn from experts in the field. Our
+              courses are designed to be completed at your own pace, allowing
+              Join our online classroom and get access to a library of video
+              tutorials, quizzes, and assessments. Our experienced train Join
+              our online classes and get access to a library of video tutorials,
+              live sessions, and resources. Our experienced trainers will guide
+            </p>
+            <button className=" btn text-light mt-4">start learning now</button>
+          </div>
         </div>
       </div>
       <div className="courses-section py-5 d-flex flex-column align-items-center  ">
-       
-       <div className="container mt-5">
-         <div className="row m-0 p-0 justify-content-between mt-4 mb-4">
-           <h5 className="m-0 p-0 w-auto">The course in personal development</h5>
-           <Link
-             to="/courses"
-             className="w-auto text-decoration-none fw-medium"
-             style={{ color: "#49BBBD" }}
-           >
-             see all
-           </Link>
-         </div>
-         <div className="row">
-           <CourseItems />
-           <CourseItems />
-           <CourseItems />
-           <CourseItems />
-         </div>
-       </div>
-     </div>
-     <div
+        <div className="container mt-5">
+          <div className="row m-0 p-0 justify-content-between mt-4 mb-4">
+            <h5 className="m-0 p-0 w-auto">
+              The course in personal development
+            </h5>
+            <Link
+              to="/courses"
+              className="w-auto text-decoration-none fw-medium"
+              style={{ color: "#49BBBD" }}
+            >
+              see all
+            </Link>
+          </div>
+          <div className="row">
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
+          </div>
+        </div>
+      </div>
+      <div
         className="pt-3 pb-5"
         style={{ backgroundColor: "rgba(157,204,255,0.2)" }}
       >
@@ -256,14 +334,33 @@ const Courses = () => {
             </Link>
           </div>
           <div className="row">
-            <CourseItems />
-            <CourseItems />
-            <CourseItems />
-            <CourseItems />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
+            <CourseItems
+              key="10001"
+              title="AWS Certified solutions Architect"
+              category="Design"
+              instructor="Lina"
+            />
           </div>
         </div>
       </div>
-     
     </div>
   );
 };
