@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import noData from "../../assets/images/noDataSvg.svg";
+import axios from "axios";
+import { toast } from "react-toastify";
+import VARIABLES from "../../../environmentVariables";
+import CourseItems from "../../components/courseItem";
 
 const CoursesList = () => {
   const [publishTabBtn, setPublishTabBtn] = useState(true);
   const [draftTabBtn, setDraftTabBtn] = useState(false);
+  const [publishCourseList, setPublishCourseList] = useState([]);
   const handleTab = (e) => {
     console.log(e.currentTarget.id);
     if (e.currentTarget.id === "publishCourses") {
@@ -16,6 +21,29 @@ const CoursesList = () => {
       setPublishTabBtn(false);
     }
   };
+
+  const handlePublishCourse = async () => {
+    try {
+      const response = await axios.post(
+        `${VARIABLES.API_URL_REMOTE}/view-course-teacher-publish`,
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      );
+      console.log(response);
+      if (response.status == 200) {
+        setPublishCourseList(response.data.data.courses);
+      }
+    } catch (error) {
+      toast.error("failed to view");
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    handlePublishCourse();
+  }, []);
 
   return (
     <div className="enrolled-courses row m-0 p-0 pt-3">
@@ -46,19 +74,36 @@ const CoursesList = () => {
         </div>
 
         <div className="w-auto p-0 m-0">
-          <Link to='/teacher/add-course' className="text-decoration-none m-0 p-0">
+          <Link
+            to="/teacher/add-course"
+            className="text-decoration-none m-0 p-0"
+          >
             <button className="btn fw-medium w-auto ms-2 mt-2 mt-md-0">
               +Add Course
             </button>
           </Link>
         </div>
       </div>
-      <div className="content row m-0 p-0 justify-content-center align-items-center pt-5">
-        <img src={noData} alt="No Data" />
-        <p className="m-0 p-0 text-center">
-          No data is Available on this section
-        </p>
-      </div>
+      {publishTabBtn ? (
+        <div className="content row m-0 p-0 pt-5">
+          {publishCourseList.map((course) => (
+            <CourseItems
+              key={course._id}
+              id={course._id}
+              title={course.courseTitle}
+              category={course.courseCategory}
+              instructor={course.teacherId.firstname}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="content row m-0 p-0 justify-content-center align-items-center pt-5">
+          <img src={noData} alt="No Data" />
+          <p className="m-0 p-0 text-center">
+            No data is Available on this section
+          </p>
+        </div>
+      )}
     </div>
   );
 };

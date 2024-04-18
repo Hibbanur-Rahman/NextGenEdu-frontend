@@ -21,6 +21,10 @@ import Login from "./views/login";
 // import "./assets/styles/style.css";
 import './assets/styles/main.scss';
 import CourseDetails from "./views/courseDetails";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
+ReactQuill.Quill.debug('warn');
 
 function App() {
   return (

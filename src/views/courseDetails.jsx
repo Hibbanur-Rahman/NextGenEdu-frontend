@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import InstructorImg from "../assets/images/instructor-Avatar.jpg";
 import profileImage from "../assets/images/instructor-image-course.png";
+import axios from "axios";
+import { toast } from "react-toastify";
+import VARIABLES from "../../environmentVariables";
+
 const CourseDetails = () => {
   const [courseInfoTabBtn, setCourseInfoTabBtn] = useState(true);
   const [reviewTabBtn, setReviewTabBtn] = useState(false);
-  
+  const [courseDetails, setCourseDetails] = useState([]);
 
-
+  const courseId = useParams().id;
   const handleTab = (e) => {
     console.log(e.currentTarget.id);
     if (e.currentTarget.id === "reviews") {
@@ -18,6 +23,25 @@ const CourseDetails = () => {
       setCourseInfoTabBtn(true);
     }
   };
+
+  const handleViewDetails = async () => {
+    try {
+      const response = await axios.post(
+        `${VARIABLES.API_URL_REMOTE}/view-courseDetails-ById`,
+        { courseId }
+      );
+      console.log(response);
+      if (response.status == 200) {
+        setCourseDetails(response.data.data);
+      }
+    } catch (error) {
+      toast.error("something went wrong");
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    handleViewDetails();
+  }, []);
   return (
     <div className="courseDetails d-flex m-0 p-0 pt-5 mt-5 justify-content-center ">
       <div className="container pt-lg-5">
@@ -32,19 +56,17 @@ const CourseDetails = () => {
             (9 Ratings)
           </span>
         </div>
-        {/* <h3 className="m-0 p-0 mt-3">
-          Perfect Diet & Meal Plan-Complete Course
-        </h3> */}
-        <h3 className="m-0 p-0  mt-3 " style={{ color: "rgb(47, 50, 125)" }}>
+        <h3 className="m-0 p-0 mt-3">{courseDetails.courseTitle}</h3>
+        {/* <h3 className="m-0 p-0  mt-3 " style={{ color: "rgb(47, 50, 125)" }}>
           Perfect Diet &{" "}
           <span className="" style={{ color: "rgb(0, 203, 184)" }}>
             Meal Plan-Complete Course
           </span>
-        </h3>
+        </h3> */}
         <div className="row m-0 p-0 justify-content-between align-items-center ">
           <p className="text-secondary m-0 p-0 mt-2 w-auto">
             Categories:{" "}
-            <span className="text-black">Featured, Health & Fitness</span>
+            <span className="text-black">{courseDetails.courseCategory}</span>
           </p>
           <div className="w-auto d-flex align-items-center m-0 p-0 mt-3 mt-md-0">
             <i className="bi bi-bookmark w-auto m-0 p-0 text-secondary ps-0 pe-2"></i>
@@ -91,129 +113,30 @@ const CourseDetails = () => {
               <div className="row m-0 p-0 mt-3" id="courseInfoDetails">
                 <h3 className="m-0 p-0">About Course</h3>
                 {/**about courses details paragraph */}
-                <p className="m-0 p-0 mt-3">
-                  <b>Are you new to PHP or need a refresher? </b> Then this
-                  course will help you get all the fundamentals of Procedural
-                  PHP, Object Oriented PHP, MYSQLi and ending the course by
-                  building a CMS system similar to WordPress, Joomla or Drupal.
-                  <br />{" "}
-                  <b>
-                    Knowing PHP has allowed me to make enough money to stay home
-                    and make courses like this one for students all over the
-                    world.
-                  </b>{" "}
-                  Being a PHP developer can allow anyone to make really good
-                  money online and offline, developing dynamic applications.
-                  <br /> Knowing <strong>PHP</strong> will allow you to build
-                  web applications, websites or Content Management systems, like
-                  WordPress, Facebook, Twitter or even Google. <br />
-                  <strong>
-                    There is no limit to what you can do with this knowledge.
-                  </strong>{" "}
-                  PHP is one of the most important web programming languages to
-                  learn, and knowing it, will give you{" "}
-                  <strong> SUPER POWERS </strong>
-                  in the web development world and job market place.
-                  <br />
-                  <strong>Why?</strong>
-                  <br />
-                  Because Millions of websites and applications (the majority)
-                  use PHP. You can find a job anywhere or even work on your own,
-                  online and in places like freelancer or Odesk. You can
-                  definitely make a substantial income once you learn it. <br />
-                  <strong>I will not bore you 🙂</strong> <br /> I take my
-                  courses very seriously but at the same time I try to make it
-                  fun since I know how difficult learning from an instructor
-                  with a monotone voice or boring attitude is. This course is
-                  fun, and when you need some energy to keep going, you will get
-                  it from me. <br /> <strong>My Approach</strong> <br />{" "}
-                  Practice, practice and more practice. Every section inside
-                  this course has a practice lecture at the end, reinforcing
-                  everything with went over in the lectures. I also created a
-                  small application the you will be able to download to help you
-                  practice PHP. To top it off, we will build and awesome CMS
-                  like WordPress, Joomla or Drupal.
-                </p>
+
+                <div
+                  className="row m-0 p-0 mt-3"
+                  dangerouslySetInnerHTML={{
+                    __html: courseDetails.aboutCourse,
+                  }}
+                />
+
                 {/**what will you learn */}
                 <h3 className="m-0 p-0 mt-5 mb-3">What will you learn</h3>
                 <div className="row m-0 p-0">
-                  <div className="col-lg-6">
-                    <div className="row m-0 p-0 align-items-center mt-2 justify-content-between">
-                      <div className="col-1 m-0 p-0">
-                        <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
+                  {Array.isArray(courseDetails.learnItems) &&
+                    courseDetails.learnItems.map((item, index) => (
+                      <div className="col-lg-6" key={index}>
+                        <div className="row m-0 p-0 align-items-center mt-2 justify-content-between">
+                          <div className="col-1 m-0 p-0">
+                            <div className="dot bg-secondary rounded-circle p-0 m-0"></div>
+                          </div>
+                          <div className="col-11 m-0 p-0">
+                            <p className="m-0 p-0">{item}</p>
+                          </div>
+                        </div>
                       </div>
-                      <div className="col-11 m-0 p-0">
-                        <p className="m-0 p-0 ">
-                          Understanding the fundamentals of healthy
-                          deiting(calories,protein,carbs,fat,vitamins &
-                          minerals)
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-6">
-                    <div className="row m-0 p-0 align-items-center mt-2 justify-content-between">
-                      <div className="col-1 m-0 p-0">
-                        <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
-                      </div>
-                      <div className="col-11 m-0 p-0">
-                        <p className="m-0 p-0 ">
-                          Create a deit that is perfect for you needs and
-                          lifestyle
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-6">
-                    <div className="row m-0 p-0 align-items-center mt-2 justify-content-between">
-                      <div className="col-1 m-0 p-0">
-                        <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
-                      </div>
-                      <div className="col-11 m-0 p-0">
-                        <p className="m-0 p-0 ">
-                          Learn when, what and how much you should eat for
-                          optimal body composition
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-6">
-                    <div className="row m-0 p-0 align-items-center mt-2 justify-content-between">
-                      <div className="col-1 m-0 p-0">
-                        <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
-                      </div>
-                      <div className="col-11 m-0 p-0">
-                        <p className="m-0 p-0 ">
-                          Build more muscle by optimizing your meal plan{" "}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-6">
-                    <div className="row m-0 p-0 align-items-center mt-2 justify-content-between">
-                      <div className="col-1 m-0 p-0">
-                        <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
-                      </div>
-                      <div className="col-11 m-0 p-0">
-                        <p className="m-0 p-0 ">
-                          Lose fat faster by optimizing your meal plan{" "}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-6">
-                    <div className="row m-0 p-0 align-items-center mt-2 justify-content-between">
-                      <div className="col-1 m-0 p-0">
-                        <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
-                      </div>
-                      <div className="col-11 m-0 p-0">
-                        <p className="m-0 p-0 ">
-                          Improve immunity and energy levels with the right
-                          vitamins and minerals{" "}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                    ))}
                 </div>
 
                 {/**course content */}
@@ -735,7 +658,10 @@ const CourseDetails = () => {
                             aria-valuenow="25"
                             aria-valuemin="0"
                             aria-valuemax="100"
-                            style={{ height: "10px ",backgroundColor:'#D9D9D9'}}
+                            style={{
+                              height: "10px ",
+                              backgroundColor: "#D9D9D9",
+                            }}
                           >
                             <div
                               className="progress-bar rounded-2 "
@@ -761,7 +687,10 @@ const CourseDetails = () => {
                             aria-valuenow="25"
                             aria-valuemin="0"
                             aria-valuemax="100"
-                            style={{ height: "10px ",backgroundColor:'#D9D9D9' }}
+                            style={{
+                              height: "10px ",
+                              backgroundColor: "#D9D9D9",
+                            }}
                           >
                             <div
                               className="progress-bar rounded-2 "
@@ -787,7 +716,10 @@ const CourseDetails = () => {
                             aria-valuenow="25"
                             aria-valuemin="0"
                             aria-valuemax="100"
-                            style={{ height: "10px ",backgroundColor:'#D9D9D9' }}
+                            style={{
+                              height: "10px ",
+                              backgroundColor: "#D9D9D9",
+                            }}
                           >
                             <div
                               className="progress-bar rounded-2 "
@@ -813,7 +745,10 @@ const CourseDetails = () => {
                             aria-valuenow="25"
                             aria-valuemin="0"
                             aria-valuemax="100"
-                            style={{ height: "10px ",backgroundColor:'#D9D9D9' }}
+                            style={{
+                              height: "10px ",
+                              backgroundColor: "#D9D9D9",
+                            }}
                           >
                             <div
                               className="progress-bar rounded-2 "
@@ -839,7 +774,10 @@ const CourseDetails = () => {
                             aria-valuenow="25"
                             aria-valuemin="0"
                             aria-valuemax="100"
-                            style={{ height: "10px ",backgroundColor:'#D9D9D9' }}
+                            style={{
+                              height: "10px ",
+                              backgroundColor: "#D9D9D9",
+                            }}
                           >
                             <div
                               className="progress-bar rounded-2 "
@@ -1148,11 +1086,12 @@ const CourseDetails = () => {
                       </p>
                     </div>
                   </div>
-
-                 </div>
-                  {/**write a reiview */}
-                  <button className="add-review-btn btn text-light w-auto mt-3"><i className="w-auto text-light bi bi-star"></i> Write a review</button>
-                
+                </div>
+                {/**write a reiview */}
+                <button className="add-review-btn btn text-light w-auto mt-3">
+                  <i className="w-auto text-light bi bi-star"></i> Write a
+                  review
+                </button>
               </div>
             )}
           </div>
@@ -1206,112 +1145,71 @@ const CourseDetails = () => {
                     />
                   </div>
                   <p className=" text-decoration-none  m-0 p-0 ps-2 w-auto fw-medium">
-                    Dr. Omar Ahmad
+                    {courseDetails && courseDetails.teacherId
+                      ? courseDetails.teacherId.username
+                      : ""}
                   </p>
                 </div>
               </div>
               <div className="lower p-4">
                 {/**Material includes */}
                 <h5 className="m-0 p-0 mb-4">Material includes</h5>
-                <div className="row m-0 p-0 align-items-center mt-2">
-                  <span className="dot bg-secondary  rounded-circle p-0 m-0"></span>
-                  <p className="m-0 p-0 w-auto ps-2">
-                    15.5 hours on-demand video
-                  </p>
-                </div>
-                <div className="row m-0 p-0 align-items-center mt-2">
-                  <span className="dot bg-secondary  rounded-circle p-0 m-0"></span>
-                  <p className="m-0 p-0 w-auto ps-2">7 articles</p>
-                </div>
-                <div className="row m-0 p-0 align-items-center mt-2">
-                  <span className="dot bg-secondary  rounded-circle p-0 m-0"></span>
-                  <p className="m-0 p-0 w-auto ps-2">
-                    22 downloadable resources
-                  </p>
-                </div>
-                <div className="row m-0 p-0 align-items-center mt-2">
-                  <span className="dot bg-secondary  rounded-circle p-0 m-0"></span>
-                  <p className="m-0 p-0 w-auto ps-2">Full lifetime access</p>
-                </div>
-                <div className="row m-0 p-0 align-items-center mt-2">
-                  <span className="dot bg-secondary  rounded-circle p-0 m-0"></span>
-                  <p className="m-0 p-0 w-auto ps-2">Access on mobile and TV</p>
-                </div>
-                <div className="row m-0 p-0 align-items-center mt-2">
-                  <span className="dot bg-secondary  rounded-circle p-0 m-0"></span>
-                  <p className="m-0 p-0 w-auto ps-2">
-                    Certificate of Completion
-                  </p>
-                </div>
+
+                {Array.isArray(courseDetails.materialIncludesItems) &&
+                  courseDetails.materialIncludesItems.map((item, index) => (
+                    <div
+                      className="row m-0 p-0 align-items-center mt-2"
+                      key={index}
+                    >
+                      <span className="dot bg-secondary  rounded-circle p-0 m-0"></span>
+                      <p className="m-0 p-0 w-auto ps-2">{item}</p>
+                    </div>
+                  ))}
 
                 {/**Requirements */}
                 <h5 className="m-0 p-0 mb-4 mt-5">Requirements</h5>
-                <div className="row m-0 p-0 align-items-center mt-2 ">
-                  <span className="dot bg-secondary  rounded-circle p-0 m-0"></span>
-                  <p className="m-0 p-0 w-auto ps-2"> Mac or PC or Mobile</p>
-                </div>
-                <div className="row m-0 p-0 align-items-center mt-2 ">
-                  <span className="dot bg-secondary  rounded-circle p-0 m-0"></span>
-                  <p className="m-0 p-0 w-auto ps-2">
-                    Blender's physics engine
-                  </p>
-                </div>
-                <div className="row m-0 p-0 align-items-center mt-2">
-                  <span className="dot bg-secondary  rounded-circle p-0 m-0"></span>
-                  <p className="m-0 p-0 w-auto ps-2">Principle of modeling</p>
-                </div>
+                {Array.isArray(courseDetails.requirementItems) &&
+                  courseDetails.requirementItems.map((item, index) => (
+                    <div
+                      className="row m-0 p-0 align-items-center mt-2 justify-content-between"
+                      key={index}
+                    >
+                      <div className="col-1 m-0 p-0">
+                        <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
+                      </div>
+                      <div className="col-11 m-0 p-0">
+                        <p className="m-0 p-0 ">{item}</p>
+                      </div>
+                    </div>
+                  ))}
 
                 {/**Tags */}
                 <h5 className="m-0 p-0 mb-4 mt-5">Tags</h5>
-                <button className="btn btn-transparent border border-1  me-2">
-                  3D Modeling
-                </button>
-                <button className="btn btn-transparent border border-1 ms-2">
-                  Blender
-                </button>
+                {Array.isArray(courseDetails.tagItems) &&
+                  courseDetails.tagItems.map((item, index) => (
+                    <button
+                      className="btn btn-transparent border border-1  me-2"
+                      key={index}
+                    >
+                      {item}
+                    </button>
+                  ))}
 
                 {/**Audience */}
                 <h5 className="m-0 p-0 mb-3 mt-5">Audience</h5>
-                <div className="row m-0 p-0 align-items-center mt-2 justify-content-between">
-                  <div className="col-1 m-0 p-0">
-                    <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
-                  </div>
-                  <div className="col-11 m-0 p-0">
-                    <p className="m-0 p-0 ">
-                      Competent and confident with using a computer
-                    </p>
-                  </div>
-                </div>
-                <div className="row m-0 p-0 align-items-center mt-2 justify-content-between">
-                  <div className="col-1 m-0 p-0">
-                    <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
-                  </div>
-                  <div className="col-11 m-0 p-0">
-                    <p className="m-0 p-0 ">
-                      Artists who want to learn to bring their assets alive.
-                    </p>
-                  </div>
-                </div>
-                <div className="row m-0 p-0 align-items-center mt-2 justify-content-between">
-                  <div className="col-1 m-0 p-0">
-                    <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
-                  </div>
-                  <div className="col-11 m-0 p-0">
-                    <p className="m-0 p-0 ">
-                      Game Developers who wish to expand their Skill Set
-                    </p>
-                  </div>
-                </div>
-                <div className="row m-0 p-0 align-items-center mt-2 justify-content-between">
-                  <div className="col-1 m-0 p-0">
-                    <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
-                  </div>
-                  <div className="col-11 m-0 p-0">
-                    <p className="m-0 p-0 ">
-                      Complete beginners who are willing to work hard{" "}
-                    </p>
-                  </div>
-                </div>
+                {Array.isArray(courseDetails.audienceItems) &&
+                  courseDetails.audienceItems.map((item, index) => (
+                    <div className="row m-0 p-0 align-items-center mt-2 justify-content-between" key={index}>
+                      <div className="col-1 m-0 p-0">
+                        <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
+                      </div>
+                      <div className="col-11 m-0 p-0">
+                        <p className="m-0 p-0 ">
+                          {item}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
               </div>
             </div>
           </div>
