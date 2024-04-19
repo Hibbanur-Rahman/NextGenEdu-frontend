@@ -10,6 +10,8 @@ const CourseDetails = () => {
   const [courseInfoTabBtn, setCourseInfoTabBtn] = useState(true);
   const [reviewTabBtn, setReviewTabBtn] = useState(false);
   const [courseDetails, setCourseDetails] = useState([]);
+  const [wishlist, setWishlist] = useState();
+  const [errorMessage, setErrorMessage] = useState();
 
   const courseId = useParams().id;
   const handleTab = (e) => {
@@ -39,7 +41,46 @@ const CourseDetails = () => {
       console.log(error);
     }
   };
+
+  const handleWishlist = async () => {
+    try {
+      const response = await axios.post(
+        `${VARIABLES.API_URL_REMOTE}/add-wishlist`,
+        {
+          courseId,
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      );
+      console.log(response);
+      setErrorMessage(response.data.message);
+
+      if (response.status === 200) {
+        toast.success("Added to wishlist");
+        setWishlist(true);
+      } else if (response.status === 400) {
+        // Check if the error message is specific to course already in wishlist
+        if (response.data.message === "Course already in wishlist") {
+          setWishlist(true); // Course is already in the wishlist
+        } else {
+          // Handle other bad request scenarios
+          // Display a generic error message or handle it as needed
+          toast.error("Bad request. Please try again later.");
+        }
+      }
+    } catch (error) {
+      toast.error("failed to add wishlist");
+      console.log(error);
+    }
+  };
   useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      toast.error("please login first");
+      setTimeout(() => {
+        window.location.href = "#/login";
+      }, 1000);
+    }
     handleViewDetails();
   }, []);
   return (
@@ -68,12 +109,43 @@ const CourseDetails = () => {
             Categories:{" "}
             <span className="text-black">{courseDetails.courseCategory}</span>
           </p>
-          <div className="w-auto d-flex align-items-center m-0 p-0 mt-3 mt-md-0">
-            <i className="bi bi-bookmark w-auto m-0 p-0 text-secondary ps-0 pe-2"></i>
-            <p className="m-0 p-0 w-auto text-secondary ps-1 pe-2">Wishlist</p>
-            <i className="bi bi-share w-auto m-0 p-0 text-secondary ps-3 pe-2"></i>
-            <p className="m-0 p-0 w-auto text-secondary ps-1 pe-0">share</p>
-          </div>
+          {wishlist ? (
+            <div className="w-auto d-flex align-items-center m-0 p-0 mt-3 mt-md-0">
+              <i
+                className="bi bi-bookmark-fill w-auto m-0 p-0 text-secondary ps-0 pe-2 "
+                onClick={handleWishlist}
+                style={{ cursor: "pointer" }}
+              ></i>
+              <p
+                className="m-0 p-0 w-auto text-secondary ps-1 pe-2 "
+                onClick={handleWishlist}
+                style={{ cursor: "pointer" }}
+              >
+                Wishlist
+              </p>
+
+              <i className="bi bi-share w-auto m-0 p-0 text-secondary ps-3 pe-2"></i>
+              <p className="m-0 p-0 w-auto text-secondary ps-1 pe-0">share</p>
+            </div>
+          ) : (
+            <div className="w-auto d-flex align-items-center m-0 p-0 mt-3 mt-md-0">
+              <i
+                className="bi bi-bookmark w-auto m-0 p-0 text-secondary ps-0 pe-2 "
+                onClick={handleWishlist}
+                style={{ cursor: "pointer" }}
+              ></i>
+              <p
+                className="m-0 p-0 w-auto text-secondary ps-1 pe-2 "
+                onClick={handleWishlist}
+                style={{ cursor: "pointer" }}
+              >
+                Wishlist
+              </p>
+
+              <i className="bi bi-share w-auto m-0 p-0 text-secondary ps-3 pe-2"></i>
+              <p className="m-0 p-0 w-auto text-secondary ps-1 pe-0">share</p>
+            </div>
+          )}
         </div>
 
         <div className="row m-0 p-0 mt-5">
@@ -1199,14 +1271,15 @@ const CourseDetails = () => {
                 <h5 className="m-0 p-0 mb-3 mt-5">Audience</h5>
                 {Array.isArray(courseDetails.audienceItems) &&
                   courseDetails.audienceItems.map((item, index) => (
-                    <div className="row m-0 p-0 align-items-center mt-2 justify-content-between" key={index}>
+                    <div
+                      className="row m-0 p-0 align-items-center mt-2 justify-content-between"
+                      key={index}
+                    >
                       <div className="col-1 m-0 p-0">
                         <div className="dot bg-secondary  rounded-circle p-0 m-0"></div>
                       </div>
                       <div className="col-11 m-0 p-0">
-                        <p className="m-0 p-0 ">
-                          {item}
-                        </p>
+                        <p className="m-0 p-0 ">{item}</p>
                       </div>
                     </div>
                   ))}
