@@ -10,8 +10,10 @@ const CourseDetails = () => {
   const [courseInfoTabBtn, setCourseInfoTabBtn] = useState(true);
   const [reviewTabBtn, setReviewTabBtn] = useState(false);
   const [courseDetails, setCourseDetails] = useState([]);
-  const [wishlist, setWishlist] = useState();
+  const [isEnrolled,setIsEnrolled]=useState();
+  const [isWishlist,setIsWishlist]=useState();
   const [errorMessage, setErrorMessage] = useState();
+
 
   const courseId = useParams().id;
   const handleTab = (e) => {
@@ -58,11 +60,11 @@ const CourseDetails = () => {
 
       if (response.status === 200) {
         toast.success("Added to wishlist");
-        setWishlist(true);
+        setIsWishlist(true);
       } else if (response.status === 400) {
         // Check if the error message is specific to course already in wishlist
         if (response.data.message === "Course already in wishlist") {
-          setWishlist(true); // Course is already in the wishlist
+          setIsWishlist(true); // Course is already in the wishlist
         } else {
           // Handle other bad request scenarios
           // Display a generic error message or handle it as needed
@@ -74,6 +76,26 @@ const CourseDetails = () => {
       console.log(error);
     }
   };
+  const handleEnroll=async ()=>{
+    try{
+      const response=await axios.post(`${VARIABLES.API_URL_REMOTE}/add-enroll`,{
+        courseId,
+        headers:{
+          Authorization: localStorage.getItem('token')
+        }
+      })
+      if(response.status===200){
+        toast.success("enrolled successfully");
+        setIsEnrolled(true);
+      }else if(response.status===400){
+        toast.error("failed to enrolled");
+        setIsEnrolled(false);
+      }
+    }catch(error){
+      toast.error("failed to enrolled");
+      console.log(error);
+    }
+  }
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       toast.error("please login first");
@@ -109,7 +131,7 @@ const CourseDetails = () => {
             Categories:{" "}
             <span className="text-black">{courseDetails.courseCategory}</span>
           </p>
-          {wishlist ? (
+          {isWishlist ? (
             <div className="w-auto d-flex align-items-center m-0 p-0 mt-3 mt-md-0">
               <i
                 className="bi bi-bookmark-fill w-auto m-0 p-0 text-secondary ps-0 pe-2 "
@@ -1171,7 +1193,7 @@ const CourseDetails = () => {
             <div className="card overflow-hidden me-0 mt-4 mt-lg-0">
               <div className="upper p-4 bg-light border border-1 border-bottom-1 border-top-0 border-start-0 border-end-0">
                 <h4 className="m-0 p-0">Free</h4>
-                <button className="btn btn-active w-100 mt-4">
+                <button className="btn btn-active w-100 mt-4" onClick={handleEnroll}>
                   Enroll now
                 </button>
                 <p className="m-0 p-0 text-secondary text-center mt-3">
