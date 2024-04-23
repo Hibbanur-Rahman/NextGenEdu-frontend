@@ -78,7 +78,7 @@ const CourseDetails = () => {
   };
   const handleEnroll=async ()=>{
     try{
-      const response=await axios.post(`${VARIABLES.API_URL_REMOTE}/add-enroll`,{
+      const response=await axios.post(`${VARIABLES.API_URL_REMOTE}/add-enrolled`,{
         courseId,
         headers:{
           Authorization: localStorage.getItem('token')
