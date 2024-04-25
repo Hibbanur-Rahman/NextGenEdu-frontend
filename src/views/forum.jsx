@@ -9,7 +9,7 @@ const Forum = () => {
           <div className="col-lg-8">
             <h2 className="m-0 p-0 col-lg-11" style={{ color: "#2F327D" }}>
               <span className="pe-2" style={{ color: "#00CBB8" }}>
-                Q&A
+                Q & A
               </span>
               Discussions
             </h2>
