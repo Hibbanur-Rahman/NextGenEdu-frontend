@@ -39,6 +39,7 @@ const AccountDetails = () => {
       );
       console.log(response);
       if (response.status === 200) {
+        setSelectedImage(`${VARIABLES.API_URL_REMOTE}/uploads/${response.data.data.profileImage}`)
         setUserDetails({
           firstname: response.data.data.firstname,
           lastname: response.data.data.lastname,
@@ -67,16 +68,19 @@ const AccountDetails = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/update-student-details`,
-        {
-          userDetails,
-          headers: {
-            Authorization: localStorage.getItem("token"),
-          },
-        }
-      );
-      console.log(response);
+      const formData = new FormData();
+      for (const key in userDetails) {
+        formData.append(key, userDetails[key]);
+      }
+      console.log(userDetails)
+      console.log(formData)
+      const response = await axios.post(`${VARIABLES.API_URL_REMOTE}/update-student-details`, formData, {
+        
+        headers: {
+          Authorization: localStorage.getItem("token"),
+          "Content-Type": "multipart/form-data",
+        },
+      });
       if (response.status === 200) {
         toast.success("Update successful!");
         setUserDetails(response.data.data);
@@ -89,10 +93,10 @@ const AccountDetails = () => {
     }
   };
 
-  // Function to handle file input change event
   const handleImageChange = (event) => {
-    handleInputChange(event);
-    setSelectedImage(URL.createObjectURL(event.target.files[0]));
+    const imageFile = event.target.files[0];
+    setSelectedImage(URL.createObjectURL(imageFile));
+    setUserDetails({ ...userDetails, profileImage: imageFile });
   };
 
   // Function to handle "Change Image" button click
@@ -100,36 +104,18 @@ const AccountDetails = () => {
     fileInputRef.current.click();
   };
 
-  // Function to handle image upload
-  const handleImageUpload = async () => {
-    if (selectedImage) {
-      const formData = new FormData();
-      formData.append("profileImage", selectedImage);
-      try {
-        const response = await axios.post(
-          `${VARIABLES.API_URL_REMOTE}/upload-profile`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-        console.log(response);
-      } catch (error) {
-        toast.error("update failed");
-        console.log(error);
-      }
-      // Add your image upload logic here
-      console.log("Selected image:", selectedImage);
-    }
-  };
+
+  
 
   const handleInputChange = (e) => {
-    setUserDetails({
-      ...userDetails,
-      [e.currentTarget.name]: e.currentTarget.value,
-    });
+    if (e.target.name === "profileImage") {
+      setUserDetails({ ...userDetails, profileImage: e.target.files[0] });
+    } else {
+      setUserDetails({
+        ...userDetails,
+        [e.currentTarget.name]: e.currentTarget.value,
+      });
+    }
   };
 
   useEffect(() => {
@@ -148,6 +134,7 @@ const AccountDetails = () => {
           method="post"
           className="m-0 p-0 mt-4"
           onSubmit={handleSubmit}
+          enctype="multipart/form-data"
         >
           {/**Generals Information */}
           <div className="row m-0 p-0">
@@ -292,7 +279,7 @@ const AccountDetails = () => {
               </p>
               <div className="profile-image rounded-2 overflow-hidden d-flex align-items-center justify-content-center">
                 <img
-                  src={selectedImage || profilePhoto}
+                  src={selectedImage}
                   alt=""
                   className="rounded-2 w-100 h-100"
                 />
