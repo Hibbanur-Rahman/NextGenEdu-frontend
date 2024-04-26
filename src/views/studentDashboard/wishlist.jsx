@@ -36,7 +36,7 @@ const Wishlist = () => {
   return (
     <div className="row m-0 p-0">
        <h5 className="m-0 p-0 pb-3 mb-5 mt-4 border border-1 border-top-0 border-start-0 border-end-0 " style={{ color: "rgb(0, 203, 184)" }}>
-        Enrolled Courses
+        Wishlist Courses
       </h5>
       {wishlist.length > 0 ? (
         wishlist.map((course) => (
