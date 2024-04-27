@@ -39,7 +39,11 @@ const AccountDetails = () => {
       );
       console.log(response);
       if (response.status === 200) {
-        setSelectedImage(`${VARIABLES.API_URL_REMOTE}/uploads/${response.data.data.profileImage}`)
+        if (response.data.data.profileImage) {
+          setSelectedImage(
+            `${VARIABLES.API_URL_REMOTE}/uploads/${response.data.data.profileImage}`
+          );
+        } 
         setUserDetails({
           firstname: response.data.data.firstname,
           lastname: response.data.data.lastname,
@@ -72,15 +76,18 @@ const AccountDetails = () => {
       for (const key in userDetails) {
         formData.append(key, userDetails[key]);
       }
-      console.log(userDetails)
-      console.log(formData)
-      const response = await axios.post(`${VARIABLES.API_URL_REMOTE}/update-student-details`, formData, {
-        
-        headers: {
-          Authorization: localStorage.getItem("token"),
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      console.log(userDetails);
+      console.log(formData);
+      const response = await axios.post(
+        `${VARIABLES.API_URL_REMOTE}/update-student-details`,
+        formData,
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       if (response.status === 200) {
         toast.success("Update successful!");
         setUserDetails(response.data.data);
@@ -103,9 +110,6 @@ const AccountDetails = () => {
   const handleChangeImageButtonClick = () => {
     fileInputRef.current.click();
   };
-
-
-  
 
   const handleInputChange = (e) => {
     if (e.target.name === "profileImage") {
@@ -279,7 +283,7 @@ const AccountDetails = () => {
               </p>
               <div className="profile-image rounded-2 overflow-hidden d-flex align-items-center justify-content-center">
                 <img
-                  src={selectedImage}
+                  src={selectedImage || profilePhoto}
                   alt=""
                   className="rounded-2 w-100 h-100"
                 />
