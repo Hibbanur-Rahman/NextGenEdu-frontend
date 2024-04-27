@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 import InstructorImg from "../assets/images/instructor-image-course.png";
 import logo from "../assets/images/logo.png";
+import VARIABLES from "../../environmentVariables";
 
 const Navbar = () => {
   const [isUser, setIsUser] = useState(false);
@@ -12,7 +13,9 @@ const Navbar = () => {
   const [profileLink, setProfileLink] = useState(null);
   const [userDetails, setUserDetails] = useState();
   const currentUser=useSelector((state)=>state.auth.isAuthenticated);
+  const userProfileImage=useSelector(state=>state.auth.userProfile.profileImage);
 
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +40,7 @@ const Navbar = () => {
       let jwt = decode(token);
       setUserDetails(jwt.payload.user);
       setProfileLink(`/${jwt.payload.user.role}`);
+     
     } else {
       setIsUser(false);
     }
@@ -98,13 +102,14 @@ const Navbar = () => {
               <Link to={profileLink} className="text-decoration-none">
                 <div className="row m-0 p-0 align-items-center w-auto">
                   <div
-                    className=" rounded-circle overflow-hidden w-auto m-0 p-0"
-                    style={{ backgroundColor: "#D9D9D9" }}
+                    className=" rounded-circle overflow-hidden m-0 p-0"
+                    style={{ backgroundColor: "#D9D9D9",height:'50px',width:'50px' }}
                   >
                     <img
-                      src={InstructorImg}
+                      src={  userProfileImage ? `${VARIABLES.API_URL_REMOTE}/uploads/${userProfileImage}` :( userDetails.profileImage? `${VARIABLES.API_URL_REMOTE}/uploads/${userDetails.profileImage}` :InstructorImg)}
                       alt="instructor image"
                       className="instructorImg  rounded-circle"
+                      style={{height:'50px',width:'50px'}}
                     />
                   </div>
                   <p
@@ -218,9 +223,10 @@ const Navbar = () => {
                       style={{ backgroundColor: "#D9D9D9" }}
                     >
                       <img
-                        src={InstructorImg}
-                        alt="instructor image"
+                      src={  userProfileImage ? `${VARIABLES.API_URL_REMOTE}/uploads/${userProfileImage}` :( userDetails.profileImage? `${VARIABLES.API_URL_REMOTE}/uploads/${userDetails.profileImage}` :InstructorImg)}
+                      alt="instructor image"
                         className="instructorImg  rounded-circle"
+                        style={{height:'50px',width:'50px'}}
                       />
                     </div>
                     <p

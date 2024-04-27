@@ -1,12 +1,18 @@
 import { useState, useRef, useEffect } from "react";
+
 import profilePhoto from "../../assets/images/hibban-photo.jpg";
 import VARIABLES from "../../../environmentVariables";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+import { useDispatch } from "react-redux";
+import { updateProfileImage } from "../../redux/actions/authActions";
+
+
 const AccountDetails = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const fileInputRef = useRef(null);
+  const dispatch=useDispatch();
 
   const [userDetails, setUserDetails] = useState({
     firstname: "",
@@ -76,8 +82,7 @@ const AccountDetails = () => {
       for (const key in userDetails) {
         formData.append(key, userDetails[key]);
       }
-      console.log(userDetails);
-      console.log(formData);
+
       const response = await axios.post(
         `${VARIABLES.API_URL_REMOTE}/update-student-details`,
         formData,
@@ -89,6 +94,8 @@ const AccountDetails = () => {
         }
       );
       if (response.status === 200) {
+        // Dispatch action to update profile image in Redux store
+        dispatch(updateProfileImage(response.data.data.profileImage));
         toast.success("Update successful!");
         setUserDetails(response.data.data);
       } else {
