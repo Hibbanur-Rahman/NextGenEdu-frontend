@@ -5,15 +5,20 @@ import profileImage from "../assets/images/instructor-image-course.png";
 import axios from "axios";
 import { toast } from "react-toastify";
 import VARIABLES from "../../environmentVariables";
+import { decode } from "jwt-js-decode";
 
 const CourseDetails = () => {
   const [courseInfoTabBtn, setCourseInfoTabBtn] = useState(true);
   const [reviewTabBtn, setReviewTabBtn] = useState(false);
   const [courseDetails, setCourseDetails] = useState([]);
-  const [isEnrolled,setIsEnrolled]=useState();
-  const [isWishlist,setIsWishlist]=useState();
+  const [isEnrolled, setIsEnrolled] = useState();
+  const [isWishlist, setIsWishlist] = useState();
   const [errorMessage, setErrorMessage] = useState();
-
+  const [rating, setRating] = useState(1);
+  const [reviewDetails, setReviewDetails] = useState({
+    rating: rating,
+    reviewText: "",
+  });
 
   const courseId = useParams().id;
   const handleTab = (e) => {
@@ -76,26 +81,65 @@ const CourseDetails = () => {
       console.log(error);
     }
   };
-  const handleEnroll=async ()=>{
-    try{
-      const response=await axios.post(`${VARIABLES.API_URL_REMOTE}/add-enrolled`,{
-        courseId,
-        headers:{
-          Authorization: localStorage.getItem('token')
+  const handleEnroll = async () => {
+    try {
+      const response = await axios.post(
+        `${VARIABLES.API_URL_REMOTE}/add-enrolled`,
+        {
+          courseId,
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
         }
-      })
-      if(response.status===200){
+      );
+      if (response.status === 200) {
         toast.success("enrolled successfully");
         setIsEnrolled(true);
-      }else if(response.status===400){
+      } else if (response.status === 400) {
         toast.error("failed to enrolled");
         setIsEnrolled(false);
       }
-    }catch(error){
+    } catch (error) {
       toast.error("failed to enrolled");
       console.log(error);
     }
-  }
+  };
+
+  const handleAddReview = async (e) => {
+    e.preventDefault();
+    try {
+      if (localStorage.getItem("token")) {
+        let jwt = decode(localStorage.getItem("token"));
+        const role = jwt.payload.user.role;
+        if (role === "student") {
+          const response = await axios.post(
+            `${VARIABLES.API_URL_REMOTE}/add-review`,
+            { reviewDetails, courseId },
+            {
+              headers: {
+                Authorization: localStorage.getItem("token"),
+              },
+            }
+          );
+          if(response.status===201){
+            toast.success('review added successfully!');
+          }
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("failed to add review!!");
+    }
+  };
+
+  const handleStarFill = (value) => {
+    setRating(value);
+  };
+
+  const handleReviewInputChange = (e) => {
+    setReviewDetails({ ...reviewDetails, [e.currentTarget.name]: e.value });
+  };
+
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       toast.error("please login first");
@@ -1182,10 +1226,87 @@ const CourseDetails = () => {
                   </div>
                 </div>
                 {/**write a reiview */}
-                <button className="add-review-btn btn text-light w-auto mt-3">
+                <button
+                  className="add-review-btn btn text-light w-auto mt-3"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#reviewForm"
+                >
                   <i className="w-auto text-light bi bi-star"></i> Write a
                   review
                 </button>
+                <div className="row m-0 p-0 mt-3 ">
+                  <form
+                    action="/add-review"
+                    method="post"
+                    className="m-0 p-0 collapse"
+                    onSubmit={handleAddReview}
+                    id="reviewForm"
+                  >
+                    <div className="row m-0 p-0">
+                      <i
+                        className={`bi  ${
+                          rating >= 1 ? "bi-star-fill" : "bi-star"
+                        } w-auto text-warning m-0 p-0 pe-2`}
+                        onClick={() => {
+                          handleStarFill(1);
+                        }}
+                        style={{ cursor: "pointer" }}
+                      ></i>
+                      <i
+                        className={`bi ${
+                          rating >= 2 ? "bi-star-fill" : "bi-star"
+                        } w-auto text-warning m-0 p-0 pe-2`}
+                        onClick={() => {
+                          handleStarFill(2);
+                        }}
+                        style={{ cursor: "pointer" }}
+                      ></i>
+                      <i
+                        className={`bi ${
+                          rating >= 3 ? "bi-star-fill" : "bi-star"
+                        } w-auto text-warning m-0 p-0 pe-2`}
+                        onClick={() => {
+                          handleStarFill(3);
+                        }}
+                        style={{ cursor: "pointer" }}
+                      ></i>
+                      <i
+                        className={`bi ${
+                          rating >= 4 ? "bi-star-fill" : "bi-star"
+                        } w-auto text-warning m-0 p-0 pe-2`}
+                        onClick={() => {
+                          handleStarFill(4);
+                        }}
+                        style={{ cursor: "pointer" }}
+                      ></i>
+                      <i
+                        className={`bi ${
+                          rating >= 5 ? "bi-star-fill" : "bi-star"
+                        } w-auto text-warning m-0 p-0 pe-2`}
+                        onClick={() => {
+                          handleStarFill(5);
+                        }}
+                        style={{ cursor: "pointer" }}
+                      ></i>
+                    </div>
+                    <textarea
+                      name="reviewText"
+                      id="reviewText"
+                      cols="30"
+                      rows="8"
+                      className="form-control mt-3"
+                      placeholder="write a review"
+                      onChange={handleReviewInputChange}
+                      value={reviewDetails.reviewText}
+                    ></textarea>
+                    <button
+                      className="add-review-btn btn text-light w-auto mt-3"
+                      onClick={handleAddReview}
+                    >
+                      Submit Review
+                    </button>
+                  </form>
+                </div>
               </div>
             )}
           </div>
@@ -1193,7 +1314,10 @@ const CourseDetails = () => {
             <div className="card overflow-hidden me-0 mt-4 mt-lg-0">
               <div className="upper p-4 bg-light border border-1 border-bottom-1 border-top-0 border-start-0 border-end-0">
                 <h4 className="m-0 p-0">Free</h4>
-                <button className="btn btn-active w-100 mt-4" onClick={handleEnroll}>
+                <button
+                  className="btn btn-active w-100 mt-4"
+                  onClick={handleEnroll}
+                >
                   Enroll now
                 </button>
                 <p className="m-0 p-0 text-secondary text-center mt-3">
