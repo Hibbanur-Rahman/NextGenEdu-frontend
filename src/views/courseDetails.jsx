@@ -112,6 +112,7 @@ const CourseDetails = () => {
         let jwt = decode(localStorage.getItem("token"));
         const role = jwt.payload.user.role;
         if (role === "student") {
+          console.log(reviewDetails)
           const response = await axios.post(
             `${VARIABLES.API_URL_REMOTE}/add-review`,
             { reviewDetails, courseId },
@@ -137,7 +138,7 @@ const CourseDetails = () => {
   };
 
   const handleReviewInputChange = (e) => {
-    setReviewDetails({ ...reviewDetails, [e.currentTarget.name]: e.value });
+    setReviewDetails({ ...reviewDetails, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
