@@ -19,6 +19,7 @@ const CourseDetails = () => {
     rating: rating,
     reviewText: "",
   });
+  const [reviewList, setReviewList] = useState([]);
 
   const courseId = useParams().id;
   const handleTab = (e) => {
@@ -112,7 +113,8 @@ const CourseDetails = () => {
         let jwt = decode(localStorage.getItem("token"));
         const role = jwt.payload.user.role;
         if (role === "student") {
-          console.log(reviewDetails)
+          console.log(reviewDetails);
+          reviewDetails.rating=rating;
           const response = await axios.post(
             `${VARIABLES.API_URL_REMOTE}/add-review`,
             { reviewDetails, courseId },
@@ -122,8 +124,9 @@ const CourseDetails = () => {
               },
             }
           );
-          if(response.status===201){
-            toast.success('review added successfully!');
+          if (response.status === 201) {
+            toast.success("review added successfully!");
+            handleViewReview();
           }
         }
       }
@@ -133,8 +136,24 @@ const CourseDetails = () => {
     }
   };
 
+  const handleViewReview = async () => {
+    try {
+      const response = await axios.post(
+        `${VARIABLES.API_URL_REMOTE}/view-Review-courseId`,
+        { courseId }
+      );
+      console.log("review:", response);
+      if (response.status === 200) {
+        setReviewList(response.data.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleStarFill = (value) => {
     setRating(value);
+    console.log(rating)
   };
 
   const handleReviewInputChange = (e) => {
@@ -149,6 +168,7 @@ const CourseDetails = () => {
       }, 1000);
     }
     handleViewDetails();
+    handleViewReview();
   }, []);
   return (
     <div className="courseDetails d-flex m-0 p-0 pt-5 mt-5 justify-content-center ">
@@ -293,7 +313,7 @@ const CourseDetails = () => {
                       <h5 className="m-0 p-0">Meal Planning Basics</h5>
                     </div>
 
-                    <div class="collapse m-0 p-0" id="contentItem1">
+                    <div className="collapse m-0 p-0" id="contentItem1">
                       <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
                         <div className="row m-0 p-0 w-auto align-items-center">
                           <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
@@ -375,7 +395,7 @@ const CourseDetails = () => {
                       <h5 className="m-0 p-0">Supplements</h5>
                     </div>
 
-                    <div class="collapse m-0 p-0" id="contentItem2">
+                    <div className="collapse m-0 p-0" id="contentItem2">
                       <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
                         <div className="row m-0 p-0 w-auto align-items-center">
                           <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
@@ -436,7 +456,7 @@ const CourseDetails = () => {
                       <h5 className="m-0 p-0">Setting Up Your Diet</h5>
                     </div>
 
-                    <div class="collapse m-0 p-0" id="contentItem3">
+                    <div className="collapse m-0 p-0" id="contentItem3">
                       <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
                         <div className="row m-0 p-0 w-auto align-items-center">
                           <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
@@ -521,7 +541,7 @@ const CourseDetails = () => {
                     </h5>
                   </div>
 
-                  <div class="collapse m-0 p-0" id="contentItem4">
+                  <div className="collapse m-0 p-0" id="contentItem4">
                     <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
                       <div className="row m-0 p-0 w-auto align-items-center">
                         <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
@@ -603,7 +623,7 @@ const CourseDetails = () => {
                     <h5 className="m-0 p-0">Micronuterients</h5>
                   </div>
 
-                  <div class="collapse m-0 p-0" id="contentItem5">
+                  <div className="collapse m-0 p-0" id="contentItem5">
                     <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
                       <div className="row m-0 p-0 w-auto align-items-center">
                         <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
@@ -685,7 +705,7 @@ const CourseDetails = () => {
                     <h5 className="m-0 p-0">More Dieting Tips & Strategies</h5>
                   </div>
 
-                  <div class="collapse m-0 p-0" id="contentItem6">
+                  <div className="collapse m-0 p-0" id="contentItem6">
                     <div className="row m-0 p-0 p-3 justify-content-between align-items-center">
                       <div className="row m-0 p-0 w-auto align-items-center">
                         <i className="bi bi-youtube w-auto text-secondary m-0 p-0 pe-2"></i>
@@ -930,300 +950,48 @@ const CourseDetails = () => {
                       </div>
                     </div>
                   </div>
+
                   {/**reviews list */}
                   <div className="review-list row m-0 p-0 mt-4">
-                    <div className="row m-0 p-0 mt-2 mb-2 border border-2 border-top-0 border-start-0 border-end-0 pb-3">
-                      <div className="row m-0 p-0 justify-content-between align-items-end">
-                        <div className="row m-0 p-0 w-auto">
-                          <div
-                            className=" rounded-circle overflow-hidden w-auto m-0 p-0"
-                            style={{ backgroundColor: "#D9D9D9" }}
-                          >
-                            <img
-                              src={profileImage}
-                              alt="instructor image"
-                              className="instructorImg  rounded-circle"
-                            />
-                          </div>
-                          <div className="w-auto">
-                            <p className="m-0 p-0 fw-medium w-auto">Lina</p>
-                            <div className="row m-0 p-0">
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
+                    {Array.isArray(reviewList) &&
+                      reviewList.map((item) => (
+                        <div className="row m-0 p-0 mt-2 mb-2 border border-2 border-top-0 border-start-0 border-end-0 pb-3">
+                          <div className="row m-0 p-0 justify-content-between align-items-end">
+                            <div className="row m-0 p-0 w-auto">
+                              <div
+                                className=" rounded-circle overflow-hidden w-auto m-0 p-0"
+                                style={{ backgroundColor: "#D9D9D9" }}
+                              >
+                                <img
+                                  src={`${VARIABLES.API_URL_REMOTE}/uploads/${item.student.profileImage}`}
+                                  alt="instructor image"
+                                  className="instructorImg  rounded-circle"
+                                />
+                              </div>
+                              <div className="w-auto">
+                                <p className="m-0 p-0 fw-medium w-auto">{item.student.firstname} {item.student.lastname}</p>
+                                <div className="row m-0 p-0">
+                                  {
+                                    [...Array(5)].map((_,index)=>(
+                                      
+                                      <i key={index} className={`bi bi-star-fill ${index<item.rating?"":"bi-star"} w-auto text-warning m-0 p-0 pe-2`}></i>
+                                    ))
+                                  }
+                                </div>
+                              </div>
+                            </div>
+                            <div className="row m-0 p-0 w-auto">
+                              <i className="bi bi-stopwatch text-secondary w-auto"></i>
+                              <p className="w-auto text-secondary m-0 p-0">
+                                3 Month
+                              </p>
                             </div>
                           </div>
-                        </div>
-                        <div className="row m-0 p-0 w-auto">
-                          <i className="bi bi-stopwatch text-secondary w-auto"></i>
-                          <p className="w-auto text-secondary m-0 p-0">
-                            3 Month
+                          <p className="m-0 p-0 text-secondary mt-3">
+                           {item.reviewText}
                           </p>
                         </div>
-                      </div>
-                      <p className="m-0 p-0 text-secondary mt-3">
-                        class, launched less than a year ago by Blackboard
-                        co-founder Khaleel ahmad,integrates exclusively
-                      </p>
-                    </div>
-                    <div className="row m-0 p-0 mt-2 mb-2 border border-2 border-top-0 border-start-0 border-end-0 pb-3">
-                      <div className="row m-0 p-0 justify-content-between align-items-end">
-                        <div className="row m-0 p-0 w-auto">
-                          <div
-                            className=" rounded-circle overflow-hidden w-auto m-0 p-0"
-                            style={{ backgroundColor: "#D9D9D9" }}
-                          >
-                            <img
-                              src={profileImage}
-                              alt="instructor image"
-                              className="instructorImg  rounded-circle"
-                            />
-                          </div>
-                          <div className="w-auto">
-                            <p className="m-0 p-0 fw-medium w-auto">Lina</p>
-                            <div className="row m-0 p-0">
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row m-0 p-0 w-auto">
-                          <i className="bi bi-stopwatch text-secondary w-auto"></i>
-                          <p className="w-auto text-secondary m-0 p-0">
-                            3 Month
-                          </p>
-                        </div>
-                      </div>
-                      <p className="m-0 p-0 text-secondary mt-3">
-                        Great clarity in explanations and thoroughly enjoyed the
-                        course. I had been working out for quite a while, but a
-                        few little things we might miss out from a diet
-                        perspective are covered well in detail here. Especially
-                        loved how you structured the entire focus area of
-                        dieting into most important ones to lesser ones.
-                      </p>
-                    </div>
-                    <div className="row m-0 p-0 mt-2 mb-2 border border-2 border-top-0 border-start-0 border-end-0 pb-3">
-                      <div className="row m-0 p-0 justify-content-between align-items-end">
-                        <div className="row m-0 p-0 w-auto">
-                          <div
-                            className=" rounded-circle overflow-hidden w-auto m-0 p-0"
-                            style={{ backgroundColor: "#D9D9D9" }}
-                          >
-                            <img
-                              src={profileImage}
-                              alt="instructor image"
-                              className="instructorImg  rounded-circle"
-                            />
-                          </div>
-                          <div className="w-auto">
-                            <p className="m-0 p-0 fw-medium w-auto">Lina</p>
-                            <div className="row m-0 p-0">
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row m-0 p-0 w-auto">
-                          <i className="bi bi-stopwatch text-secondary w-auto"></i>
-                          <p className="w-auto text-secondary m-0 p-0">
-                            3 Month
-                          </p>
-                        </div>
-                      </div>
-                      <p className="m-0 p-0 text-secondary mt-3">
-                        class, launched less than a year ago by Blackboard
-                        co-founder Khaleel ahmad,integrates exclusively
-                      </p>
-                    </div>
-                    <div className="row m-0 p-0 mt-2 mb-2 border border-2 border-top-0 border-start-0 border-end-0 pb-3">
-                      <div className="row m-0 p-0 justify-content-between align-items-end">
-                        <div className="row m-0 p-0 w-auto">
-                          <div
-                            className=" rounded-circle overflow-hidden w-auto m-0 p-0"
-                            style={{ backgroundColor: "#D9D9D9" }}
-                          >
-                            <img
-                              src={profileImage}
-                              alt="instructor image"
-                              className="instructorImg  rounded-circle"
-                            />
-                          </div>
-                          <div className="w-auto">
-                            <p className="m-0 p-0 fw-medium w-auto">Lina</p>
-                            <div className="row m-0 p-0">
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row m-0 p-0 w-auto">
-                          <i className="bi bi-stopwatch text-secondary w-auto"></i>
-                          <p className="w-auto text-secondary m-0 p-0">
-                            3 Month
-                          </p>
-                        </div>
-                      </div>
-                      <p className="m-0 p-0 text-secondary mt-3">
-                        class, launched less than a year ago by Blackboard
-                        co-founder Khaleel ahmad,integrates exclusively
-                      </p>
-                    </div>
-                    <div className="row m-0 p-0 mt-2 mb-2 border border-2 border-top-0 border-start-0 border-end-0 pb-3">
-                      <div className="row m-0 p-0 justify-content-between align-items-end">
-                        <div className="row m-0 p-0 w-auto">
-                          <div
-                            className=" rounded-circle overflow-hidden w-auto m-0 p-0"
-                            style={{ backgroundColor: "#D9D9D9" }}
-                          >
-                            <img
-                              src={profileImage}
-                              alt="instructor image"
-                              className="instructorImg  rounded-circle"
-                            />
-                          </div>
-                          <div className="w-auto">
-                            <p className="m-0 p-0 fw-medium w-auto">Lina</p>
-                            <div className="row m-0 p-0">
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row m-0 p-0 w-auto">
-                          <i className="bi bi-stopwatch text-secondary w-auto"></i>
-                          <p className="w-auto text-secondary m-0 p-0">
-                            3 Month
-                          </p>
-                        </div>
-                      </div>
-                      <p className="m-0 p-0 text-secondary mt-3">
-                        class, launched less than a year ago by Blackboard
-                        co-founder Khaleel ahmad,integrates exclusively
-                      </p>
-                    </div>
-                    <div className="row m-0 p-0 mt-2 mb-2 border border-2 border-top-0 border-start-0 border-end-0 pb-3">
-                      <div className="row m-0 p-0 justify-content-between align-items-end">
-                        <div className="row m-0 p-0 w-auto">
-                          <div
-                            className=" rounded-circle overflow-hidden w-auto m-0 p-0"
-                            style={{ backgroundColor: "#D9D9D9" }}
-                          >
-                            <img
-                              src={profileImage}
-                              alt="instructor image"
-                              className="instructorImg  rounded-circle"
-                            />
-                          </div>
-                          <div className="w-auto">
-                            <p className="m-0 p-0 fw-medium w-auto">Lina</p>
-                            <div className="row m-0 p-0">
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row m-0 p-0 w-auto">
-                          <i className="bi bi-stopwatch text-secondary w-auto"></i>
-                          <p className="w-auto text-secondary m-0 p-0">
-                            3 Month
-                          </p>
-                        </div>
-                      </div>
-                      <p className="m-0 p-0 text-secondary mt-3">
-                        class, launched less than a year ago by Blackboard
-                        co-founder Khaleel ahmad,integrates exclusively
-                      </p>
-                    </div>
-                    <div className="row m-0 p-0 mt-2 mb-2 border border-2 border-top-0 border-start-0 border-end-0 pb-3">
-                      <div className="row m-0 p-0 justify-content-between align-items-end">
-                        <div className="row m-0 p-0 w-auto">
-                          <div
-                            className=" rounded-circle overflow-hidden w-auto m-0 p-0"
-                            style={{ backgroundColor: "#D9D9D9" }}
-                          >
-                            <img
-                              src={profileImage}
-                              alt="instructor image"
-                              className="instructorImg  rounded-circle"
-                            />
-                          </div>
-                          <div className="w-auto">
-                            <p className="m-0 p-0 fw-medium w-auto">Lina</p>
-                            <div className="row m-0 p-0">
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row m-0 p-0 w-auto">
-                          <i className="bi bi-stopwatch text-secondary w-auto"></i>
-                          <p className="w-auto text-secondary m-0 p-0">
-                            3 Month
-                          </p>
-                        </div>
-                      </div>
-                      <p className="m-0 p-0 text-secondary mt-3">
-                        class, launched less than a year ago by Blackboard
-                        co-founder Khaleel ahmad,integrates exclusively
-                      </p>
-                    </div>
-                    <div className="row m-0 p-0 mt-2 mb-2 border border-2 border-top-0 border-start-0 border-end-0 pb-3">
-                      <div className="row m-0 p-0 justify-content-between align-items-end">
-                        <div className="row m-0 p-0 w-auto">
-                          <div
-                            className=" rounded-circle overflow-hidden w-auto m-0 p-0"
-                            style={{ backgroundColor: "#D9D9D9" }}
-                          >
-                            <img
-                              src={profileImage}
-                              alt="instructor image"
-                              className="instructorImg  rounded-circle"
-                            />
-                          </div>
-                          <div className="w-auto">
-                            <p className="m-0 p-0 fw-medium w-auto">Lina</p>
-                            <div className="row m-0 p-0">
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                              <i className="bi bi-star-fill w-auto text-warning m-0 p-0 pe-2"></i>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row m-0 p-0 w-auto">
-                          <i className="bi bi-stopwatch text-secondary w-auto"></i>
-                          <p className="w-auto text-secondary m-0 p-0">
-                            3 Month
-                          </p>
-                        </div>
-                      </div>
-                      <p className="m-0 p-0 text-secondary mt-3">
-                        class, launched less than a year ago by Blackboard
-                        co-founder Khaleel ahmad,integrates exclusively
-                      </p>
-                    </div>
+                      ))}
                   </div>
                 </div>
                 {/**write a reiview */}
