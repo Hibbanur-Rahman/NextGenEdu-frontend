@@ -580,7 +580,24 @@
         color: #fff !important;
     }
 }
-
+.student-review{
+    .bi-pencil-square{
+        &:hover{
+            color: #23BDEE !important;
+        }
+    }
+    .bi-trash{
+        cursor: pointer;
+        &:hover{
+            color: #ff2201 !important;
+        }
+    }
+    .courseTitle{
+        &:hover{
+            color: #49BBBD !important;
+        }
+    }
+}
 .footer {
     background-color: #252641 !important;
 

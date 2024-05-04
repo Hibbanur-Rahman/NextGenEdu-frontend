@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import noData from "../../assets/images/noDataSvg.svg";
 import VARIABLES from "../../../environmentVariables";
-import CourseItems from "../../components/courseItem";
+import DeleteSvg from "../../assets/images/delete.svg";
 
 const Reviews = () => {
   const [reviewlist, setReviewlist] = useState([]);
@@ -49,12 +50,44 @@ const Reviews = () => {
       console.log(response);
       if (response.status === 200) {
         toast.success("update successfully !!");
-        
+        // Close the delete review modal
+        const updateModal = document.getElementById(
+          `updateReviewModal-${reviewId}`
+        );
+        const bootstrapModal = bootstrap.Modal.getInstance(deleteModal);
+        bootstrapModal.hide();
         handleViewReviewList();
       }
     } catch (error) {
       toast.error("Failed to edit review");
       console.log(error);
+    }
+  };
+  const handleDeleteReview = async (reviewId) => {
+    try {
+      const response = await axios.post(
+        `${VARIABLES.API_URL_REMOTE}/delete-review-studentId`,
+        { reviewId },
+        {
+          headers: {
+            authorization: localStorage.getItem("token"),
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        toast.success("Review deleted successfully");
+        // Close the delete review modal
+        const deleteModal = document.getElementById(
+          `deleteReviewModal-${reviewId}`
+        );
+        const bootstrapModal = bootstrap.Modal.getInstance(deleteModal);
+        bootstrapModal.hide();
+        handleViewReviewList();
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to delete the review");
     }
   };
 
@@ -71,11 +104,12 @@ const Reviews = () => {
     handleStarFill(item.rating);
     setReviewDetails({ ...reviewDetails, reviewText: item.reviewText });
   };
+
   useEffect(() => {
     handleViewReviewList();
   }, []);
   return (
-    <div className="row m-0 p-0">
+    <div className="student-review row m-0 p-0">
       <h5
         className="m-0 p-0 pb-3 mb-5 mt-4 border border-1 border-top-0 border-start-0 border-end-0 "
         style={{ color: "rgb(0, 203, 184)" }}
@@ -86,9 +120,14 @@ const Reviews = () => {
         reviewlist.map((item) => (
           <div className="row m-0 mt-2 mb-3 p-0" key={item._id}>
             <div className="card m-0 p-0">
-              <div className="row m-0 p-0 ps-3 pt-3 pb-3 border border-1 border-top-0 border-start-0 border-end-0">
-                <h6 className="m-0 p-0">Course : {item.course.courseTitle}</h6>
-              </div>
+              <Link to={`/course-details/${item.course._id}`} className="p-0 m-0 text-dark text-decoration-none ">
+                <div className="row m-0 p-0 ps-3 pt-3 pb-3 border border-1 border-top-0 border-start-0 border-end-0">
+                  <h6 className="courseTitle m-0 p-0">
+                    Course : {item.course.courseTitle}
+                  </h6>
+                </div>
+              </Link>
+
               <div className="row m-0 p-0 ps-3 pt-3 pb-3">
                 <div className="col-md-9 col-6 m-0 p-0">
                   {[...Array(5)].map((_, index) => (
@@ -110,12 +149,19 @@ const Reviews = () => {
                       handleUpdateOpenModal(item);
                     }}
                   ></i>
-                  <p className="m-0 p-0 w-auto text-secondary ps-2">Edit</p>
-                  <i className="bi bi-trash w-auto text-secondary ps-3"></i>
+                  <p className=" edit m-0 p-0 w-auto text-secondary ps-2">
+                    Edit
+                  </p>
+                  <i
+                    className="bi bi-trash w-auto text-secondary ps-3"
+                    data-bs-toggle="modal"
+                    data-bs-target={`#deleteReviewModal-${item._id}`}
+                    style={{ cursor: "pointer" }}
+                  ></i>
                   <p className="m-0 p-0 w-auto text-secondary ps-2">Delete</p>
                 </div>
 
-                {/* <!-- Modal --> */}
+                {/* <!-- update Review Modal --> */}
                 <div
                   className="modal fade"
                   id={`updateReviewModal-${item._id}`}
@@ -217,6 +263,66 @@ const Reviews = () => {
                           }}
                         >
                           Update Review
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* <!-- Delete Review Modal --> */}
+                <div
+                  className="modal fade"
+                  id={`deleteReviewModal-${item._id}`}
+                  data-bs-backdrop="static"
+                  data-bs-keyboard="false"
+                  tabindex="-1"
+                  aria-labelledby="staticBackdropLabel"
+                  aria-hidden="true"
+                >
+                  <div className="modal-dialog modal-dialog-centered">
+                    <div className="modal-content p-3">
+                      <div className="modal-header border-bottom-0">
+                        <button
+                          type="button"
+                          className="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div className="modal-body">
+                        <div className="row m-0 p-0 justify-content-center ">
+                          <img
+                            src={DeleteSvg}
+                            alt=""
+                            className=""
+                            style={{ height: "150px", width: "150px" }}
+                          />
+                        </div>
+
+                        <h3 className="m-0 p-0 text-center mt-3">
+                          Do You Want to Delete This Review?
+                        </h3>
+                        <p className="m-0 p-0 text-secondary text-center mt-3 mb-3">
+                          Are you sure want to delete this review permanently
+                          from the site? please confirm your choice
+                        </p>
+                      </div>
+                      <div className="modal-footer border-top-0 justify-content-center ">
+                        <button
+                          type="button"
+                          className="btn btn-transparent border border-1 border-primary-subtle "
+                          data-bs-dismiss="modal"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="button"
+                          className="btn text-light"
+                          style={{ backgroundColor: "#49BBBD" }}
+                          onClick={() => {
+                            handleDeleteReview(item._id);
+                          }}
+                        >
+                          Yes, Delete This
                         </button>
                       </div>
                     </div>

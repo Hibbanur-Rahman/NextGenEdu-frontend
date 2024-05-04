@@ -27,6 +27,7 @@ const CourseDetails = () => {
     if (e.currentTarget.id === "reviews") {
       setReviewTabBtn(true);
       setCourseInfoTabBtn(false);
+      handleIsReviewedByStudentIdCourseId();
     }
     if (e.currentTarget.id === "courseInfo") {
       setReviewTabBtn(false);
@@ -150,6 +151,23 @@ const CourseDetails = () => {
       console.log(error);
     }
   };
+
+  const handleIsReviewedByStudentIdCourseId=async()=>{
+    try{
+      const response=await axios.post(`${VARIABLES.API_URL_REMOTE}/isReviewed-studentId-courseId`,{courseId},{
+        headers:{
+          Authorization:localStorage.getItem('token')
+        }
+      })
+
+      if(response.success){
+        setReviewDetails({...reviewDetails,reviewText:response.data.data.reviewText});
+        setRating(response.data.data.rating);
+      }
+    }catch(error){
+      console.log(error);
+    }
+  }
 
   const handleStarFill = (value) => {
     setRating(value);
