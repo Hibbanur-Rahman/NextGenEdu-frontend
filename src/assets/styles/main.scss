@@ -417,6 +417,31 @@
     .ask-question {
         background-color: #49BBBD !important;
     }
+
+    .question-form {
+        input {
+            transition: all 0.2s ease-in-out;
+
+            &:focus {
+                transition: all 0.2s ease-in-out;
+                outline: none;
+                border-color: #23BDEE !important;
+
+            }
+        }
+
+        textarea {
+            height: 20vh !important;
+            transition: all 0.2s ease-in-out;
+
+            &:focus {
+                transition: all 0.2s ease-in-out;
+
+                outline: none;
+                border-color: #23BDEE !important;
+            }
+        }
+    }
 }
 
 .forumQuestion {
@@ -511,12 +536,13 @@
     }
 }
 
-.add-course{
-    .btn{
+.add-course {
+    .btn {
         background-color: #49BBBD !important;
         color: #fff !important;
     }
 }
+
 .enrolled-courses {
     .navtab {
         p {
@@ -525,79 +551,95 @@
 
         button {
 
-            background-color: rgba(0,0,0,0.1) !important;
-            color: rgba(0,0,0,0.4) !important;
+            background-color: rgba(0, 0, 0, 0.1) !important;
+            color: rgba(0, 0, 0, 0.4) !important;
+
             &:hover {
                 background-color: #49BBBD !important;
                 color: #fff !important;
             }
         }
-        .btn-active{
+
+        .btn-active {
             background-color: #49BBBD !important;
             color: #fff !important;
         }
     }
 }
-.courseDetails{
+
+.courseDetails {
     .navtab {
 
 
         button {
 
-            background-color: rgba(0,0,0,0.1) !important;
-            color: rgba(0,0,0,0.4) !important;
+            background-color: rgba(0, 0, 0, 0.1) !important;
+            color: rgba(0, 0, 0, 0.4) !important;
+
             &:hover {
                 background-color: #49BBBD !important;
                 color: #fff !important;
             }
         }
-        .btn-active{
+
+        .btn-active {
             background-color: #49BBBD !important;
             color: #fff !important;
         }
     }
-    iframe{
+
+    iframe {
         box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
     }
-    .btn-active{
+
+    .btn-active {
         background-color: #49BBBD !important;
         color: #fff !important;
     }
+
     .instructorImg {
-        height: 50px !important ;
+        height: 50px !important;
         width: 50px !important;
         box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
     }
-    .dot{
+
+    .dot {
         width: 8px !important;
         height: 8px !important;
     }
-    .review-card{
-        background-color: rgba(157,204,255,0.3);
+
+    .review-card {
+        background-color: rgba(157, 204, 255, 0.3);
     }
-    .add-review-btn{
+
+    .add-review-btn {
         background-color: #49BBBD !important;
         color: #fff !important;
     }
 }
-.student-review{
-    .bi-pencil-square{
-        &:hover{
+
+.student-review {
+    .bi-pencil-square {
+        &:hover {
             color: #23BDEE !important;
         }
     }
-    .bi-trash{
+
+    .bi-trash {
         cursor: pointer;
-        &:hover{
+
+        &:hover {
             color: #ff2201 !important;
         }
     }
-    .courseTitle{
-        &:hover{
+
+    .courseTitle {
+        &:hover {
             color: #49BBBD !important;
         }
     }
 }
+
 .footer {
     background-color: #252641 !important;
 
