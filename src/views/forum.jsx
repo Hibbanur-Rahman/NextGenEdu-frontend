@@ -8,13 +8,37 @@ import ForumQuestionItem from "../components/forumQuestionItem";
 
 const Forum = () => {
   const [isForumOpen, setIsForumOpen] = useState(true);
-
+  const [questionDetails,setQuestionDetails]=useState({
+    question:'',
+    description:'',
+    tags:''
+  })
+  const handleAddQuestion=async()=>{
+    try{
+      const response=await axios.post(`${VARIABLES.API_URL_REMOTE}/add-question`,{questionDetails},{
+        headers:{
+          Authorization:localStorage.getItem('token')
+        }
+      });
+      console.log(response);
+      if(response.status===201){
+        toast.success("Question Added Successfully");
+      }
+    }catch(error){
+      console.log(error);
+      toast.error("Failed to Add question")
+    }
+  }
   const handleIsForumOpen = () => {
     setIsForumOpen(!isForumOpen);
   };
   const handleInputChange = (e) => {
-    console.log(e.target.value);
+    setQuestionDetails({...questionDetails,[e.target.name]:e.target.value})
   };
+
+  // useEffect(()=>{
+    
+  // },[])
 
   return (
     <div className="forum m-0 p-0 mt-5 pt-5 d-flex  justify-content-center ">
@@ -82,7 +106,7 @@ const Forum = () => {
                 community a question
               </h2>
               <div className="card m-0 p-0 p-3 mt-4">
-                <form action="">
+                <form action="/add-question" onSubmit={handleAddQuestion} method='post'>
                   <div className="question-form col-lg-12 row m-0 p-0  mb-3 mt-3 position-relative ">
                     <label
                       htmlFor="question"
@@ -97,7 +121,7 @@ const Forum = () => {
                       name="question"
                       placeholder="What would you like to know?"
                       onChange={handleInputChange}
-                      value=""
+                      value={questionDetails.question}
                       required
                     />
                     <p className="m-0 p-0 text-secondary mt-2">
@@ -117,7 +141,7 @@ const Forum = () => {
                       className="border border-1 rounded-2 p-2 ps-3 m-0 h-auto"
                       id="description"
                       name="description"
-                      value=""
+                      value={questionDetails.description}
                       placeholder="Include as much detail as possible to get most relevant answers"
                       onChange={handleInputChange}
                       required
@@ -137,7 +161,7 @@ const Forum = () => {
                       name="tags"
                       placeholder="Start Typing to add tags.."
                       onChange={handleInputChange}
-                      value=""
+                      value={questionDetails.tags}
                       required
                     />
                     <p className="m-0 p-0 text-secondary mt-2">
@@ -156,6 +180,7 @@ const Forum = () => {
                       type="button"
                       className="btn text-light w-auto ms-3"
                       style={{ backgroundColor: "#49BBBD" }}
+                      onClick={handleAddQuestion}
                     >
                       Post question
                     </button>

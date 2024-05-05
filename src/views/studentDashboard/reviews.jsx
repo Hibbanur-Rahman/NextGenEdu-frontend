@@ -54,7 +54,8 @@ const Reviews = () => {
         const updateModal = document.getElementById(
           `updateReviewModal-${reviewId}`
         );
-        const bootstrapModal = bootstrap.Modal.getInstance(deleteModal);
+        
+        const bootstrapModal = bootstrap.Modal.getInstance( updateModal);
         bootstrapModal.hide();
         handleViewReviewList();
       }
