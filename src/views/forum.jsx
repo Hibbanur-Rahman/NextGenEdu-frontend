@@ -6,6 +6,8 @@ import VARIABLES from "../../environmentVariables";
 import HotTodayQuestionTopic from "../components/forumHotTodayquestion";
 import ForumQuestionItem from "../components/forumQuestionItem";
 
+import successfulImg from '../assets/images/successfullPosted.svg' 
+
 const Forum = () => {
   const [isForumOpen, setIsForumOpen] = useState(true);
   const [questionDetails,setQuestionDetails]=useState({
@@ -23,6 +25,11 @@ const Forum = () => {
       console.log(response);
       if(response.status===201){
         toast.success("Question Added Successfully");
+        setQuestionDetails({
+          question:'',
+          description:'',
+          tags:''
+        })
       }
     }catch(error){
       console.log(error);
@@ -179,6 +186,8 @@ const Forum = () => {
                     <button
                       type="button"
                       className="btn text-light w-auto ms-3"
+                      data-bs-toggle="modal"
+                      data-bs-target="#successfulModal"
                       style={{ backgroundColor: "#49BBBD" }}
                       onClick={handleAddQuestion}
                     >
@@ -186,6 +195,58 @@ const Forum = () => {
                     </button>
                   </div>
                 </form>
+                  {/* <!-- Successful Added question Modal --> */}
+                  <div
+                  className="modal fade"
+                  id='successfulModal'
+                  data-bs-backdrop="static"
+                  data-bs-keyboard="false"
+                  tabindex="-1"
+                  aria-labelledby="staticBackdropLabel"
+                  aria-hidden="true"
+                >
+                  <div className="modal-dialog modal-dialog-centered">
+                    <div className="modal-content p-3">
+                      <div className="modal-header border-bottom-0">
+                        <button
+                          type="button"
+                          className="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div className="modal-body">
+                        <div className="row m-0 p-0 justify-content-center ">
+                          <img
+                            src={successfulImg}
+                            alt=""
+                            className=""
+                            style={{ height: "150px", width: "150px" }}
+                          />
+                        </div>
+
+                        <h3 className="m-0 p-0 text-center mt-3">
+                          You successfully posted your question! 
+                        </h3>
+                        <p className="m-0 p-0 text-secondary text-center mt-3 mb-3">
+                         while you wait for the answers,feel free to browse other questions
+                        </p>
+                      </div>
+                      <div className="modal-footer border-top-0 justify-content-center ">
+                        
+                        <button
+                          type="button"
+                          className="btn text-light"
+                          data-bs-dismiss="modal"
+                          style={{ backgroundColor: "#49BBBD" }}
+                          
+                        >
+                          Continue
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           )}
