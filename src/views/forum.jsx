@@ -24,6 +24,9 @@ const Forum = () => {
       });
       console.log(response);
       if(response.status===201){
+        const successModal= document.getElementById('successfulModal');
+        const bootstrapModal=bootstrap.Modal.getInstance(successModal);
+        bootstrapModal.show(); 
         toast.success("Question Added Successfully");
         setQuestionDetails({
           question:'',
@@ -186,8 +189,6 @@ const Forum = () => {
                     <button
                       type="button"
                       className="btn text-light w-auto ms-3"
-                      data-bs-toggle="modal"
-                      data-bs-target="#successfulModal"
                       style={{ backgroundColor: "#49BBBD" }}
                       onClick={handleAddQuestion}
                     >
