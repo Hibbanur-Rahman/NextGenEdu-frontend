@@ -6,65 +6,73 @@ import VARIABLES from "../../environmentVariables";
 import HotTodayQuestionTopic from "../components/forumHotTodayquestion";
 import ForumQuestionItem from "../components/forumQuestionItem";
 
-import successfulImg from '../assets/images/successfullPosted.svg' 
+import successfulImg from "../assets/images/successfullPosted.svg";
 
 const Forum = () => {
   const [isForumOpen, setIsForumOpen] = useState(true);
-  const [questionList,setQuestionList]=useState([]);
-  const [questionDetails,setQuestionDetails]=useState({
-    question:'',
-    description:'',
-    tags:''
-  })
-  const handleAddQuestion=async()=>{
-    try{
-      const response=await axios.post(`${VARIABLES.API_URL_REMOTE}/add-question`,{questionDetails},{
-        headers:{
-          Authorization:localStorage.getItem('token')
+  const [questionList, setQuestionList] = useState([]);
+  const [questionDetails, setQuestionDetails] = useState({
+    question: "",
+    description: "",
+    tags: "",
+  });
+  const handleAddQuestion = async () => {
+    try {
+      const response = await axios.post(
+        `${VARIABLES.API_URL_REMOTE}/add-question`,
+        { questionDetails },
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
         }
-      });
+      );
       console.log(response);
-      if(response.status===201){
-        const successModal= document.getElementById('successfulModal');
-        const bootstrapModal=new bootstrap.Modal(successModal);
-        bootstrapModal.show(); 
+      if (response.status === 201) {
+        const successModal = document.getElementById("successfulModal");
+        const bootstrapModal = new bootstrap.Modal(successModal);
+        bootstrapModal.show();
         toast.success("Question Added Successfully");
         setQuestionDetails({
-          question:'',
-          description:'',
-          tags:''
-        })
+          question: "",
+          description: "",
+          tags: "",
+        });
       }
-    }catch(error){
+    } catch (error) {
       console.log(error);
-      toast.error("Failed to Add question")
+      toast.error("Failed to Add question");
     }
-  }
-  const handleViewForumQuestionList=async()=>{
-    try{
-      const response=await axios.post(`${VARIABLES.API_URL_REMOTE}/view-Forum-QuestionList`,{
-        headers:{
-          Authorization:localStorage.getItem('token')
+  };
+  const handleViewForumQuestionList = async () => {
+    try {
+      const response = await axios.post(
+        `${VARIABLES.API_URL_REMOTE}/view-Forum-QuestionList`,
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
         }
-      })
-      if(response===200){
+      );
+      if (response.status === 200) {
         setQuestionList(response.data.data);
+        
       }
-    }catch(error){
+    } catch (error) {
       console.log(error);
-      toast.error("Failed to view Forum")
+      toast.error("Failed to view Forum");
     }
-  }
+  };
   const handleIsForumOpen = () => {
     setIsForumOpen(!isForumOpen);
   };
   const handleInputChange = (e) => {
-    setQuestionDetails({...questionDetails,[e.target.name]:e.target.value})
+    setQuestionDetails({ ...questionDetails, [e.target.name]: e.target.value });
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     handleViewForumQuestionList();
-  },[])
+  }, [isForumOpen]);
 
   return (
     <div className="forum m-0 p-0 mt-5 pt-5 d-flex  justify-content-center ">
@@ -111,16 +119,12 @@ const Forum = () => {
               </div>
 
               <div className="row m-0 p-0 mt-3">
-                <ForumQuestionItem />
-                <ForumQuestionItem />
-                <ForumQuestionItem />
-                <ForumQuestionItem />
-                <ForumQuestionItem />
-                <ForumQuestionItem />
-                <ForumQuestionItem />
-                <ForumQuestionItem />
-                <ForumQuestionItem />
-                <ForumQuestionItem />
+                {
+                Array.isArray(questionList) &&
+                  questionList.map((item) => (
+                    <ForumQuestionItem item={item} key={item._id} />
+                  ))
+                }
               </div>
             </div>
           ) : (
@@ -132,7 +136,11 @@ const Forum = () => {
                 community a question
               </h2>
               <div className="card m-0 p-0 p-3 mt-4">
-                <form action="/add-question" onSubmit={handleAddQuestion} method='post'>
+                <form
+                  action="/add-question"
+                  onSubmit={handleAddQuestion}
+                  method="post"
+                >
                   <div className="question-form col-lg-12 row m-0 p-0  mb-3 mt-3 position-relative ">
                     <label
                       htmlFor="question"
@@ -212,10 +220,10 @@ const Forum = () => {
                     </button>
                   </div>
                 </form>
-                  {/* <!-- Successful Added question Modal --> */}
-                  <div
+                {/* <!-- Successful Added question Modal --> */}
+                <div
                   className="modal fade"
-                  id='successfulModal'
+                  id="successfulModal"
                   data-bs-backdrop="static"
                   data-bs-keyboard="false"
                   tabindex="-1"
@@ -243,20 +251,19 @@ const Forum = () => {
                         </div>
 
                         <h3 className="m-0 p-0 text-center mt-3">
-                          You successfully posted your question! 
+                          You successfully posted your question!
                         </h3>
                         <p className="m-0 p-0 text-secondary text-center mt-3 mb-3">
-                         while you wait for the answers,feel free to browse other questions
+                          while you wait for the answers,feel free to browse
+                          other questions
                         </p>
                       </div>
                       <div className="modal-footer border-top-0 justify-content-center ">
-                        
                         <button
                           type="button"
                           className="btn text-light"
                           data-bs-dismiss="modal"
                           style={{ backgroundColor: "#49BBBD" }}
-                          
                         >
                           Continue
                         </button>
@@ -264,7 +271,6 @@ const Forum = () => {
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
           )}
