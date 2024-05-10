@@ -13,6 +13,7 @@ import Courses from "./views/courses";
 import Blog from "./views/blog";
 import AboutUs from "./views/aboutUs";
 import Forum from "./views/forum";
+import ForumDetails from "./views/forumDetails";
 import AdminDashboard from "./views/adminDashboard/adminDashboard";
 import TeacherDashboard from "./views/teacherDashboard/teacherDashboard";
 import StudentDashboard from "./views/studentDashboard/studentDashboard";
@@ -23,6 +24,7 @@ import './assets/styles/main.scss';
 import CourseDetails from "./views/courseDetails";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+
 
 ReactQuill.Quill.debug('warn');
 
@@ -44,6 +46,7 @@ function App() {
             <Route path="/student/*" element={<StudentDashboard />} />
             <Route path="/login" element={<Login layout="login" />} />
             <Route path="/register" element={<Login layout="register" />} />
+            <Route path='/forum-details/:id' element={<ForumDetails/>}/>
           </Routes>
           <Footer />
           <ToastContainer />
