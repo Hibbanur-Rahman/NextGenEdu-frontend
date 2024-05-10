@@ -10,6 +10,7 @@ import successfulImg from '../assets/images/successfullPosted.svg'
 
 const Forum = () => {
   const [isForumOpen, setIsForumOpen] = useState(true);
+  const [questionList,setQuestionList]=useState([]);
   const [questionDetails,setQuestionDetails]=useState({
     question:'',
     description:'',
@@ -25,7 +26,7 @@ const Forum = () => {
       console.log(response);
       if(response.status===201){
         const successModal= document.getElementById('successfulModal');
-        const bootstrapModal=bootstrap.Modal.getInstance(successModal);
+        const bootstrapModal=new bootstrap.Modal(successModal);
         bootstrapModal.show(); 
         toast.success("Question Added Successfully");
         setQuestionDetails({
@@ -39,6 +40,21 @@ const Forum = () => {
       toast.error("Failed to Add question")
     }
   }
+  const handleViewForumQuestionList=async()=>{
+    try{
+      const response=await axios.post(`${VARIABLES.API_URL_REMOTE}/view-Forum-QuestionList`,{
+        headers:{
+          Authorization:localStorage.getItem('token')
+        }
+      })
+      if(response===200){
+        setQuestionList(response.data.data);
+      }
+    }catch(error){
+      console.log(error);
+      toast.error("Failed to view Forum")
+    }
+  }
   const handleIsForumOpen = () => {
     setIsForumOpen(!isForumOpen);
   };
@@ -46,9 +62,9 @@ const Forum = () => {
     setQuestionDetails({...questionDetails,[e.target.name]:e.target.value})
   };
 
-  // useEffect(()=>{
-    
-  // },[])
+  useEffect(()=>{
+    handleViewForumQuestionList();
+  },[])
 
   return (
     <div className="forum m-0 p-0 mt-5 pt-5 d-flex  justify-content-center ">
@@ -182,7 +198,7 @@ const Forum = () => {
                     <button
                       type="button"
                       className="btn btn-transparent w-auto border border-1 border-primary-subtle "
-                      data-bs-dismiss="modal"
+                      onClick={handleIsForumOpen}
                     >
                       Cancel
                     </button>
@@ -248,6 +264,7 @@ const Forum = () => {
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
           )}
