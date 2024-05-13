@@ -289,7 +289,7 @@ const Forum = () => {
               <HotTodayQuestionTopic />
               <HotTodayQuestionTopic />
               <HotTodayQuestionTopic />
-              <HotTodayQuestionTopic />
+              
             </div>
           </div>
         </div>
