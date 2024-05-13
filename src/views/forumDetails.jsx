@@ -276,23 +276,30 @@ const ForumDetails = () => {
             )}
 
             <div className="row m-0 p-0 mt-5 justify-content-between ">
-              <div className="col-4 p-0">
-                <select
-                  className="form-select"
-                  aria-label="Default select example"
+              {questionDetails && Array.isArray(questionDetails.answers) && (
+                <h4 className="m-0 p-0 w-auto">
+                  {questionDetails.answers.length} Answers
+                </h4>
+              )}
+              <div className="col-8 d-flex justify-content-end m-0 p-0">
+                <div className="col-4 p-0">
+                  <select
+                    className="form-select"
+                    aria-label="Default select example"
+                  >
+                    <option selected>choose the category</option>
+                    <option value="1">Trending</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <button
+                  className="ask-question btn text-light w-auto ms-3"
+                  onClick={handleAnswerBoxOpen}
                 >
-                  <option selected>choose the category</option>
-                  <option value="1">Trending</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
+                  Answer
+                </button>
               </div>
-              <button
-                className="ask-question btn text-light w-auto"
-                onClick={handleAnswerBoxOpen}
-              >
-                Answer
-              </button>
             </div>
 
             {/** forum answer list */}
@@ -309,7 +316,6 @@ const ForumDetails = () => {
                       <div className="col-11">
                         <p className="m-0 p-0 mt-2">{element.answer}</p>
 
-                       
                         <div className="w-auto m-0 p-0 d-flex mt-4 mt-lg-0 justify-content-end ">
                           <div className="d-flex flex-column justify-content-end ">
                             {questionUser && (
@@ -322,7 +328,9 @@ const ForumDetails = () => {
                                 className="m-0 p-0 text-right w-auto"
                                 style={{ color: "#00CBB8" }}
                               >
-                                {element.role==='student'?`${element.studentId.username}`:`${element.teacherId.username}`}
+                                {element.role === "student"
+                                  ? `${element.studentId.username}`
+                                  : `${element.teacherId.username}`}
                               </p>
                             )}{" "}
                           </div>
@@ -330,7 +338,7 @@ const ForumDetails = () => {
                             className=" rounded-circle overflow-hidden w-auto m-0 p-0 ms-2"
                             style={{ backgroundColor: "#D9D9D9" }}
                           >
-                            {element.role==='student' ? (
+                            {element.role === "student" ? (
                               <img
                                 src={
                                   element.studentId.profileImage
@@ -341,7 +349,7 @@ const ForumDetails = () => {
                                 className="instructorImg  rounded-circle"
                                 style={{ height: "50px", width: "50px" }}
                               />
-                            ): (
+                            ) : (
                               <img
                                 src={
                                   element.teacherId.profileImage
