@@ -15,6 +15,9 @@ const Navbar = () => {
   const currentUser=useSelector((state)=>state.auth.isAuthenticated);
   const userProfileImage=useSelector(state=>state.auth.userProfile.profileImage);
 
+  const handleScrollTop=()=>{
+    window.scrollTo(0, 0);
+  }
   
 
   useEffect(() => {
@@ -62,6 +65,7 @@ const Navbar = () => {
             className={`text-light col-1 m-0 p-0 text-decoration-none   ${
               isFixed ? "text-dark" : " "
             }`}
+            onClick={handleScrollTop}
           >
             <p className="m-0 p-0 w-auto">Home</p>
           </Link>
@@ -70,6 +74,7 @@ const Navbar = () => {
             className={`text-light col-1 m-0 p-0 text-decoration-none  ${
               isFixed ? "text-dark" : " "
             }`}
+            onClick={handleScrollTop}
           >
             <p className="m-0 p-0 w-auto">Courses</p>
           </Link>
@@ -78,6 +83,7 @@ const Navbar = () => {
             className={`text-light col-2 m-0 p-0 text-decoration-none  ${
               isFixed ? "text-dark" : " "
             }`}
+            onClick={handleScrollTop}
           >
             <p className="m-0 p-0 w-auto">Community-Forum</p>
           </Link>
@@ -86,6 +92,7 @@ const Navbar = () => {
             className={`text-light col-1 m-0 p-0 text-decoration-none  ${
               isFixed ? "text-dark" : " "
             }`}
+            onClick={handleScrollTop}
           >
             <p className="m-0 p-0 w-auto">Blog</p>
           </Link>
@@ -94,12 +101,13 @@ const Navbar = () => {
             className={`text-light col-1 m-0 p-0 text-decoration-none ${
               isFixed ? "text-dark" : " "
             }`}
+            onClick={handleScrollTop}
           >
             <p className="m-0 p-0 w-auto">About Us</p>
           </Link>
           {userDetails? (
             <div className="col-4 d-flex justify-content-end">
-              <Link to={profileLink} className="text-decoration-none">
+              <Link to={profileLink} className="text-decoration-none" onClick={handleScrollTop}>
                 <div className="row m-0 p-0 align-items-center w-auto">
                   <div
                     className=" rounded-circle overflow-hidden m-0 p-0"
@@ -129,6 +137,7 @@ const Navbar = () => {
                 className={`text-light w-auto m-0 p-0 text-decoration-none  ${
                   isFixed ? "text-light" : " "
                 }`}
+                onClick={handleScrollTop}
               >
                 <button
                   className={`login btn bg-light rounded-pill ps-4 pe-4 ${
@@ -143,6 +152,7 @@ const Navbar = () => {
                 className={`text-light w-auto m-0 p-0 text-decoration-none ms-1 ${
                   isFixed ? "text-dark" : " "
                 }`}
+                onClick={handleScrollTop}
               >
                 <button
                   className={`signup btn rounded-pill ps-3 pe-3 text-light ${
@@ -187,38 +197,41 @@ const Navbar = () => {
             <Link
               to="/"
               className=" text-light  m-0 p-0 text-decoration-none mt-3 mb-3 "
-              
+              onClick={handleScrollTop}
             >
               <p className="m-0 p-0 w-auto fs-4 " data-bs-dismiss="offcanvas">Home</p>
             </Link>
             <Link
               to="/courses"
               className="text-light  m-0 p-0 text-decoration-none mt-3 mb-3"
-              
+              onClick={handleScrollTop}
             >
               <p className="m-0 p-0 w-auto fs-4 " data-bs-dismiss="offcanvas">Courses</p>
             </Link>
             <Link
               to="/forum"
               className="text-light  m-0 p-0 text-decoration-none mt-3 mb-3"
+              onClick={handleScrollTop}
             >
               <p className="m-0 p-0 w-auto fs-4 " data-bs-dismiss="offcanvas">Community-forum</p>
             </Link>
             <Link
               to="/blog"
               className="text-light  m-0 p-0 text-decoration-none mt-3 mb-3"
+              onClick={handleScrollTop}
             >
               <p className="m-0 p-0 w-auto fs-4 " data-bs-dismiss="offcanvas">Blog</p>
             </Link>
             <Link
               to="/aboutUs"
               className="text-light  m-0 p-0 text-decoration-none mt-3 mb-3"
+              onClick={handleScrollTop}
             >
               <p className="m-0 p-0 w-auto fs-4 " data-bs-dismiss="offcanvas">About Us</p>
             </Link>
             {userDetails ? (
               <div className="row m-0 p-0">
-                <Link to={profileLink} className="text-decoration-none m-0 p-0">
+                <Link to={profileLink} className="text-decoration-none m-0 p-0" onClick={handleScrollTop}>
                   <div className="row m-0 p-0 align-items-center w-auto">
                     <div
                       className=" rounded-circle overflow-hidden w-auto m-0 p-0"
@@ -248,16 +261,18 @@ const Navbar = () => {
                 <Link
                   to="/login"
                   className="text-light w-auto m-0 p-0 text-decoration-none"
+                  onClick={handleScrollTop}
                 >
-                  <button className="login btn bg-light rounded-pill ps-4 pe-4 fs-4">
+                  <button className="login btn bg-light rounded-pill ps-4 pe-4 fs-4" data-bs-dismiss="offcanvas">
                     Login
                   </button>
                 </Link>
                 <Link
                   to="/register"
                   className="text-light w-auto m-0 p-0 text-decoration-none ms-2"
+                  onClick={handleScrollTop}
                 >
-                  <button className="signup btn rounded-pill ps-3 pe-3 text-light fs-4">
+                  <button className="signup btn rounded-pill ps-3 pe-3 text-light fs-4" data-bs-dismiss="offcanvas">
                     Sign Up
                   </button>
                 </Link>
