@@ -187,32 +187,34 @@ const Navbar = () => {
             <Link
               to="/"
               className=" text-light  m-0 p-0 text-decoration-none mt-3 mb-3 "
+              
             >
-              <p className="m-0 p-0 w-auto fs-4 ">Home</p>
+              <p className="m-0 p-0 w-auto fs-4 " data-bs-dismiss="offcanvas">Home</p>
             </Link>
             <Link
               to="/courses"
               className="text-light  m-0 p-0 text-decoration-none mt-3 mb-3"
+              
             >
-              <p className="m-0 p-0 w-auto fs-4 ">Courses</p>
+              <p className="m-0 p-0 w-auto fs-4 " data-bs-dismiss="offcanvas">Courses</p>
             </Link>
             <Link
               to="/forum"
               className="text-light  m-0 p-0 text-decoration-none mt-3 mb-3"
             >
-              <p className="m-0 p-0 w-auto fs-4 ">Community-forum</p>
+              <p className="m-0 p-0 w-auto fs-4 " data-bs-dismiss="offcanvas">Community-forum</p>
             </Link>
             <Link
               to="/blog"
               className="text-light  m-0 p-0 text-decoration-none mt-3 mb-3"
             >
-              <p className="m-0 p-0 w-auto fs-4 ">Blog</p>
+              <p className="m-0 p-0 w-auto fs-4 " data-bs-dismiss="offcanvas">Blog</p>
             </Link>
             <Link
               to="/aboutUs"
               className="text-light  m-0 p-0 text-decoration-none mt-3 mb-3"
             >
-              <p className="m-0 p-0 w-auto fs-4 ">About Us</p>
+              <p className="m-0 p-0 w-auto fs-4 " data-bs-dismiss="offcanvas">About Us</p>
             </Link>
             {userDetails ? (
               <div className="row m-0 p-0">
@@ -233,6 +235,8 @@ const Navbar = () => {
                       className={`text-light text-decoration-none  m-0 p-0 ps-2 w-auto fw-medium ${
                         isFixed ? "text-dark" : " "
                       }`}
+
+                      data-bs-dismiss="offcanvas"
                     >
                       {userDetails.username}
                     </p>
