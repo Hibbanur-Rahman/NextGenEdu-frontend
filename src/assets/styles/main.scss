@@ -647,3 +647,45 @@
         height: 60px !important;
     }
 }
+
+.question-answer {
+    .question-form {
+        input {
+            transition: all 0.2s ease-in-out;
+
+            &:focus {
+                transition: all 0.2s ease-in-out;
+                outline: none;
+                border-color: #23BDEE !important;
+
+            }
+        }
+
+        textarea {
+            height: 40vh !important;
+            transition: all 0.2s ease-in-out;
+
+            &:focus {
+                transition: all 0.2s ease-in-out;
+
+                outline: none;
+                border-color: #23BDEE !important;
+            }
+        }
+    }
+
+    /* Default modal width remains unchanged for mobile views */
+    .modal-lg-custom {
+        width: auto;
+        max-width: 100%;
+        /* Ensure it doesn't overflow on small screens */
+    }
+
+    /* Apply custom width for larger screens */
+    @media (min-width: 768px) {
+        .modal-lg-custom {
+            max-width: 50%;
+            /* Adjust this value to increase or decrease the width */
+        }
+    }
+}

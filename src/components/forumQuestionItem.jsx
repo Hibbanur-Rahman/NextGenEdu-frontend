@@ -41,7 +41,7 @@ const ForumQuestionItem = ({ item }) => {
               ))}
           </div>
           <div className="row m-0 p-0 align-items-center  justify-content-between ">
-            <div className="row col-8 m-0 p-0 align-items-center mt-2">
+            <div className="row w-auto m-0 p-0 align-items-center mt-2">
               <i className="bi bi-hand-thumbs-up-fill p-0 m-0 text-secondary w-auto"></i>
               <p className="vote w-auto m-0 p-0 ps-1">1338 Votes </p>
               <i className="bi bi-chat-left-text-fill text-secondary w-auto"></i>

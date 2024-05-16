@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { decode } from "jwt-js-decode";
 import VARIABLES from "../../environmentVariables";
-
+import { formatDateTime } from "../utils/dateUtils";
 import HotTodayQuestionTopic from "../components/forumHotTodayquestion";
 import InstructorImg from "../assets/images/instructor-image-course.png";
 
@@ -13,7 +13,7 @@ import successfulImg from "../assets/images/successfullPosted.svg";
 const ForumDetails = () => {
   const [questionUser, setQuestionUser] = useState(null);
   const [questionDetails, setQuestionDetails] = useState(null);
-  const [formattedUpdateTime, setFormattedUpdateTime] = useState("");
+
   const [isAnswerBoxOpen, setIsAnswerBoxOpen] = useState(false);
   const [answer, setAnswer] = useState("");
   const [user, setUser] = useState(null);
@@ -38,18 +38,7 @@ const ForumDetails = () => {
           setQuestionUser(response.data.data.teacherId);
         }
 
-        //format updated time
-        const updateTime = new Date(response.data.data.updatedAt);
-        const options = {
-          weekday: "long",
-          month: "long",
-          day: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-          hour12: true,
-        };
-        const formattedTime = updateTime.toLocaleDateString(undefined, options);
-        setFormattedUpdateTime(formattedTime);
+        
       }
     } catch (error) {
       console.log(error);
@@ -143,7 +132,7 @@ const ForumDetails = () => {
                     <div className="d-flex flex-column justify-content-end ">
                       {questionUser && (
                         <p className="m-0 p-0 text-secondary w-auto">
-                          {formattedUpdateTime}
+                          {formatDateTime(questionDetails.createdAt)}
                         </p>
                       )}
                       {questionUser && (
@@ -320,7 +309,7 @@ const ForumDetails = () => {
                           <div className="d-flex flex-column justify-content-end ">
                             {questionUser && (
                               <p className="m-0 p-0 text-secondary w-auto">
-                                {formattedUpdateTime}
+                                {formatDateTime(element.updatedAt)}
                               </p>
                             )}
                             {questionUser && (
