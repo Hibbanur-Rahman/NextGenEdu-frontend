@@ -20,7 +20,7 @@ const QuestionAnswer = () => {
     tags: "",
   });
   const [answer, setAnswer] = useState([]);
-  const [answerText,setAnswerText]=useState(null);
+  const [answerText, setAnswerText] = useState(null);
   const handleViewForumQuestionList = async () => {
     try {
       const response = await axios.post(
@@ -116,22 +116,59 @@ const QuestionAnswer = () => {
       console.log(error);
     }
   };
-  const handleUpdateAnswer=async ()=>{
-    try{
+  const handleUpdateAnswer = async (forumId,answerId) => {
+    try {
+      const response = await axios.post(
+        `${VARIABLES.API_URL_REMOTE}/update-answer-studentId`,
+        { answerText, forumId,answerId },
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      );
+      if (response.status === 200) {
+        toast.success("Answer Updated successfully!");
 
-    }catch(error){
+        // Close the update modal
+        const updateModal = document.getElementById(
+          `updateAnswerModal-${forumId}`
+        );
+        const updateBootstrapModal = bootstrap.Modal.getInstance(updateModal);
+        updateBootstrapModal.hide();
+
+        // Show the success modal
+        const successModal = document.getElementById("successfulAnswerModal");
+        const successBootstrapModal = new bootstrap.Modal(successModal);
+        successBootstrapModal.show();
+        handleViewAnswer();
+      }
+    } catch (error) {
       console.log(error);
-      toast.error("Failed to update answer")
+      toast.error("Failed to update answer");
     }
-  }
-  const handleDeleteAnswer=async()=>{
-    try{
-
-    }catch(error){
+  };
+  const handleDeleteAnswer = async (forumId,answerId) => {
+    try {
+      const response=await axios.post(`${VARIABLES.API_URL_REMOTE}/delete-answer-studentId`,{forumId,answerId},{
+        headers:{
+          Authorization:localStorage.getItem('token')
+        }
+      })
+      if(response.status===200){
+        toast.success("Answer deleted successfully!");
+        const deleteModal = document.getElementById(
+          `deleteAnswerModal-${forumId}`
+        );
+        const DeleteBootstrapModal = bootstrap.Modal.getInstance(deleteModal);
+        DeleteBootstrapModal.hide();
+        handleViewAnswer();
+      }
+    } catch (error) {
       console.log(error);
       toast.error("Failed to delete answer");
     }
-  }
+  };
   const handleTab = (e) => {
     if (e.currentTarget.id === "questionTab") {
       setQuestionTabBtn(true);
@@ -156,12 +193,12 @@ const QuestionAnswer = () => {
   const handleInputChange = (e) => {
     setQuestionDetails({ ...questionDetails, [e.target.name]: e.target.value });
   };
-  const handleAnswerInputChange=(e)=>{
-      setAnswerText(e.target.value);
-  }
-  const handleUpdateOpenAnswerModal=(item)=>{
-        setAnswerText(item.answer)
-  }
+  const handleAnswerInputChange = (e) => {
+    setAnswerText(e.target.value);
+  };
+  const handleUpdateOpenAnswerModal = (item) => {
+    setAnswerText(item.answer);
+  };
   useEffect(() => {
     handleViewForumQuestionList();
     handleViewAnswer();
@@ -562,7 +599,7 @@ const QuestionAnswer = () => {
                     <i
                       className="bi bi-pencil-square w-auto text-secondary"
                       data-bs-toggle="modal"
-                      data-bs-target={`#updateAnswerModal-${item._id}`}
+                      data-bs-target={`#updateAnswerModal-${item.forum._id}`}
                       style={{ cursor: "pointer" }}
                       onClick={() => {
                         handleUpdateOpenAnswerModal(item);
@@ -574,7 +611,7 @@ const QuestionAnswer = () => {
                     <i
                       className="bi bi-trash w-auto text-secondary ps-3"
                       data-bs-toggle="modal"
-                      data-bs-target={`#deleteAnswerModal-${item._id}`}
+                      data-bs-target={`#deleteAnswerModal-${item.forum._id}`}
                       style={{ cursor: "pointer" }}
                     ></i>
                     <p className="m-0 p-0 w-auto text-secondary ps-2">Delete</p>
@@ -587,7 +624,7 @@ const QuestionAnswer = () => {
             {/* <!-- update Answer Modal --> */}
             <div
               className="modal fade p-2"
-              id={`updateAnswerModal-${item._id}`}
+              id={`updateAnswerModal-${item.forum._id}`}
               data-bs-backdrop="static"
               data-bs-keyboard="false"
               tabindex="-1"
@@ -609,7 +646,7 @@ const QuestionAnswer = () => {
                       <form
                         action="/update-answer"
                         onSubmit={() => {
-                          handleUpdateAnswer(item._id);
+                          handleUpdateAnswer(item.forum._id,item.answerId);
                         }}
                         method="post"
                       >
@@ -638,7 +675,7 @@ const QuestionAnswer = () => {
                             className="btn text-light w-auto ms-3"
                             style={{ backgroundColor: "#49BBBD" }}
                             onClick={() => {
-                              handleUpdateAnswer(item._id);
+                              handleUpdateAnswer(item.forum._id,item.answerId);
                             }}
                           >
                             Update Answer
@@ -704,7 +741,7 @@ const QuestionAnswer = () => {
             {/* <!-- Delete Answer Modal --> */}
             <div
               className="modal fade"
-              id={`deleteAnswerModal-${item._id}`}
+              id={`deleteAnswerModal-${item.forum._id}`}
               data-bs-backdrop="static"
               data-bs-keyboard="false"
               tabindex="-1"
@@ -752,7 +789,7 @@ const QuestionAnswer = () => {
                       className="btn text-light"
                       style={{ backgroundColor: "#49BBBD" }}
                       onClick={() => {
-                        handleDeleteAnswer(item._id);
+                        handleDeleteAnswer(item.forum._id,item.answerId);
                       }}
                     >
                       Yes, Delete This
