@@ -24,7 +24,7 @@ const QuestionAnswer = () => {
   const handleViewForumQuestionList = async () => {
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/view-Forum-QuestionList-studentId`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/view-Forum-QuestionList-studentId`,
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -43,7 +43,7 @@ const QuestionAnswer = () => {
   const handleDeleteQuestion = async (forumId) => {
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/delete-question`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/delete-question`,
         { forumId },
         {
           headers: {
@@ -67,7 +67,7 @@ const QuestionAnswer = () => {
   const handleUpdateQuestion = async (forumId) => {
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/update-question`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/update-question`,
         { questionDetails, forumId },
         {
           headers: {
@@ -100,7 +100,7 @@ const QuestionAnswer = () => {
   const handleViewAnswer = async (forumId) => {
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/view-answerList-studentId`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/view-answerList-studentId`,
         { forumId },
         {
           headers: {
@@ -119,7 +119,7 @@ const QuestionAnswer = () => {
   const handleUpdateAnswer = async (forumId,answerId) => {
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/update-answer-studentId`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/update-answer-studentId`,
         { answerText, forumId,answerId },
         {
           headers: {
@@ -150,7 +150,7 @@ const QuestionAnswer = () => {
   };
   const handleDeleteAnswer = async (forumId,answerId) => {
     try {
-      const response=await axios.post(`${VARIABLES.API_URL_REMOTE}/delete-answer-studentId`,{forumId,answerId},{
+      const response=await axios.post(`${import.meta.env.VITE_API_URL_REMOTE}/delete-answer-studentId`,{forumId,answerId},{
         headers:{
           Authorization:localStorage.getItem('token')
         }
@@ -580,7 +580,7 @@ const QuestionAnswer = () => {
                         <img
                           src={
                             item.QuestionUser.profileImage
-                              ? `${VARIABLES.API_URL_REMOTE}/uploads/${item.QuestionUser.profileImage}`
+                              ? `${import.meta.env.VITE_API_URL_REMOTE}/uploads/${item.QuestionUser.profileImage}`
                               : InstructorImg
                           }
                           alt="instructor image"

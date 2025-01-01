@@ -19,7 +19,7 @@ const Forum = () => {
   const handleAddQuestion = async () => {
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/add-question`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/add-question`,
         { questionDetails },
         {
           headers: {
@@ -47,7 +47,7 @@ const Forum = () => {
   const handleViewForumQuestionList = async () => {
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/view-Forum-QuestionList`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/view-Forum-QuestionList`,
         {
           headers: {
             Authorization: localStorage.getItem("token"),

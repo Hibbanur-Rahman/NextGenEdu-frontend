@@ -114,7 +114,7 @@ const Navbar = () => {
                     style={{ backgroundColor: "#D9D9D9",height:'50px',width:'50px' }}
                   >
                     <img
-                      src={  userProfileImage ? `${VARIABLES.API_URL_REMOTE}/uploads/${userProfileImage}` :( userDetails.profileImage? `${VARIABLES.API_URL_REMOTE}/uploads/${userDetails.profileImage}` :InstructorImg)}
+                      src={  userProfileImage ? `${import.meta.env.VITE_API_URL_REMOTE}/uploads/${userProfileImage}` :( userDetails.profileImage? `${import.meta.env.VITE_API_URL_REMOTE}/uploads/${userDetails.profileImage}` :InstructorImg)}
                       alt="instructor image"
                       className="instructorImg  rounded-circle"
                       style={{height:'50px',width:'50px'}}
@@ -238,7 +238,7 @@ const Navbar = () => {
                       style={{ backgroundColor: "#D9D9D9" }}
                     >
                       <img
-                      src={  userProfileImage ? `${VARIABLES.API_URL_REMOTE}/uploads/${userProfileImage}` :( userDetails.profileImage? `${VARIABLES.API_URL_REMOTE}/uploads/${userDetails.profileImage}` :InstructorImg)}
+                      src={  userProfileImage ? `${import.meta.env.VITE_API_URL_REMOTE}/uploads/${userProfileImage}` :( userDetails.profileImage? `${import.meta.env.VITE_API_URL_REMOTE}/uploads/${userDetails.profileImage}` :InstructorImg)}
                       alt="instructor image"
                         className="instructorImg  rounded-circle"
                         style={{height:'50px',width:'50px'}}

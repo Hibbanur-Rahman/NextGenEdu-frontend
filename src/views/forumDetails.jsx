@@ -22,7 +22,7 @@ const ForumDetails = () => {
   const handleViewedQuestion = async () => {
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/view-forum-question-id`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/view-forum-question-id`,
         { questionId },
         {
           headers: {
@@ -50,7 +50,7 @@ const ForumDetails = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/add-forum-answer`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/add-forum-answer`,
         { questionId, answer },
         {
           headers: {
@@ -152,7 +152,7 @@ const ForumDetails = () => {
                         <img
                           src={
                             questionUser.profileImage
-                              ? `${VARIABLES.API_URL_REMOTE}/uploads/${questionUser.profileImage}`
+                              ? `${import.meta.env.VITE_API_URL_REMOTE}/uploads/${questionUser.profileImage}`
                               : InstructorImg
                           }
                           alt="instructor image"
@@ -331,7 +331,7 @@ const ForumDetails = () => {
                               <img
                                 src={
                                   element.studentId.profileImage
-                                    ? `${VARIABLES.API_URL_REMOTE}/uploads/${element.studentId.profileImage}`
+                                    ? `${import.meta.env.VITE_API_URL_REMOTE}/uploads/${element.studentId.profileImage}`
                                     : InstructorImg
                                 }
                                 alt="instructor image"
@@ -342,7 +342,7 @@ const ForumDetails = () => {
                               <img
                                 src={
                                   element.teacherId.profileImage
-                                    ? `${VARIABLES.API_URL_REMOTE}/uploads/${element.studentId.profileImage}`
+                                    ? `${import.meta.env.VITE_API_URL_REMOTE}/uploads/${element.studentId.profileImage}`
                                     : InstructorImg
                                 }
                                 alt="instructor image"

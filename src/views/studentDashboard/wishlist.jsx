@@ -11,7 +11,7 @@ const Wishlist = () => {
   const handleViewWishList = async () => {
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/view-wishlist`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/view-wishlist`,
         {
           headers: {
             Authorization: localStorage.getItem("token"),

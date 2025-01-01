@@ -23,7 +23,7 @@ const Courses = () => {
   const handleViewCourseList = async () => {
     try {
       const response = await axios.get(
-        `${VARIABLES.API_URL_REMOTE}/view-courses`
+        `${import.meta.env.VITE_API_URL_REMOTE}/view-courses`
       );
       console.log(response);
       if (response.status === 200) {

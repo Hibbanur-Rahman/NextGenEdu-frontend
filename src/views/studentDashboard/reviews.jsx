@@ -16,7 +16,7 @@ const Reviews = () => {
   const handleViewReviewList = async () => {
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/view-Review-list-studentId`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/view-Review-list-studentId`,
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -38,7 +38,7 @@ const Reviews = () => {
     try {
       const reviewText = reviewDetails.reviewText;
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/edit-review-studentId`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/edit-review-studentId`,
         { reviewId, reviewText, rating },
         {
           headers: {
@@ -67,7 +67,7 @@ const Reviews = () => {
   const handleDeleteReview = async (reviewId) => {
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/delete-review-studentId`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/delete-review-studentId`,
         { reviewId },
         {
           headers: {

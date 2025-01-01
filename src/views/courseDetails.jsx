@@ -38,7 +38,7 @@ const CourseDetails = () => {
   const handleViewDetails = async () => {
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/view-courseDetails-ById`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/view-courseDetails-ById`,
         { courseId }
       );
       console.log(response);
@@ -54,7 +54,7 @@ const CourseDetails = () => {
   const handleWishlist = async () => {
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/add-wishlist`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/add-wishlist`,
         {
           courseId,
           headers: {
@@ -86,7 +86,7 @@ const CourseDetails = () => {
   const handleEnroll = async () => {
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/add-enrolled`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/add-enrolled`,
         {
           courseId,
           headers: {
@@ -117,7 +117,7 @@ const CourseDetails = () => {
           console.log(reviewDetails);
           reviewDetails.rating=rating;
           const response = await axios.post(
-            `${VARIABLES.API_URL_REMOTE}/add-review`,
+            `${import.meta.env.VITE_API_URL_REMOTE}/add-review`,
             { reviewDetails, courseId },
             {
               headers: {
@@ -140,7 +140,7 @@ const CourseDetails = () => {
   const handleViewReview = async () => {
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/view-Review-courseId`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/view-Review-courseId`,
         { courseId }
       );
       console.log("review:", response);
@@ -154,7 +154,7 @@ const CourseDetails = () => {
 
   // const handleIsReviewedByStudentIdCourseId=async()=>{
   //   try{
-  //     const response=await axios.post(`${VARIABLES.API_URL_REMOTE}/isReviewed-studentId-courseId`,{courseId},{
+  //     const response=await axios.post(`${import.meta.env.VITE_API_URL_REMOTE}/isReviewed-studentId-courseId`,{courseId},{
   //       headers:{
   //         Authorization:localStorage.getItem('token')
   //       }
@@ -983,7 +983,7 @@ const CourseDetails = () => {
                                 style={{ backgroundColor: "#D9D9D9" }}
                               >
                                 <img
-                                  src={`${VARIABLES.API_URL_REMOTE}/uploads/${item.student.profileImage}`}
+                                  src={`${import.meta.env.VITE_API_URL_REMOTE}/uploads/${item.student.profileImage}`}
                                   alt="instructor image"
                                   className="instructorImg  rounded-circle"
                                 />

@@ -30,7 +30,7 @@ const AccountDetails = () => {
   const handleViewUserDetails = async () => {
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/view-teacher-details`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/view-teacher-details`,
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -69,7 +69,7 @@ const AccountDetails = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/update-teacher-details`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/update-teacher-details`,
         {
           userDetails,
           headers: {
@@ -145,7 +145,7 @@ const AccountDetails = () => {
                   </label>
                   <input
                     type="text"
-                    className="border border-1 rounded-2 p-2 ps-3 m-0"
+                    className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                     id="firstname"
                     name="firstname"
                     onChange={handleInputChange}
@@ -161,7 +161,7 @@ const AccountDetails = () => {
                   </label>
                   <input
                     type="text"
-                    className="border border-1 rounded-2 p-2 ps-3 m-0"
+                    className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                     id="lastname"
                     name="lastname"
                     onChange={handleInputChange}
@@ -177,7 +177,7 @@ const AccountDetails = () => {
                   </label>
                   <input
                     type="text"
-                    className="border border-1 rounded-2 p-2 ps-3 m-0"
+                    className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                     id="email"
                     name="email"
                     onChange={handleInputChange}
@@ -193,7 +193,7 @@ const AccountDetails = () => {
                   </label>
                   <input
                     type="text"
-                    className="border border-1 rounded-2 p-2 ps-3 m-0"
+                    className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                     id="phone"
                     name="phone"
                     onChange={handleInputChange}
@@ -209,7 +209,7 @@ const AccountDetails = () => {
                   </label>
                   <input
                     type="text"
-                    className="border border-1 rounded-2 p-2 ps-3 m-0"
+                    className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                     id="expertise"
                     name="expertise"
                     onChange={handleInputChange}
@@ -225,7 +225,7 @@ const AccountDetails = () => {
                   </label>
                   <input
                     type="text"
-                    className="border border-1 rounded-2 p-2 ps-3 m-0"
+                    className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                     id="username"
                     name="username"
                     onChange={handleInputChange}
@@ -241,7 +241,7 @@ const AccountDetails = () => {
                   </label>
                   <input
                     type="text"
-                    className="border border-1 rounded-2 p-2 ps-3 m-0"
+                    className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                     id="password"
                     name="password"
                     onChange={handleInputChange}
@@ -257,7 +257,7 @@ const AccountDetails = () => {
                   </label>
                   <input
                     type="text"
-                    className="border border-1 rounded-2 p-2 ps-3 m-0"
+                    className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                     id="confirmPassword"
                     name="confirmPassword"
                     onChange={handleInputChange}
@@ -316,7 +316,7 @@ const AccountDetails = () => {
               </label>
               <input
                 type="text"
-                className="border border-1 rounded-2 p-2 ps-3 m-0"
+                className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                 id="phone"
                 name="phone"
                 onChange={handleInputChange}
@@ -332,7 +332,7 @@ const AccountDetails = () => {
               </label>
               <input
                 type="text"
-                className="border border-1 rounded-2 p-2 ps-3 m-0"
+                className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                 id="email"
                 name="email"
                 onChange={handleInputChange}
@@ -348,7 +348,7 @@ const AccountDetails = () => {
               </label>
               <input
                 type="text"
-                className="border border-1 rounded-2 p-2 ps-3 m-0"
+                className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                 id="pincode"
                 name="pincode"
                 onChange={handleInputChange}
@@ -364,7 +364,7 @@ const AccountDetails = () => {
               </label>
               <input
                 type="text"
-                className="border border-1 rounded-2 p-2 ps-3 m-0"
+                className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                 id="address"
                 name="address"
                 onChange={handleInputChange}
@@ -380,7 +380,7 @@ const AccountDetails = () => {
               </label>
               <input
                 type="text"
-                className="border border-1 rounded-2 p-2 ps-3 m-0"
+                className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                 id="city"
                 name="city"
                 onChange={handleInputChange}
@@ -396,7 +396,7 @@ const AccountDetails = () => {
               </label>
               <input
                 type="text"
-                className="border border-1 rounded-2 p-2 ps-3 m-0"
+                className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                 id="country"
                 name="country"
                 onChange={handleInputChange}
@@ -412,7 +412,7 @@ const AccountDetails = () => {
               </label>
               <textarea
                 type="text"
-                className="border border-1 rounded-2 p-2 ps-3 m-0 h-auto"
+                className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black h-auto"
                 id="aboutInfo"
                 name="aboutInfo"
                 value={userDetails.aboutInfo}
@@ -435,7 +435,7 @@ const AccountDetails = () => {
               </label>
               <input
                 type="text"
-                className="border border-1 rounded-2 p-2 ps-3 m-0"
+                className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                 id="personalWebsite"
                 name="personalWebsite"
                 onChange={handleInputChange}
@@ -451,7 +451,7 @@ const AccountDetails = () => {
               </label>
               <input
                 type="text"
-                className="border border-1 rounded-2 p-2 ps-3 m-0"
+                className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                 id="githubProfile"
                 name="githubProfile"
                 onChange={handleInputChange}
@@ -467,7 +467,7 @@ const AccountDetails = () => {
               </label>
               <input
                 type="text"
-                className="border border-1 rounded-2 p-2 ps-3 m-0"
+                className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                 id="address"
                 name="address"
                 onChange={handleInputChange}
@@ -483,7 +483,7 @@ const AccountDetails = () => {
               </label>
               <input
                 type="text"
-                className="border border-1 rounded-2 p-2 ps-3 m-0"
+                className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                 id="city"
                 name="city"
                 onChange={handleInputChange}
@@ -499,7 +499,7 @@ const AccountDetails = () => {
               </label>
               <input
                 type="text"
-                className="border border-1 rounded-2 p-2 ps-3 m-0"
+                className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                 id="country"
                 name="country"
                 onChange={handleInputChange}

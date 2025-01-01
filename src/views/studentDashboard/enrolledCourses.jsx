@@ -31,7 +31,7 @@ const EnrolledCourses = () => {
   const handleViewEnrolledCourse = async () => {
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/view-enrolled-by-studentID`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/view-enrolled-by-studentID`,
         {
           headers: {
             Authorization: localStorage.getItem("token"),

@@ -37,7 +37,7 @@ const AddCourse = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/add-course`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/add-course`,
 
         {
           courseDetails,
@@ -85,7 +85,7 @@ const AddCourse = () => {
               </label>
               <input
                 type="text"
-                className="border border-1 rounded-2 p-2 ps-3 m-0"
+                className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                 id="course"
                 name="course"
                 placeholder="Perfect Diet & Meal Plan-Complete Course"
@@ -105,7 +105,7 @@ const AddCourse = () => {
               </label>
               <input
                 type="text"
-                className="border border-1 rounded-2 p-2 ps-3 m-0"
+                className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                 id="courseCategory"
                 name="courseCategory"
                 placeholder="Featured, Health & Fitness"
@@ -125,7 +125,7 @@ const AddCourse = () => {
               </label>
               <input
                 type="text"
-                className="border border-1 rounded-2 p-2 ps-3 m-0"
+                className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                 id="videoLink"
                 name="videoLink"
                 placeholder="https://www.youtube.com/watch?v=W4O98sbGpMc"
@@ -171,7 +171,7 @@ const AddCourse = () => {
                 </label>
                 <input
                   type="text"
-                  className="border border-1 rounded-2 p-2 ps-3 m-0"
+                  className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                   id={`whatWillYouLearn-${index}`}
                   name={`whatWillYouLearn-${index}`}
                   placeholder="Understanding the fundamentals of healthy dieting (calories, protein, carbs, fat, vitamins & minerals)"
@@ -211,7 +211,7 @@ const AddCourse = () => {
                 </label>
                 <input
                   type="text"
-                  className="border border-1 rounded-2 p-2 ps-3 m-0"
+                  className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                   id={`materialIncludesItem-${index}`}
                   name={`materialIncludesItem-${index}`}
                   placeholder="15.5 hours on-demand video"
@@ -255,7 +255,7 @@ const AddCourse = () => {
                 </label>
                 <input
                   type="text"
-                  className="border border-1 rounded-2 p-2 ps-3 m-0"
+                  className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                   id={`requirementItem-${index}`}
                   name={`requirementItem-${index}`}
                   placeholder="Mac or PC or Mobile"
@@ -300,7 +300,7 @@ const AddCourse = () => {
                   </label>
                   <input
                     type="text"
-                    className="border  border-1 rounded-2 p-2 ps-3 m-0"
+                    className="border  border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                     id={`tagItem-${index}`}
                     name={`tagItem-${index}`}
                     placeholder="3D"
@@ -341,7 +341,7 @@ const AddCourse = () => {
                 </label>
                 <input
                   type="text"
-                  className="border border-1 rounded-2 p-2 ps-3 m-0"
+                  className="border border-1 rounded-2 p-2 ps-3 m-0 bg-white text-black"
                   id={`audienceItem-${index}`}
                   name={`audienceItem-${index}`}
                   placeholder="Competent and confident with using a computer"

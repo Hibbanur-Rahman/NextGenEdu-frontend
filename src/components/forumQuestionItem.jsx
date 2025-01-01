@@ -69,7 +69,7 @@ const ForumQuestionItem = ({ item }) => {
                   <img
                     src={
                       questionUser.profileImage
-                        ? `${VARIABLES.API_URL_REMOTE}/uploads/${questionUser.profileImage}`
+                        ? `${import.meta.env.VITE_API_URL_REMOTE}/uploads/${questionUser.profileImage}`
                         : InstructorImg
                     }
                     alt="instructor image"

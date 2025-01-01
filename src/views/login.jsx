@@ -30,7 +30,7 @@ const Login = (props) => {
     } else {
       try {
         const response = await axios.post(
-          `${VARIABLES.API_URL_REMOTE}/user-Login`,
+          `${import.meta.env.VITE_API_URL_REMOTE}/user-Login`,
           userData
         );
         if (response.status === 200) {
@@ -68,7 +68,7 @@ const Login = (props) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${VARIABLES.API_URL_REMOTE}/user-Register`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/user-Register`,
         userRegisterDetails
       );
       console.log(response);
@@ -144,7 +144,7 @@ const Login = (props) => {
                 <label htmlFor="email">Email</label>
                 <input
                   type="email"
-                  className="m-0 mt-2 form-input rounded-pill w-100 p-4"
+                  className="m-0 mt-2 form-input rounded-pill w-100 p-4 bg-white text-black"
                   id="email"
                   placeholder="Enter your email"
                   name="email"
@@ -157,7 +157,7 @@ const Login = (props) => {
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
-                  className="m-0 mt-2 form-input rounded-pill w-100 p-4"
+                  className="m-0 mt-2 form-input rounded-pill w-100 p-4 bg-white text-black"
                   id="password"
                   placeholder="Enter your password"
                   name="password"
@@ -231,7 +231,7 @@ const Login = (props) => {
                 <label htmlFor="email">Email</label>
                 <input
                   type="email"
-                  className="m-0 mt-2 form-input rounded-pill w-100 p-4"
+                  className="m-0 mt-2 form-input rounded-pill w-100 p-4 bg-white text-black"
                   id="email"
                   placeholder="Enter your email"
                   name="email"
@@ -243,7 +243,7 @@ const Login = (props) => {
                 <label htmlFor="firstname">First Name</label>
                 <input
                   type="firstname"
-                  className="m-0 mt-2 form-input rounded-pill w-100 p-4"
+                  className="m-0 mt-2 form-input rounded-pill w-100 p-4 bg-white text-black"
                   id="firstname"
                   placeholder="Enter your firstname"
                   name="firstname"
@@ -255,7 +255,7 @@ const Login = (props) => {
                 <label htmlFor="lastname">Last Name</label>
                 <input
                   type="lastname"
-                  className="m-0 mt-2 form-input rounded-pill w-100 p-4"
+                  className="m-0 mt-2 form-input rounded-pill w-100 p-4 bg-white text-black"
                   id="lastname"
                   placeholder="Enter your lastname"
                   name="lastname"
@@ -267,7 +267,7 @@ const Login = (props) => {
                 <label htmlFor="phone">Phone</label>
                 <input
                   type="phone"
-                  className="m-0 mt-2 form-input rounded-pill w-100 p-4"
+                  className="m-0 mt-2 form-input rounded-pill w-100 p-4 bg-white text-black"
                   id="phone"
                   placeholder="Enter your phone"
                   name="phone"
@@ -279,7 +279,7 @@ const Login = (props) => {
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
-                  className="m-0 mt-2 form-input rounded-pill w-100 p-4"
+                  className="m-0 mt-2 form-input rounded-pill w-100 p-4 bg-white text-black"
                   id="password"
                   placeholder="Enter your password"
                   name="password"
@@ -290,7 +290,7 @@ const Login = (props) => {
               <div className="form-group row m-0 p-0 mb-4">
                 <label htmlFor="role">Role</label>
                 <select
-                  className="form-input rounded-pill m-0 mt-2 p-2"
+                  className="form-input rounded-pill m-0 mt-2 p-2 bg-white text-black"
                   aria-label="select the role"
                   id="role"
                   name="role"
@@ -375,7 +375,7 @@ const Login = (props) => {
                 <label htmlFor="email">Email</label>
                 <input
                   type="email"
-                  className="m-0 mt-2 form-input rounded-pill w-100 p-4"
+                  className="m-0 mt-2 form-input rounded-pill w-100 p-4 bg-white text-black"
                   id="email"
                   placeholder="Enter your email"
                   name="email"
@@ -388,7 +388,7 @@ const Login = (props) => {
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
-                  className="m-0 mt-2 form-input rounded-pill w-100 p-4"
+                  className="m-0 mt-2 form-input rounded-pill w-100 p-4 bg-white text-black"
                   id="password"
                   placeholder="Enter your password"
                   name="password"
@@ -462,7 +462,7 @@ const Login = (props) => {
                 <label htmlFor="email">Email</label>
                 <input
                   type="email"
-                  className="m-0 mt-2 form-input rounded-pill w-100 p-4"
+                  className="m-0 mt-2 form-input rounded-pill w-100 p-4 bg-white text-black"
                   id="email"
                   placeholder="Enter your email"
                   name="email"
@@ -474,7 +474,7 @@ const Login = (props) => {
                 <label htmlFor="firstname">First Name</label>
                 <input
                   type="firstname"
-                  className="m-0 mt-2 form-input rounded-pill w-100 p-4"
+                  className="m-0 mt-2 form-input rounded-pill w-100 p-4 bg-white text-black"
                   id="firstname"
                   placeholder="Enter your firstname"
                   name="firstname"
@@ -486,7 +486,7 @@ const Login = (props) => {
                 <label htmlFor="lastname">Last Name</label>
                 <input
                   type="lastname"
-                  className="m-0 mt-2 form-input rounded-pill w-100 p-4"
+                  className="m-0 mt-2 form-input rounded-pill w-100 p-4 bg-white text-black"
                   id="lastname"
                   placeholder="Enter your lastname"
                   name="lastname"
@@ -498,7 +498,7 @@ const Login = (props) => {
                 <label htmlFor="phone">Phone</label>
                 <input
                   type="phone"
-                  className="m-0 mt-2 form-input rounded-pill w-100 p-4"
+                  className="m-0 mt-2 form-input rounded-pill w-100 p-4 bg-white text-black"
                   id="phone"
                   placeholder="Enter your phone"
                   name="phone"
@@ -510,7 +510,7 @@ const Login = (props) => {
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
-                  className="m-0 mt-2 form-input rounded-pill w-100 p-4"
+                  className="m-0 mt-2 form-input rounded-pill w-100 p-4 bg-white text-black"
                   id="password"
                   placeholder="Enter your password"
                   name="password"
