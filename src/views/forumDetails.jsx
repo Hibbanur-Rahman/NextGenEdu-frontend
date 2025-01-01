@@ -85,7 +85,7 @@ const ForumDetails = () => {
       setTimeout(() => {
         toast.error("login first");
       }, 1000);
-      window.location.href = "/NextGenEdu-frontend/#/login";
+      window.location.href = "/login";
     } else if (token) {
       let jwt = decode(token);
       setUser(jwt.payload.user);

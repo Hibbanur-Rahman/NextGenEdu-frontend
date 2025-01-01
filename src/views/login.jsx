@@ -48,11 +48,11 @@ const Login = (props) => {
           dispatch(loginUser(response.data.data));
           setTimeout(() => {
             if (response.data.data.role === "student") {
-              window.location.href = "/NextGenEdu-frontend/#/student/";
+              window.location.href = "/student/";
             } else if (response.data.data.role === "admin") {
-              window.location.href = "/NextGenEdu-frontend/#/admin/";
+              window.location.href = "/admin/";
             } else if (response.data.data.role === "teacher") {
-              window.location.href = "/NextGenEdu-frontend/#/teacher/";
+              window.location.href = "/teacher/";
             }
           }, 1000);
         } else {
