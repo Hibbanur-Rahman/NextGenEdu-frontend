@@ -90,7 +90,7 @@ const Forum = () => {
                 <input
                   type="text"
                   placeholder="Search..."
-                  className="form-input rounded-pill  col-10"
+                  className="form-input rounded-pill  col-10 bg-white text-black"
                 />
                 <div className="col-2 pe-0">
                   <button className="search btn btn-transparent col-12 rounded-pill">

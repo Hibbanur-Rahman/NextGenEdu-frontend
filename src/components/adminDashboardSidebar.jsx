@@ -11,7 +11,7 @@ const AdminDashboardSidebar = () => {
   };
   return (
     <div className="sidebar col-lg-3">
-      <Link className="text-decoration-none " to="/student/dashboard">
+      <Link className="text-decoration-none " to="/admin/dashboard">
         <div
           className={`list-item text-black row m-3 ms-0 me-0 p-2 rounded-3 align-items-center ${
             location.pathname === "/admin" ? "active" : ""
