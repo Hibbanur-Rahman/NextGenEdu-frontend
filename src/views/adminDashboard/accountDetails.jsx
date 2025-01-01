@@ -30,7 +30,7 @@ const AccountDetails = () => {
   const handleViewUserDetails = async () => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL_REMOTE}/view-teacher-details`,
+        `${import.meta.env.VITE_API_URL_REMOTE}/view-admin-details`,
         {
           headers: {
             Authorization: localStorage.getItem("token"),
