@@ -1,6 +1,6 @@
-import {useDispatch} from 'react-redux';
-import {loginUser} from '../redux/actions/authActions';
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../redux/actions/authActions";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -9,7 +9,8 @@ import loginImg from "../assets/images/login-img.png";
 import VARIABLES from "../../environmentVariables";
 
 const Login = (props) => {
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     password: "",
     email: "",
@@ -43,16 +44,16 @@ const Login = (props) => {
             password: "",
             email: "",
           });
-          
+
           //Dispatch action to Redux store
           dispatch(loginUser(response.data.data));
           setTimeout(() => {
             if (response.data.data.role === "student") {
-              window.location.href = "/student/";
+              navigate("/student/");
             } else if (response.data.data.role === "admin") {
-              window.location.href = "/admin/";
+              navigate("/admin/");
             } else if (response.data.data.role === "teacher") {
-              window.location.href = "/teacher/";
+              navigate("/teacher/");
             }
           }, 1000);
         } else {

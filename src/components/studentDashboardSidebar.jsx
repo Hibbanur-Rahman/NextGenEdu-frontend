@@ -1,13 +1,12 @@
-import { Link, useLocation } from "react-router-dom";
-import {toast} from 'react-toastify';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const StudentDashboardSidebar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const handleLogout = () => {
-    toast.success("Logout Successfully")
+    toast.success("Logout Successfully");
     localStorage.removeItem("token");
-    setTimeout(()=>{
-        window.location.href = "/";
-    },1000)
+    navigate("/");
   };
   return (
     <div className="sidebar col-lg-3">
@@ -15,9 +14,7 @@ const StudentDashboardSidebar = () => {
         <div
           className={`list-item text-black row m-3 ms-0 me-0 p-2 rounded-3 align-items-center ${
             location.pathname === "/student" ? "active" : ""
-          } ${
-            location.pathname === "/student/dashboard" ? "active" : ""
-          } ${
+          } ${location.pathname === "/student/dashboard" ? "active" : ""} ${
             location.pathname === "/student/" ? "active" : ""
           }`}
         >

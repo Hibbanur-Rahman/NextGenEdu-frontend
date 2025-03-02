@@ -1,13 +1,12 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 const TeacherDashboardSidebar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const handleLogout = () => {
     toast.success("Logout Successfully");
     localStorage.removeItem("token");
-    setTimeout(() => {
-      window.location.href = "/";
-    }, 1000);
+    navigate("/");
   };
   return (
     <div className="sidebar col-lg-3">
@@ -27,9 +26,7 @@ const TeacherDashboardSidebar = () => {
         <div
           className={`list-item text-black row m-3 ms-0 me-0 p-2 rounded-3 align-items-center ${
             location.pathname === "/teacher/coursesList" ? "active" : ""
-          } ${
-            location.pathname === "/teacher/add-course" ? "active" : ""
-          }`}
+          } ${location.pathname === "/teacher/add-course" ? "active" : ""}`}
         >
           <i className="bi bi-book-fill w-auto fs-5"></i>
           <p className="m-0 p-0 w-auto fs-6">Course List</p>
